@@ -57,9 +57,11 @@ Für die effiziente Zusammenarbeit von Agenten haben sich spezifische Entwurfsmu
 
 ### 3.2 Prompt Engineering Strategien
 Da die Qualität der KI-Ergebnisse stark von der Eingabe abhängt, kommen folgende Strategien zum Einsatz:
+*   **Zero-Shot Prompting:** Die KI erhält die Aufgabe ohne vorherige Beispiele. Dies testet das reine Vorwissen und die Generalisierungsfähigkeit des Modells.
+*   **One-Shot (Single-Shot) Prompting:** Die Bereitstellung von genau einem Beispiel im Prompt, um das gewünschte Ausgabeformat oder den Lösungsstil zu verdeutlichen.
+*   **Few-Shot Prompting:** Bereitstellung von mehreren Beispielen im Prompt, damit das Modell komplexe Muster oder spezifische Logiken besser versteht.
 *   **Persona-based Prompting:** Zuweisung einer spezifischen Expertenrolle (z. B. "Du bist ein Senior Software Architekt"), um den Fokus und den Stil des Modells zu steuern.
 *   **Chain-of-Thought (CoT):** Die Anweisung an das Modell, seine Gedankengänge explizit darzulegen, was besonders bei komplexer Programmierlogik die Fehlerquote senkt.
-*   **Few-Shot Prompting:** Bereitstellung von Beispielen im Prompt, damit das Modell das gewünschte Ausgabeformat oder den Lösungsweg besser versteht.
 
 ---
 
