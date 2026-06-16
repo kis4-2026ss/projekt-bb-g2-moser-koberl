@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+# Damit pytest aus jedem Unterordner (auch tests/) das Projekt-Root findet
+# und 'backend.*'-Imports aufloesen kann.
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
