@@ -1,0 +1,3783 @@
+[raw_stderr] Reading additional input from stdin...
+[raw_stderr] OpenAI Codex v0.139.0
+[raw_stderr] --------
+[raw_stderr] workdir: C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] model: gpt-5.5
+[raw_stderr] provider: openai
+[raw_stderr] approval: never
+[raw_stderr] sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+[raw_stderr] reasoning effort: medium
+[raw_stderr] reasoning summaries: none
+[raw_stderr] session id: 019eccbc-f407-7ef1-8e97-d866fe69b141
+[raw_stderr] --------
+[raw_stderr] user
+[raw_stderr] # Role: Tester Agent (Zero-Shot)
+[raw_stderr] 
+[raw_stderr] Du bist ein QA Engineer. Deine Aufgabe ist es, die Qualität und Korrektheit der Implementierung durch automatisierte Tests sicherzustellen.
+[raw_stderr] 
+[raw_stderr] ## Dein Auftrag:
+[raw_stderr] Erstelle ein Test-Suite (`tests/`), die folgende Bereiche abdeckt:
+[raw_stderr] 1. **API-Tests:** Überprüfung der FastAPI-Endpunkte (funktionale Korrektheit).
+[raw_stderr] 2. **Datenbank-Tests:** Sicherstellen, dass CRUD-Operationen funktionieren.
+[raw_stderr] 3. **Logik-Tests:** Validierung der Warenkorb-Berechnungen.
+[raw_stderr] 
+[raw_stderr] ## Vorgaben:
+[raw_stderr] - Nutze das Framework `pytest`.
+[raw_stderr] - Schreibe Tests, die unabhängig von einer laufenden Instanz (mit Mocking oder Test-Datenbank) funktionieren.
+[raw_stderr] 
+[raw_stderr] **Hinweis:** Dein Ziel ist es, Lücken in der Implementierung des Developers aufzudecken.
+[raw_stderr] 
+[raw_stderr] ## Work-Item: Responsive Design umsetzen
+[raw_stderr] ## Urspruengliche Entwickler-Aufgabe (Kontext)
+[raw_stderr] ---
+[raw_stderr] Stelle sicher, dass das Frontend ein modernes, responsives Design hat, das auf verschiedenen Geräten gut aussieht und funktioniert.
+[raw_stderr] ---
+[raw_stderr] 
+[raw_stderr] ## Zusammenfassung der Developer-Implementierung
+[raw_stderr] ---
+[raw_stderr] Umgesetzt:
+[raw_stderr] 
+[raw_stderr] - Kontakt-Web-Component vervollständigt: Formularfelder haben jetzt `name`-Attribute in [contact-page.js](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/frontend/components/contact-page.js:16).
+[raw_stderr] - Frontend-Component-Tests erweitert: statische Vertragschecks plus Node-Smoke-Test für Render-Methoden und Kontaktformular-Verhalten in [test_frontend_components.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_frontend_components.py:295).
+[raw_stderr] 
+[raw_stderr] Verifikation:
+[raw_stderr] 
+[raw_stderr] - Neue Node-basierte Frontend-Smoke-Tests direkt ausgeführt: bestanden.
+[raw_stderr] - `python -m compileall backend tests`: bestanden.
+[raw_stderr] - `python -m pytest -q`: nicht ausführbar, weil `pytest` in der Umgebung fehlt.
+[raw_stderr] - `python -m pip install -r requirements-dev.txt`: fehlgeschlagen, Paketindex liefert keine Versionen für `pytest>=8.0.0`.
+[raw_stderr] ---
+[raw_stderr] 
+[raw_stderr] ## Hinweis (Iteration 1)
+[raw_stderr] Der Code wurde nach einem 'Fail'-Review angepasst. Aktualisiere bestehende Tests bei Bedarf und ergaenze neue Tests fuer die korrigierten Stellen.
+[raw_stderr] 
+[raw_stderr] ## Konkrete Vorgaben fuer die Tests
+[raw_stderr] - Verwende pytest.
+[raw_stderr] - Lege Tests in ./tests/ ab (Pfad relativ zum Projekt-Root, lege den Ordner an falls noetig).
+[raw_stderr] - Decke Happy-Path UND mindestens 2 Edge Cases / Fehlerfaelle ab.
+[raw_stderr] - Fuer HTTP-APIs: nutze TestClient/HTTPX gegen die FastAPI-App.
+[raw_stderr] - Keine Mocks, wo echte Aufrufe einfach moeglich sind (SQLite-Test-DB ist ok).
+[raw_stderr] - Fuege ggf. notwendige Test-Dependencies in requirements-dev.txt hinzu.
+[raw_stderr] - Aendere produktiven Code NUR, wenn er offensichtlich nicht testbar ist;   dokumentiere solche Aenderungen in der Antwort.
+[raw_stderr] - Gib am Ende eine kurze Liste der angelegten Testdateien aus.
+[raw_stderr] codex
+[raw_stderr] Ich prüfe zuerst die Projektstruktur und vorhandenen Tests, damit die neue Suite zur tatsächlichen FastAPI-/DB-Architektur passt. Danach ergänze ich gezielt Tests statt am Produktivcode vorbei zu testen.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Force' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'rg --files' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'git status --short' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 563ms:
+[raw_stderr] uvicorn-8000.log
+[raw_stderr] uvicorn-8000.err.log
+[raw_stderr] requirements-dev.txt
+[raw_stderr] README.md
+[raw_stderr] requirements.txt
+[raw_stderr] ecommerce.sqlite3
+[raw_stderr] tests\test_cart_logic.py
+[raw_stderr] tests\test_api.py
+[raw_stderr] tests\test_database.py
+[raw_stderr] tests\conftest.py
+[raw_stderr] tests\test_frontend_components.py
+[raw_stderr] tests\__pycache__\test_frontend_components.cpython-314.pyc
+[raw_stderr] tests\__pycache__\test_database.cpython-314.pyc
+[raw_stderr] tests\__pycache__\test_cart_logic.cpython-314.pyc
+[raw_stderr] tests\__pycache__\test_api.cpython-314.pyc
+[raw_stderr] tests\__pycache__\conftest.cpython-314.pyc
+[raw_stderr] backend\__init__.py
+[raw_stderr] backend\__pycache__\__init__.cpython-314.pyc
+[raw_stderr] frontend\index.html
+[raw_stderr] frontend\styles\app.css
+[raw_stderr] frontend\components\terms-page.js
+[raw_stderr] frontend\components\shopping-cart.js
+[raw_stderr] frontend\components\product-list.js
+[raw_stderr] frontend\components\product-detail.js
+[raw_stderr] frontend\components\order-confirmation.js
+[raw_stderr] frontend\components\not-found.js
+[raw_stderr] frontend\components\imprint-page.js
+[raw_stderr] frontend\components\contact-page.js
+[raw_stderr] frontend\components\checkout-page.js
+[raw_stderr] frontend\components\app.js
+[raw_stderr] frontend\components\api.js
+[raw_stderr] backend\app\database.py
+[raw_stderr] backend\app\schemas.py
+[raw_stderr] backend\app\main.py
+[raw_stderr] backend\app\models.py
+[raw_stderr] backend\app\__init__.py
+[raw_stderr] backend\app\seed.py
+[raw_stderr] backend\app\__pycache__\main.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\models.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\database.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\schemas.cpython-314.pyc
+[raw_stderr] backend\app\api\products.py
+[raw_stderr] backend\app\api\reviews.py
+[raw_stderr] backend\app\api\orders.py
+[raw_stderr] backend\app\api\__init__.py
+[raw_stderr] backend\app\api\cart.py
+[raw_stderr] backend\app\__pycache__\__init__.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\seed.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\orders.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\cart.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\products.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\__init__.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\reviews.cpython-314.pyc
+[raw_stderr] 
+[raw_stderr] 2026-06-15T19:23:23.009616Z ERROR codex_core::tools::router: error=Exit code: 1
+[raw_stderr] Wall time: 0.6 seconds
+[raw_stderr] Output:
+[raw_stderr] fatal: not a git repository (or any of the parent directories): .git
+[raw_stderr] 
+[raw_stderr]  exited 1 in 614ms:
+[raw_stderr] fatal: not a git repository (or any of the parent directories): .git
+[raw_stderr] 
+[raw_stderr]  succeeded in 705ms:
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr]     Verzeichnis: C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] Mode                 LastWriteTime         Length Name                                                                                
+[raw_stderr] ----                 -------------         ------ ----                                                                                
+[raw_stderr] d-----        15.06.2026     20:28                backend                                                                             
+[raw_stderr] d-----        15.06.2026     20:32                frontend                                                                            
+[raw_stderr] d-----        15.06.2026     21:01                tests                                                                               
+[raw_stderr] -a----        15.06.2026     20:46          57344 ecommerce.sqlite3                                                                   
+[raw_stderr] -a----        15.06.2026     20:48           6225 README.md                                                                           
+[raw_stderr] -a----        15.06.2026     20:50             28 requirements-dev.txt                                                                
+[raw_stderr] -a----        15.06.2026     20:30             77 requirements.txt                                                                    
+[raw_stderr] -a----        15.06.2026     20:43              0 uvicorn-8000.err.log                                                                
+[raw_stderr] -a----        15.06.2026     20:43              0 uvicorn-8000.log                                                                    
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Es gibt bereits Backend- und Frontend-Tests. Ich lese jetzt die App, Modelle und vorhandenen Test-Fixtures, um fehlende Fälle zu identifizieren und keine redundante Parallelwelt aufzubauen.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\main.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\database.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\conftest.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\schemas.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\models.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 700ms:
+[raw_stderr] """FastAPI application entry point."""
+[raw_stderr] 
+[raw_stderr] from pathlib import Path
+[raw_stderr] 
+[raw_stderr] from fastapi import FastAPI
+[raw_stderr] from fastapi.staticfiles import StaticFiles
+[raw_stderr] 
+[raw_stderr] from backend.app.api import cart, orders, products, reviews
+[raw_stderr] from backend.app.database import SessionLocal, init_db
+[raw_stderr] from backend.app.seed import seed_sneakers
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] PROJECT_ROOT = Path(__file__).resolve().parents[2]
+[raw_stderr] FRONTEND_DIR = PROJECT_ROOT / "frontend"
+[raw_stderr] 
+[raw_stderr] app = FastAPI(title="Sneaker E-Commerce API")
+[raw_stderr] app.include_router(products.router)
+[raw_stderr] app.include_router(cart.router)
+[raw_stderr] app.include_router(orders.router)
+[raw_stderr] app.include_router(reviews.router)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @app.on_event("startup")
+[raw_stderr] def on_startup() -> None:
+[raw_stderr]     """Create database tables and seed the initial product catalog."""
+[raw_stderr]     init_db()
+[raw_stderr]     with SessionLocal() as db:
+[raw_stderr]         seed_sneakers(db)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @app.get("/health", tags=["system"])
+[raw_stderr] def health_check() -> dict[str, str]:
+[raw_stderr]     """Return basic service health information."""
+[raw_stderr]     return {"status": "ok"}
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] if FRONTEND_DIR.exists():
+[raw_stderr]     app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
+[raw_stderr] 
+[raw_stderr]  succeeded in 667ms:
+[raw_stderr] """Database configuration and initialization helpers."""
+[raw_stderr] 
+[raw_stderr] from collections.abc import Generator
+[raw_stderr] from pathlib import Path
+[raw_stderr] 
+[raw_stderr] from sqlalchemy import create_engine
+[raw_stderr] from sqlalchemy.orm import Session, declarative_base, sessionmaker
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] PROJECT_ROOT = Path(__file__).resolve().parents[2]
+[raw_stderr] DATABASE_URL = f"sqlite:///{PROJECT_ROOT / 'ecommerce.sqlite3'}"
+[raw_stderr] 
+[raw_stderr] engine = create_engine(
+[raw_stderr]     DATABASE_URL,
+[raw_stderr]     connect_args={"check_same_thread": False},
+[raw_stderr]     future=True,
+[raw_stderr] )
+[raw_stderr] 
+[raw_stderr] SessionLocal = sessionmaker(
+[raw_stderr]     autocommit=False,
+[raw_stderr]     autoflush=False,
+[raw_stderr]     bind=engine,
+[raw_stderr]     future=True,
+[raw_stderr] )
+[raw_stderr] 
+[raw_stderr] Base = declarative_base()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def init_db() -> None:
+[raw_stderr]     """Create all database tables declared by the ORM models."""
+[raw_stderr]     from backend.app import models  # noqa: F401
+[raw_stderr] 
+[raw_stderr]     Base.metadata.create_all(bind=engine)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def get_db() -> Generator[Session, None, None]:
+[raw_stderr]     """Yield a database session for FastAPI dependencies."""
+[raw_stderr]     db = SessionLocal()
+[raw_stderr]     try:
+[raw_stderr]         yield db
+[raw_stderr]     finally:
+[raw_stderr]         db.close()
+[raw_stderr] 
+[raw_stderr]  succeeded in 733ms:
+[raw_stderr] from collections.abc import Generator
+[raw_stderr] 
+[raw_stderr] import pytest
+[raw_stderr] from fastapi.testclient import TestClient
+[raw_stderr] from sqlalchemy import create_engine, event
+[raw_stderr] from sqlalchemy.orm import Session, sessionmaker
+[raw_stderr] from sqlalchemy.pool import StaticPool
+[raw_stderr] 
+[raw_stderr] from backend.app.api import cart as cart_api
+[raw_stderr] from backend.app.database import Base, get_db
+[raw_stderr] from backend.app.main import app
+[raw_stderr] from backend.app.seed import seed_sneakers
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @pytest.fixture()
+[raw_stderr] def db_session_factory() -> Generator[sessionmaker[Session], None, None]:
+[raw_stderr]     engine = create_engine(
+[raw_stderr]         "sqlite://",
+[raw_stderr]         connect_args={"check_same_thread": False},
+[raw_stderr]         poolclass=StaticPool,
+[raw_stderr]         future=True,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     @event.listens_for(engine, "connect")
+[raw_stderr]     def enable_sqlite_foreign_keys(dbapi_connection, connection_record) -> None:  # noqa: ANN001
+[raw_stderr]         del connection_record
+[raw_stderr]         dbapi_connection.execute("PRAGMA foreign_keys=ON")
+[raw_stderr] 
+[raw_stderr]     TestingSessionLocal = sessionmaker(
+[raw_stderr]         autocommit=False,
+[raw_stderr]         autoflush=False,
+[raw_stderr]         bind=engine,
+[raw_stderr]         future=True,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     Base.metadata.create_all(bind=engine)
+[raw_stderr]     with TestingSessionLocal() as db:
+[raw_stderr]         seed_sneakers(db)
+[raw_stderr] 
+[raw_stderr]     try:
+[raw_stderr]         yield TestingSessionLocal
+[raw_stderr]     finally:
+[raw_stderr]         Base.metadata.drop_all(bind=engine)
+[raw_stderr]         engine.dispose()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @pytest.fixture()
+[raw_stderr] def db_session(db_session_factory: sessionmaker[Session]) -> Generator[Session, None, None]:
+[raw_stderr]     with db_session_factory() as db:
+[raw_stderr]         yield db
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @pytest.fixture(autouse=True)
+[raw_stderr] def clear_cart_state() -> Generator[None, None, None]:
+[raw_stderr]     cart_api.clear_cart()
+[raw_stderr]     yield
+[raw_stderr]     cart_api.clear_cart()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @pytest.fixture()
+[raw_stderr] def client(db_session_factory: sessionmaker[Session]) -> Generator[TestClient, None, None]:
+[raw_stderr]     def override_get_db() -> Generator[Session, None, None]:
+[raw_stderr]         with db_session_factory() as db:
+[raw_stderr]             yield db
+[raw_stderr] 
+[raw_stderr]     app.dependency_overrides[get_db] = override_get_db
+[raw_stderr] 
+[raw_stderr]     test_client = TestClient(app)
+[raw_stderr]     try:
+[raw_stderr]         yield test_client
+[raw_stderr]     finally:
+[raw_stderr]         test_client.close()
+[raw_stderr] 
+[raw_stderr]         app.dependency_overrides.clear()
+[raw_stderr] 
+[raw_stderr]  succeeded in 750ms:
+[raw_stderr] """SQLAlchemy ORM models for the e-commerce application."""
+[raw_stderr] 
+[raw_stderr] from datetime import datetime
+[raw_stderr] 
+[raw_stderr] from sqlalchemy import (
+[raw_stderr]     Boolean,
+[raw_stderr]     CheckConstraint,
+[raw_stderr]     Column,
+[raw_stderr]     DateTime,
+[raw_stderr]     Float,
+[raw_stderr]     ForeignKey,
+[raw_stderr]     Integer,
+[raw_stderr]     JSON,
+[raw_stderr]     Numeric,
+[raw_stderr]     String,
+[raw_stderr] )
+[raw_stderr] from sqlalchemy.orm import relationship
+[raw_stderr] 
+[raw_stderr] from backend.app.database import Base
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class Sneaker(Base):
+[raw_stderr]     """Product table containing sneaker catalog data."""
+[raw_stderr] 
+[raw_stderr]     __tablename__ = "sneakers"
+[raw_stderr] 
+[raw_stderr]     id = Column(Integer, primary_key=True, index=True)
+[raw_stderr]     name = Column(String, nullable=False, index=True)
+[raw_stderr]     brand = Column(String, nullable=False, index=True)
+[raw_stderr]     price = Column(Numeric(10, 2), nullable=False)
+[raw_stderr]     currency = Column(String, nullable=False, default="EUR")
+[raw_stderr]     short_description = Column(String, nullable=False)
+[raw_stderr]     long_description = Column(String, nullable=False)
+[raw_stderr]     image_url = Column(String, nullable=False)
+[raw_stderr]     sizes = Column(JSON, nullable=False)
+[raw_stderr]     color = Column(String, nullable=False)
+[raw_stderr]     material = Column(String, nullable=False)
+[raw_stderr]     stock = Column(Integer, nullable=False, default=0)
+[raw_stderr]     rating = Column(Float, nullable=False, default=0.0)
+[raw_stderr]     is_new = Column(Boolean, nullable=False, default=False)
+[raw_stderr] 
+[raw_stderr]     reviews = relationship(
+[raw_stderr]         "Review",
+[raw_stderr]         back_populates="product",
+[raw_stderr]         cascade="all, delete-orphan",
+[raw_stderr]     )
+[raw_stderr]     order_items = relationship("OrderItem", back_populates="product")
+[raw_stderr] 
+[raw_stderr]     __table_args__ = (
+[raw_stderr]         CheckConstraint("price >= 0", name="ck_sneaker_price_non_negative"),
+[raw_stderr]         CheckConstraint("stock >= 0", name="ck_sneaker_stock_non_negative"),
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "rating >= 0 AND rating <= 5",
+[raw_stderr]             name="ck_sneaker_rating_range",
+[raw_stderr]         ),
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class Review(Base):
+[raw_stderr]     """Customer review for a sneaker product."""
+[raw_stderr] 
+[raw_stderr]     __tablename__ = "reviews"
+[raw_stderr] 
+[raw_stderr]     id = Column(Integer, primary_key=True, index=True)
+[raw_stderr]     product_id = Column(
+[raw_stderr]         Integer,
+[raw_stderr]         ForeignKey("sneakers.id", ondelete="CASCADE"),
+[raw_stderr]         nullable=False,
+[raw_stderr]         index=True,
+[raw_stderr]     )
+[raw_stderr]     author = Column(String, nullable=True)
+[raw_stderr]     rating = Column(Integer, nullable=False)
+[raw_stderr]     comment = Column(String, nullable=False)
+[raw_stderr]     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+[raw_stderr] 
+[raw_stderr]     product = relationship("Sneaker", back_populates="reviews")
+[raw_stderr] 
+[raw_stderr]     __table_args__ = (
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "rating >= 1 AND rating <= 5",
+[raw_stderr]             name="ck_review_rating_range",
+[raw_stderr]         ),
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class Order(Base):
+[raw_stderr]     """Order header with shipping, payment, and totals."""
+[raw_stderr] 
+[raw_stderr]     __tablename__ = "orders"
+[raw_stderr] 
+[raw_stderr]     id = Column(Integer, primary_key=True, index=True)
+[raw_stderr]     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+[raw_stderr]     status = Column(String, nullable=False, default="created")
+[raw_stderr]     shipping_name = Column(String, nullable=False)
+[raw_stderr]     shipping_street = Column(String, nullable=False)
+[raw_stderr]     shipping_zip = Column(String, nullable=False)
+[raw_stderr]     shipping_city = Column(String, nullable=False)
+[raw_stderr]     shipping_country = Column(String, nullable=False)
+[raw_stderr]     email = Column(String, nullable=False)
+[raw_stderr]     payment_method = Column(String, nullable=False)
+[raw_stderr]     subtotal = Column(Numeric(10, 2), nullable=False)
+[raw_stderr]     total = Column(Numeric(10, 2), nullable=False)
+[raw_stderr] 
+[raw_stderr]     items = relationship(
+[raw_stderr]         "OrderItem",
+[raw_stderr]         back_populates="order",
+[raw_stderr]         cascade="all, delete-orphan",
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     __table_args__ = (
+[raw_stderr]         CheckConstraint("subtotal >= 0", name="ck_order_subtotal_non_negative"),
+[raw_stderr]         CheckConstraint("total >= 0", name="ck_order_total_non_negative"),
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderItem(Base):
+[raw_stderr]     """Immutable snapshot of a product line inside an order."""
+[raw_stderr] 
+[raw_stderr]     __tablename__ = "order_items"
+[raw_stderr] 
+[raw_stderr]     id = Column(Integer, primary_key=True, index=True)
+[raw_stderr]     order_id = Column(
+[raw_stderr]         Integer,
+[raw_stderr]         ForeignKey("orders.id", ondelete="CASCADE"),
+[raw_stderr]         nullable=False,
+[raw_stderr]         index=True,
+[raw_stderr]     )
+[raw_stderr]     product_id = Column(
+[raw_stderr]         Integer,
+[raw_stderr]         ForeignKey("sneakers.id", ondelete="RESTRICT"),
+[raw_stderr]         nullable=False,
+[raw_stderr]         index=True,
+[raw_stderr]     )
+[raw_stderr]     name_snapshot = Column(String, nullable=False)
+[raw_stderr]     brand_snapshot = Column(String, nullable=False)
+[raw_stderr]     price_snapshot = Column(Numeric(10, 2), nullable=False)
+[raw_stderr]     image_url_snapshot = Column(String, nullable=False)
+[raw_stderr]     size = Column(String, nullable=False)
+[raw_stderr]     quantity = Column(Integer, nullable=False)
+[raw_stderr]     line_total = Column(Numeric(10, 2), nullable=False)
+[raw_stderr] 
+[raw_stderr]     order = relationship("Order", back_populates="items")
+[raw_stderr]     product = relationship("Sneaker", back_populates="order_items")
+[raw_stderr] 
+[raw_stderr]     __table_args__ = (
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "price_snapshot >= 0",
+[raw_stderr]             name="ck_order_item_price_non_negative",
+[raw_stderr]         ),
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "quantity > 0",
+[raw_stderr]             name="ck_order_item_quantity_positive",
+[raw_stderr]         ),
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "line_total >= 0",
+[raw_stderr]             name="ck_order_item_line_total_non_negative",
+[raw_stderr]         ),
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]  succeeded in 770ms:
+[raw_stderr] """Pydantic schemas for API request and response payloads."""
+[raw_stderr] 
+[raw_stderr] from datetime import datetime
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] from pydantic import BaseModel, ConfigDict, Field, field_serializer
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class SneakerRead(BaseModel):
+[raw_stderr]     """Public representation of a sneaker product."""
+[raw_stderr] 
+[raw_stderr]     model_config = ConfigDict(from_attributes=True)
+[raw_stderr] 
+[raw_stderr]     id: int
+[raw_stderr]     name: str
+[raw_stderr]     brand: str
+[raw_stderr]     price: Decimal
+[raw_stderr]     currency: str
+[raw_stderr]     short_description: str
+[raw_stderr]     long_description: str
+[raw_stderr]     image_url: str
+[raw_stderr]     sizes: list[str]
+[raw_stderr]     color: str
+[raw_stderr]     material: str
+[raw_stderr]     stock: int
+[raw_stderr]     rating: float
+[raw_stderr]     is_new: bool
+[raw_stderr] 
+[raw_stderr]     @field_serializer("price")
+[raw_stderr]     def serialize_price(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class CartItemCreate(BaseModel):
+[raw_stderr]     """Payload for adding a product to the cart."""
+[raw_stderr] 
+[raw_stderr]     product_id: int = Field(gt=0)
+[raw_stderr]     size: str = Field(min_length=1, max_length=20)
+[raw_stderr]     quantity: int = Field(gt=0)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class CartItemUpdate(BaseModel):
+[raw_stderr]     """Payload for updating a cart item quantity."""
+[raw_stderr] 
+[raw_stderr]     quantity: int = Field(gt=0)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class CartItemRead(BaseModel):
+[raw_stderr]     """Cart line enriched with product data."""
+[raw_stderr] 
+[raw_stderr]     item_id: int
+[raw_stderr]     product_id: int
+[raw_stderr]     name: str
+[raw_stderr]     brand: str
+[raw_stderr]     price: Decimal
+[raw_stderr]     currency: str
+[raw_stderr]     image_url: str
+[raw_stderr]     size: str
+[raw_stderr]     quantity: int
+[raw_stderr]     line_total: Decimal
+[raw_stderr] 
+[raw_stderr]     @field_serializer("price", "line_total")
+[raw_stderr]     def serialize_money(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class CartRead(BaseModel):
+[raw_stderr]     """Current shopping cart response."""
+[raw_stderr] 
+[raw_stderr]     items: list[CartItemRead]
+[raw_stderr]     subtotal: Decimal
+[raw_stderr]     total: Decimal
+[raw_stderr]     currency: str = "EUR"
+[raw_stderr] 
+[raw_stderr]     @field_serializer("subtotal", "total")
+[raw_stderr]     def serialize_totals(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class ShippingAddress(BaseModel):
+[raw_stderr]     """Shipping and customer contact data for checkout."""
+[raw_stderr] 
+[raw_stderr]     name: str = Field(min_length=1, max_length=255)
+[raw_stderr]     street: str = Field(min_length=1, max_length=255)
+[raw_stderr]     zip: str = Field(min_length=1, max_length=30)
+[raw_stderr]     city: str = Field(min_length=1, max_length=120)
+[raw_stderr]     country: str = Field(min_length=1, max_length=120)
+[raw_stderr]     email: str = Field(
+[raw_stderr]         min_length=3,
+[raw_stderr]         max_length=255,
+[raw_stderr]         pattern=r"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderCreate(BaseModel):
+[raw_stderr]     """Payload for creating an order from the current cart."""
+[raw_stderr] 
+[raw_stderr]     shipping: ShippingAddress
+[raw_stderr]     payment_method: str = Field(min_length=1, max_length=80)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderItemRead(BaseModel):
+[raw_stderr]     """Public representation of a persisted order line."""
+[raw_stderr] 
+[raw_stderr]     model_config = ConfigDict(from_attributes=True)
+[raw_stderr] 
+[raw_stderr]     id: int
+[raw_stderr]     product_id: int
+[raw_stderr]     name_snapshot: str
+[raw_stderr]     brand_snapshot: str
+[raw_stderr]     price_snapshot: Decimal
+[raw_stderr]     image_url_snapshot: str
+[raw_stderr]     size: str
+[raw_stderr]     quantity: int
+[raw_stderr]     line_total: Decimal
+[raw_stderr] 
+[raw_stderr]     @field_serializer("price_snapshot", "line_total")
+[raw_stderr]     def serialize_money(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderRead(BaseModel):
+[raw_stderr]     """Public representation of an order."""
+[raw_stderr] 
+[raw_stderr]     model_config = ConfigDict(from_attributes=True)
+[raw_stderr] 
+[raw_stderr]     id: int
+[raw_stderr]     created_at: datetime
+[raw_stderr]     status: str
+[raw_stderr]     shipping_name: str
+[raw_stderr]     shipping_street: str
+[raw_stderr]     shipping_zip: str
+[raw_stderr]     shipping_city: str
+[raw_stderr]     shipping_country: str
+[raw_stderr]     email: str
+[raw_stderr]     payment_method: str
+[raw_stderr]     subtotal: Decimal
+[raw_stderr]     total: Decimal
+[raw_stderr]     items: list[OrderItemRead]
+[raw_stderr] 
+[raw_stderr]     @field_serializer("subtotal", "total")
+[raw_stderr]     def serialize_totals(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderCreated(BaseModel):
+[raw_stderr]     """Response returned after successful checkout."""
+[raw_stderr] 
+[raw_stderr]     order_id: int
+[raw_stderr]     status: str
+[raw_stderr]     total: Decimal
+[raw_stderr] 
+[raw_stderr]     @field_serializer("total")
+[raw_stderr]     def serialize_total(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class ReviewCreate(BaseModel):
+[raw_stderr]     """Payload for creating a product review."""
+[raw_stderr] 
+[raw_stderr]     author: str | None = Field(default=None, max_length=120)
+[raw_stderr]     rating: int = Field(ge=1, le=5)
+[raw_stderr]     comment: str = Field(min_length=1, max_length=1000)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class ReviewRead(BaseModel):
+[raw_stderr]     """Public representation of a customer review."""
+[raw_stderr] 
+[raw_stderr]     model_config = ConfigDict(from_attributes=True)
+[raw_stderr] 
+[raw_stderr]     id: int
+[raw_stderr]     product_id: int
+[raw_stderr]     author: str | None
+[raw_stderr]     rating: int
+[raw_stderr]     comment: str
+[raw_stderr]     created_at: datetime
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class ProductReviewsRead(BaseModel):
+[raw_stderr]     """Review listing with aggregate product rating."""
+[raw_stderr] 
+[raw_stderr]     average_rating: float
+[raw_stderr]     reviews: list[ReviewRead]
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Die Tests nutzen bereits eine isolierte SQLite-In-Memory-DB und FastAPI `TestClient`, was die zentrale Vorgabe erfüllt. Ich schaue jetzt auf API- und Warenkorb-Code, um konkrete Happy Paths und Fehlerfälle gegen echte Implementierungslücken zu testen.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\api\\cart.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\test_api.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\test_cart_logic.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\test_database.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\api\\reviews.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\api\\products.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\api\\orders.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 909ms:
+[raw_stderr] """Product API endpoints."""
+[raw_stderr] 
+[raw_stderr] from fastapi import APIRouter, Depends, HTTPException
+[raw_stderr] from sqlalchemy import select
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import get_db
+[raw_stderr] from backend.app.models import Sneaker
+[raw_stderr] from backend.app.schemas import SneakerRead
+[raw_stderr] 
+[raw_stderr] router = APIRouter(prefix="/api/products", tags=["products"])
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("", response_model=list[SneakerRead])
+[raw_stderr] def list_products(db: Session = Depends(get_db)) -> list[Sneaker]:
+[raw_stderr]     """Return all products in catalog order."""
+[raw_stderr]     return list(db.scalars(select(Sneaker).order_by(Sneaker.id)).all())
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("/{product_id}", response_model=SneakerRead)
+[raw_stderr] def get_product(product_id: int, db: Session = Depends(get_db)) -> Sneaker:
+[raw_stderr]     """Return one product or 404 when it does not exist."""
+[raw_stderr]     product = db.get(Sneaker, product_id)
+[raw_stderr]     if product is None:
+[raw_stderr]         raise HTTPException(status_code=404, detail="Product not found")
+[raw_stderr]     return product
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr]  succeeded in 1060ms:
+[raw_stderr] """Shopping cart API endpoints.
+[raw_stderr] 
+[raw_stderr] The architecture defines no cart table, so the cart is kept in process memory.
+[raw_stderr] This is suitable for the single-user demo frontend and keeps persistence scoped
+[raw_stderr] to the declared order schema.
+[raw_stderr] """
+[raw_stderr] 
+[raw_stderr] from dataclasses import dataclass
+[raw_stderr] from decimal import Decimal
+[raw_stderr] from itertools import count
+[raw_stderr] from threading import Lock
+[raw_stderr] 
+[raw_stderr] from fastapi import APIRouter, Depends, HTTPException, Response, status
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import get_db
+[raw_stderr] from backend.app.models import Sneaker
+[raw_stderr] from backend.app.schemas import (
+[raw_stderr]     CartItemCreate,
+[raw_stderr]     CartItemRead,
+[raw_stderr]     CartItemUpdate,
+[raw_stderr]     CartRead,
+[raw_stderr] )
+[raw_stderr] 
+[raw_stderr] router = APIRouter(prefix="/api/cart", tags=["cart"])
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @dataclass
+[raw_stderr] class StoredCartItem:
+[raw_stderr]     """Minimal cart state stored between requests."""
+[raw_stderr] 
+[raw_stderr]     item_id: int
+[raw_stderr]     product_id: int
+[raw_stderr]     size: str
+[raw_stderr]     quantity: int
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] _cart_items: dict[int, StoredCartItem] = {}
+[raw_stderr] _cart_item_ids = count(1)
+[raw_stderr] _cart_lock = Lock()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def _get_product(db: Session, product_id: int) -> Sneaker:
+[raw_stderr]     """Return a product or raise a 404 HTTP error."""
+[raw_stderr]     product = db.get(Sneaker, product_id)
+[raw_stderr]     if product is None:
+[raw_stderr]         raise HTTPException(status_code=404, detail="Product not found")
+[raw_stderr]     return product
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def _validate_cart_item(product: Sneaker, size: str, quantity: int) -> None:
+[raw_stderr]     """Validate size and stock constraints for a cart line."""
+[raw_stderr]     if size not in product.sizes:
+[raw_stderr]         raise HTTPException(
+[raw_stderr]             status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]             detail="Selected size is not available for this product",
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     if quantity > product.stock:
+[raw_stderr]         raise HTTPException(
+[raw_stderr]             status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]             detail="Requested quantity exceeds available stock",
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def get_stored_cart_items() -> list[StoredCartItem]:
+[raw_stderr]     """Return a stable snapshot of the current cart state."""
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         return list(_cart_items.values())
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def clear_cart() -> None:
+[raw_stderr]     """Remove all cart items after successful checkout."""
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         _cart_items.clear()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def build_cart_response(db: Session) -> CartRead:
+[raw_stderr]     """Build a cart response from stored cart lines and current products."""
+[raw_stderr]     response_items: list[CartItemRead] = []
+[raw_stderr]     subtotal = Decimal("0.00")
+[raw_stderr] 
+[raw_stderr]     for stored_item in get_stored_cart_items():
+[raw_stderr]         product = db.get(Sneaker, stored_item.product_id)
+[raw_stderr]         if product is None:
+[raw_stderr]             continue
+[raw_stderr] 
+[raw_stderr]         line_total = product.price * stored_item.quantity
+[raw_stderr]         subtotal += line_total
+[raw_stderr]         response_items.append(
+[raw_stderr]             CartItemRead(
+[raw_stderr]                 item_id=stored_item.item_id,
+[raw_stderr]                 product_id=product.id,
+[raw_stderr]                 name=product.name,
+[raw_stderr]                 brand=product.brand,
+[raw_stderr]                 price=product.price,
+[raw_stderr]                 currency=product.currency,
+[raw_stderr]                 image_url=product.image_url,
+[raw_stderr]                 size=stored_item.size,
+[raw_stderr]                 quantity=stored_item.quantity,
+[raw_stderr]                 line_total=line_total,
+[raw_stderr]             )
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     return CartRead(items=response_items, subtotal=subtotal, total=subtotal)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("", response_model=CartRead)
+[raw_stderr] def get_cart(db: Session = Depends(get_db)) -> CartRead:
+[raw_stderr]     """Return the current shopping cart."""
+[raw_stderr]     return build_cart_response(db)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.post(
+[raw_stderr]     "/items",
+[raw_stderr]     response_model=CartItemRead,
+[raw_stderr]     status_code=status.HTTP_201_CREATED,
+[raw_stderr] )
+[raw_stderr] def add_cart_item(
+[raw_stderr]     payload: CartItemCreate,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> CartItemRead:
+[raw_stderr]     """Add a product line to the cart or increase an existing line."""
+[raw_stderr]     product = _get_product(db, payload.product_id)
+[raw_stderr] 
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         existing = next(
+[raw_stderr]             (
+[raw_stderr]                 item
+[raw_stderr]                 for item in _cart_items.values()
+[raw_stderr]                 if item.product_id == payload.product_id
+[raw_stderr]                 and item.size == payload.size
+[raw_stderr]             ),
+[raw_stderr]             None,
+[raw_stderr]         )
+[raw_stderr]         requested_quantity = payload.quantity
+[raw_stderr]         if existing is not None:
+[raw_stderr]             requested_quantity += existing.quantity
+[raw_stderr] 
+[raw_stderr]         _validate_cart_item(product, payload.size, requested_quantity)
+[raw_stderr] 
+[raw_stderr]         if existing is None:
+[raw_stderr]             item_id = next(_cart_item_ids)
+[raw_stderr]             _cart_items[item_id] = StoredCartItem(
+[raw_stderr]                 item_id=item_id,
+[raw_stderr]                 product_id=payload.product_id,
+[raw_stderr]                 size=payload.size,
+[raw_stderr]                 quantity=payload.quantity,
+[raw_stderr]             )
+[raw_stderr]         else:
+[raw_stderr]             existing.quantity = requested_quantity
+[raw_stderr]             item_id = existing.item_id
+[raw_stderr] 
+[raw_stderr]     cart = build_cart_response(db)
+[raw_stderr]     return next(item for item in cart.items if item.item_id == item_id)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.patch(
+[raw_stderr]     "/items/{item_id}",
+[raw_stderr]     status_code=status.HTTP_204_NO_CONTENT,
+[raw_stderr]     response_class=Response,
+[raw_stderr] )
+[raw_stderr] def update_cart_item(
+[raw_stderr]     item_id: int,
+[raw_stderr]     payload: CartItemUpdate,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> Response:
+[raw_stderr]     """Update the quantity of an existing cart item."""
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         stored_item = _cart_items.get(item_id)
+[raw_stderr]         if stored_item is None:
+[raw_stderr]             raise HTTPException(status_code=404, detail="Cart item not found")
+[raw_stderr] 
+[raw_stderr]         product = _get_product(db, stored_item.product_id)
+[raw_stderr]         _validate_cart_item(product, stored_item.size, payload.quantity)
+[raw_stderr]         stored_item.quantity = payload.quantity
+[raw_stderr] 
+[raw_stderr]     return Response(status_code=status.HTTP_204_NO_CONTENT)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.delete(
+[raw_stderr]     "/items/{item_id}",
+[raw_stderr]     status_code=status.HTTP_204_NO_CONTENT,
+[raw_stderr]     response_class=Response,
+[raw_stderr] )
+[raw_stderr] def delete_cart_item(item_id: int) -> Response:
+[raw_stderr]     """Remove an item from the current cart."""
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         if item_id not in _cart_items:
+[raw_stderr]             raise HTTPException(status_code=404, detail="Cart item not found")
+[raw_stderr]         del _cart_items[item_id]
+[raw_stderr] 
+[raw_stderr]     return Response(status_code=status.HTTP_204_NO_CONTENT)
+[raw_stderr] 
+[raw_stderr]  succeeded in 1031ms:
+[raw_stderr] """Review API endpoints."""
+[raw_stderr] 
+[raw_stderr] from fastapi import APIRouter, Depends, HTTPException, status
+[raw_stderr] from sqlalchemy import func, select
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import get_db
+[raw_stderr] from backend.app.models import Review, Sneaker
+[raw_stderr] from backend.app.schemas import ProductReviewsRead, ReviewCreate, ReviewRead
+[raw_stderr] 
+[raw_stderr] router = APIRouter(prefix="/api/products", tags=["reviews"])
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def _get_product(db: Session, product_id: int) -> Sneaker:
+[raw_stderr]     """Return a product or raise a 404 HTTP error."""
+[raw_stderr]     product = db.get(Sneaker, product_id)
+[raw_stderr]     if product is None:
+[raw_stderr]         raise HTTPException(status_code=404, detail="Product not found")
+[raw_stderr]     return product
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def _refresh_product_rating(db: Session, product: Sneaker) -> None:
+[raw_stderr]     """Persist the rounded average rating on the product record."""
+[raw_stderr]     average = db.scalar(
+[raw_stderr]         select(func.avg(Review.rating)).where(Review.product_id == product.id)
+[raw_stderr]     )
+[raw_stderr]     product.rating = round(float(average or 0), 1)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("/{product_id}/reviews", response_model=ProductReviewsRead)
+[raw_stderr] def list_reviews(
+[raw_stderr]     product_id: int,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> ProductReviewsRead:
+[raw_stderr]     """Return review aggregate and reviews for one product."""
+[raw_stderr]     _get_product(db, product_id)
+[raw_stderr]     reviews = list(
+[raw_stderr]         db.scalars(
+[raw_stderr]             select(Review)
+[raw_stderr]             .where(Review.product_id == product_id)
+[raw_stderr]             .order_by(Review.created_at.desc(), Review.id.desc())
+[raw_stderr]         ).all()
+[raw_stderr]     )
+[raw_stderr]     average = (
+[raw_stderr]         sum(review.rating for review in reviews) / len(reviews)
+[raw_stderr]         if reviews
+[raw_stderr]         else 0.0
+[raw_stderr]     )
+[raw_stderr]     return ProductReviewsRead(
+[raw_stderr]         average_rating=round(average, 1),
+[raw_stderr]         reviews=reviews,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.post(
+[raw_stderr]     "/{product_id}/reviews",
+[raw_stderr]     response_model=ReviewRead,
+[raw_stderr]     status_code=status.HTTP_201_CREATED,
+[raw_stderr] )
+[raw_stderr] def create_review(
+[raw_stderr]     product_id: int,
+[raw_stderr]     payload: ReviewCreate,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> Review:
+[raw_stderr]     """Create a review for a product and update its aggregate rating."""
+[raw_stderr]     product = _get_product(db, product_id)
+[raw_stderr]     review = Review(
+[raw_stderr]         product_id=product.id,
+[raw_stderr]         author=payload.author,
+[raw_stderr]         rating=payload.rating,
+[raw_stderr]         comment=payload.comment,
+[raw_stderr]     )
+[raw_stderr]     db.add(review)
+[raw_stderr]     db.flush()
+[raw_stderr]     _refresh_product_rating(db, product)
+[raw_stderr]     db.commit()
+[raw_stderr]     db.refresh(review)
+[raw_stderr]     return review
+[raw_stderr] 
+[raw_stderr]  succeeded in 1038ms:
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] import pytest
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.api import cart as cart_api
+[raw_stderr] from backend.app.api.cart import StoredCartItem, build_cart_response
+[raw_stderr] from backend.app.schemas import CartItemCreate
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_build_cart_response_calculates_subtotal_and_line_totals(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     cart_api._cart_items[1] = StoredCartItem(
+[raw_stderr]         item_id=1,
+[raw_stderr]         product_id=1,
+[raw_stderr]         size="42",
+[raw_stderr]         quantity=2,
+[raw_stderr]     )
+[raw_stderr]     cart_api._cart_items[2] = StoredCartItem(
+[raw_stderr]         item_id=2,
+[raw_stderr]         product_id=3,
+[raw_stderr]         size="41",
+[raw_stderr]         quantity=1,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     cart = build_cart_response(db_session)
+[raw_stderr] 
+[raw_stderr]     assert len(cart.items) == 2
+[raw_stderr]     assert cart.items[0].line_total == Decimal("259.98")
+[raw_stderr]     assert cart.items[1].line_total == Decimal("89.90")
+[raw_stderr]     assert cart.subtotal == Decimal("349.88")
+[raw_stderr]     assert cart.total == Decimal("349.88")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_build_cart_response_skips_removed_products(db_session: Session) -> None:
+[raw_stderr]     cart_api._cart_items[1] = StoredCartItem(
+[raw_stderr]         item_id=1,
+[raw_stderr]         product_id=9999,
+[raw_stderr]         size="42",
+[raw_stderr]         quantity=2,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     cart = build_cart_response(db_session)
+[raw_stderr] 
+[raw_stderr]     assert cart.items == []
+[raw_stderr]     assert cart.subtotal == Decimal("0.00")
+[raw_stderr]     assert cart.total == Decimal("0.00")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_clear_cart_removes_all_stored_items() -> None:
+[raw_stderr]     cart_api._cart_items[1] = StoredCartItem(
+[raw_stderr]         item_id=1,
+[raw_stderr]         product_id=1,
+[raw_stderr]         size="42",
+[raw_stderr]         quantity=2,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     cart_api.clear_cart()
+[raw_stderr] 
+[raw_stderr]     assert cart_api.get_stored_cart_items() == []
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_add_cart_item_combines_same_product_and_size(db_session: Session) -> None:
+[raw_stderr]     first_item = cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="42", quantity=1),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr]     second_item = cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="42", quantity=2),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert second_item.item_id == first_item.item_id
+[raw_stderr]     assert second_item.quantity == 3
+[raw_stderr]     assert second_item.line_total == Decimal("389.97")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_add_cart_item_keeps_different_sizes_separate(db_session: Session) -> None:
+[raw_stderr]     first_item = cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="41", quantity=1),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr]     second_item = cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="42", quantity=1),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     cart = cart_api.build_cart_response(db_session)
+[raw_stderr] 
+[raw_stderr]     assert first_item.item_id != second_item.item_id
+[raw_stderr]     assert len(cart.items) == 2
+[raw_stderr]     assert cart.subtotal == Decimal("259.98")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_add_cart_item_keeps_same_product_with_different_sizes_in_separate_totals(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="41", quantity=2),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr]     cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="42", quantity=3),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     cart = cart_api.build_cart_response(db_session)
+[raw_stderr] 
+[raw_stderr]     assert [item.quantity for item in cart.items] == [2, 3]
+[raw_stderr]     assert [item.line_total for item in cart.items] == [
+[raw_stderr]         Decimal("259.98"),
+[raw_stderr]         Decimal("389.97"),
+[raw_stderr]     ]
+[raw_stderr]     assert cart.subtotal == Decimal("649.95")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_add_cart_item_validates_combined_quantity_against_stock(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=6, size="42", quantity=10),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(cart_api.HTTPException) as error:
+[raw_stderr]         cart_api.add_cart_item(
+[raw_stderr]             CartItemCreate(product_id=6, size="42", quantity=10),
+[raw_stderr]             db_session,
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     assert error.value.status_code == 400
+[raw_stderr]     assert error.value.detail == "Requested quantity exceeds available stock"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_update_cart_item_revalidates_current_catalog_size(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     item = cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="42", quantity=1),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr]     product = db_session.get(cart_api.Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr]     product.sizes = ["39", "40", "41"]
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(cart_api.HTTPException) as error:
+[raw_stderr]         cart_api.update_cart_item(
+[raw_stderr]             item.item_id,
+[raw_stderr]             cart_api.CartItemUpdate(quantity=2),
+[raw_stderr]             db_session,
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     assert error.value.status_code == 400
+[raw_stderr]     assert error.value.detail == "Selected size is not available for this product"
+[raw_stderr] 
+[raw_stderr]     cart = cart_api.build_cart_response(db_session)
+[raw_stderr]     assert cart.items[0].quantity == 1
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_failed_combined_quantity_add_keeps_existing_cart_quantity(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=6, size="42", quantity=10),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(cart_api.HTTPException):
+[raw_stderr]         cart_api.add_cart_item(
+[raw_stderr]             CartItemCreate(product_id=6, size="42", quantity=10),
+[raw_stderr]             db_session,
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     cart = cart_api.build_cart_response(db_session)
+[raw_stderr] 
+[raw_stderr]     assert len(cart.items) == 1
+[raw_stderr]     assert cart.items[0].quantity == 10
+[raw_stderr]     assert cart.items[0].line_total == Decimal("1399.50")
+[raw_stderr]     assert cart.subtotal == Decimal("1399.50")
+[raw_stderr] 
+[raw_stderr]  succeeded in 1014ms:
+[raw_stderr] """Order API endpoints."""
+[raw_stderr] 
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] from fastapi import APIRouter, Depends, HTTPException, status
+[raw_stderr] from sqlalchemy.orm import Session, selectinload
+[raw_stderr] 
+[raw_stderr] from backend.app.api.cart import clear_cart, get_stored_cart_items
+[raw_stderr] from backend.app.database import get_db
+[raw_stderr] from backend.app.models import Order, OrderItem, Sneaker
+[raw_stderr] from backend.app.schemas import OrderCreate, OrderCreated, OrderRead
+[raw_stderr] 
+[raw_stderr] router = APIRouter(prefix="/api/orders", tags=["orders"])
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.post("", response_model=OrderCreated, status_code=status.HTTP_201_CREATED)
+[raw_stderr] def create_order(
+[raw_stderr]     payload: OrderCreate,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> OrderCreated:
+[raw_stderr]     """Create an order from the current cart and clear the cart."""
+[raw_stderr]     cart_items = get_stored_cart_items()
+[raw_stderr]     if not cart_items:
+[raw_stderr]         raise HTTPException(
+[raw_stderr]             status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]             detail="Cart is empty",
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     order_lines: list[OrderItem] = []
+[raw_stderr]     subtotal = Decimal("0.00")
+[raw_stderr] 
+[raw_stderr]     for cart_item in cart_items:
+[raw_stderr]         product = db.get(Sneaker, cart_item.product_id)
+[raw_stderr]         if product is None:
+[raw_stderr]             raise HTTPException(
+[raw_stderr]                 status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]                 detail="Cart contains an unavailable product",
+[raw_stderr]             )
+[raw_stderr] 
+[raw_stderr]         if cart_item.size not in product.sizes:
+[raw_stderr]             raise HTTPException(
+[raw_stderr]                 status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]                 detail="Cart contains an unavailable product size",
+[raw_stderr]             )
+[raw_stderr] 
+[raw_stderr]         if cart_item.quantity > product.stock:
+[raw_stderr]             raise HTTPException(
+[raw_stderr]                 status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]                 detail="Cart quantity exceeds available stock",
+[raw_stderr]             )
+[raw_stderr] 
+[raw_stderr]         line_total = product.price * cart_item.quantity
+[raw_stderr]         subtotal += line_total
+[raw_stderr]         order_lines.append(
+[raw_stderr]             OrderItem(
+[raw_stderr]                 product_id=product.id,
+[raw_stderr]                 name_snapshot=product.name,
+[raw_stderr]                 brand_snapshot=product.brand,
+[raw_stderr]                 price_snapshot=product.price,
+[raw_stderr]                 image_url_snapshot=product.image_url,
+[raw_stderr]                 size=cart_item.size,
+[raw_stderr]                 quantity=cart_item.quantity,
+[raw_stderr]                 line_total=line_total,
+[raw_stderr]             )
+[raw_stderr]         )
+[raw_stderr]         product.stock -= cart_item.quantity
+[raw_stderr] 
+[raw_stderr]     order = Order(
+[raw_stderr]         status="created",
+[raw_stderr]         shipping_name=payload.shipping.name,
+[raw_stderr]         shipping_street=payload.shipping.street,
+[raw_stderr]         shipping_zip=payload.shipping.zip,
+[raw_stderr]         shipping_city=payload.shipping.city,
+[raw_stderr]         shipping_country=payload.shipping.country,
+[raw_stderr]         email=str(payload.shipping.email),
+[raw_stderr]         payment_method=payload.payment_method,
+[raw_stderr]         subtotal=subtotal,
+[raw_stderr]         total=subtotal,
+[raw_stderr]         items=order_lines,
+[raw_stderr]     )
+[raw_stderr]     db.add(order)
+[raw_stderr]     db.commit()
+[raw_stderr]     db.refresh(order)
+[raw_stderr]     clear_cart()
+[raw_stderr] 
+[raw_stderr]     return OrderCreated(order_id=order.id, status=order.status, total=order.total)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("/{order_id}", response_model=OrderRead)
+[raw_stderr] def get_order(order_id: int, db: Session = Depends(get_db)) -> Order:
+[raw_stderr]     """Return a persisted order or 404 when it does not exist."""
+[raw_stderr]     order = db.get(
+[raw_stderr]         Order,
+[raw_stderr]         order_id,
+[raw_stderr]         options=[selectinload(Order.items)],
+[raw_stderr]     )
+[raw_stderr]     if order is None:
+[raw_stderr]         raise HTTPException(status_code=404, detail="Order not found")
+[raw_stderr]     return order
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr]  succeeded in 1120ms:
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] import pytest
+[raw_stderr] from sqlalchemy import exc, select
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import engine
+[raw_stderr] from backend.app.models import Order, OrderItem, Review, Sneaker
+[raw_stderr] from backend.app.seed import SEED_SNEAKERS, seed_sneakers
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_sqlite_foreign_key_enforcement_is_enabled() -> None:
+[raw_stderr]     with engine.connect() as connection:
+[raw_stderr]         foreign_keys_enabled = connection.exec_driver_sql("PRAGMA foreign_keys").scalar()
+[raw_stderr] 
+[raw_stderr]     assert foreign_keys_enabled == 1
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_seed_sneakers_is_idempotent(db_session: Session) -> None:
+[raw_stderr]     initial_count = len(db_session.scalars(select(Sneaker)).all())
+[raw_stderr] 
+[raw_stderr]     inserted = seed_sneakers(db_session)
+[raw_stderr]     final_count = len(db_session.scalars(select(Sneaker)).all())
+[raw_stderr] 
+[raw_stderr]     assert initial_count == 6
+[raw_stderr]     assert inserted == 0
+[raw_stderr]     assert final_count == initial_count
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_seeded_catalog_contains_all_required_sneaker_data(db_session: Session) -> None:
+[raw_stderr]     products = list(db_session.scalars(select(Sneaker).order_by(Sneaker.id)).all())
+[raw_stderr] 
+[raw_stderr]     assert len(products) == len(SEED_SNEAKERS)
+[raw_stderr]     assert {product.name for product in products} == {
+[raw_stderr]         sneaker["name"] for sneaker in SEED_SNEAKERS
+[raw_stderr]     }
+[raw_stderr] 
+[raw_stderr]     for product in products:
+[raw_stderr]         assert product.brand
+[raw_stderr]         assert product.price > Decimal("0.00")
+[raw_stderr]         assert product.currency == "EUR"
+[raw_stderr]         assert product.short_description
+[raw_stderr]         assert product.long_description
+[raw_stderr]         assert product.image_url.startswith("/static/images/")
+[raw_stderr]         assert product.sizes
+[raw_stderr]         assert product.stock >= 0
+[raw_stderr]         assert 0 <= product.rating <= 5
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_sneaker_crud_roundtrip(db_session: Session) -> None:
+[raw_stderr]     sneaker = Sneaker(
+[raw_stderr]         name="Test Runner",
+[raw_stderr]         brand="QA",
+[raw_stderr]         price=Decimal("79.50"),
+[raw_stderr]         currency="EUR",
+[raw_stderr]         short_description="Short",
+[raw_stderr]         long_description="Long",
+[raw_stderr]         image_url="/static/images/test-runner.jpg",
+[raw_stderr]         sizes=["41", "42"],
+[raw_stderr]         color="Black",
+[raw_stderr]         material="Mesh",
+[raw_stderr]         stock=3,
+[raw_stderr]         rating=4.0,
+[raw_stderr]         is_new=True,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     db_session.add(sneaker)
+[raw_stderr]     db_session.commit()
+[raw_stderr]     db_session.refresh(sneaker)
+[raw_stderr] 
+[raw_stderr]     loaded = db_session.get(Sneaker, sneaker.id)
+[raw_stderr]     assert loaded is not None
+[raw_stderr]     assert loaded.name == "Test Runner"
+[raw_stderr] 
+[raw_stderr]     loaded.stock = 2
+[raw_stderr]     db_session.commit()
+[raw_stderr]     db_session.refresh(loaded)
+[raw_stderr]     assert loaded.stock == 2
+[raw_stderr] 
+[raw_stderr]     db_session.delete(loaded)
+[raw_stderr]     db_session.commit()
+[raw_stderr]     assert db_session.get(Sneaker, sneaker.id) is None
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_negative_stock_violates_database_constraint(db_session: Session) -> None:
+[raw_stderr]     db_session.add(
+[raw_stderr]         Sneaker(
+[raw_stderr]             name="Broken Stock",
+[raw_stderr]             brand="QA",
+[raw_stderr]             price=Decimal("10.00"),
+[raw_stderr]             currency="EUR",
+[raw_stderr]             short_description="Short",
+[raw_stderr]             long_description="Long",
+[raw_stderr]             image_url="/static/images/broken-stock.jpg",
+[raw_stderr]             sizes=["42"],
+[raw_stderr]             color="Black",
+[raw_stderr]             material="Mesh",
+[raw_stderr]             stock=-1,
+[raw_stderr]             rating=3.0,
+[raw_stderr]             is_new=False,
+[raw_stderr]         )
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_negative_price_violates_database_constraint(db_session: Session) -> None:
+[raw_stderr]     db_session.add(
+[raw_stderr]         Sneaker(
+[raw_stderr]             name="Broken Price",
+[raw_stderr]             brand="QA",
+[raw_stderr]             price=Decimal("-0.01"),
+[raw_stderr]             currency="EUR",
+[raw_stderr]             short_description="Short",
+[raw_stderr]             long_description="Long",
+[raw_stderr]             image_url="/static/images/broken-price.jpg",
+[raw_stderr]             sizes=["42"],
+[raw_stderr]             color="Black",
+[raw_stderr]             material="Mesh",
+[raw_stderr]             stock=1,
+[raw_stderr]             rating=3.0,
+[raw_stderr]             is_new=False,
+[raw_stderr]         )
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_sneaker_rating_outside_allowed_range_violates_database_constraint(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     db_session.add(
+[raw_stderr]         Sneaker(
+[raw_stderr]             name="Broken Rating",
+[raw_stderr]             brand="QA",
+[raw_stderr]             price=Decimal("10.00"),
+[raw_stderr]             currency="EUR",
+[raw_stderr]             short_description="Short",
+[raw_stderr]             long_description="Long",
+[raw_stderr]             image_url="/static/images/broken-rating.jpg",
+[raw_stderr]             sizes=["42"],
+[raw_stderr]             color="Black",
+[raw_stderr]             material="Mesh",
+[raw_stderr]             stock=1,
+[raw_stderr]             rating=5.1,
+[raw_stderr]             is_new=False,
+[raw_stderr]         )
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_review_rating_outside_allowed_range_violates_database_constraint(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     product = db_session.get(Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr] 
+[raw_stderr]     db_session.add(
+[raw_stderr]         Review(
+[raw_stderr]             product_id=product.id,
+[raw_stderr]             author="QA",
+[raw_stderr]             rating=0,
+[raw_stderr]             comment="Invalid rating",
+[raw_stderr]         )
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_review_rejects_unknown_product_foreign_key(db_session: Session) -> None:
+[raw_stderr]     db_session.add(
+[raw_stderr]         Review(
+[raw_stderr]             product_id=9999,
+[raw_stderr]             author="QA",
+[raw_stderr]             rating=4,
+[raw_stderr]             comment="Product does not exist",
+[raw_stderr]         )
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_review_crud_roundtrip(db_session: Session) -> None:
+[raw_stderr]     product = db_session.get(Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr] 
+[raw_stderr]     review = Review(
+[raw_stderr]         product_id=product.id,
+[raw_stderr]         author="QA",
+[raw_stderr]         rating=4,
+[raw_stderr]         comment="Initial comment",
+[raw_stderr]     )
+[raw_stderr]     db_session.add(review)
+[raw_stderr]     db_session.commit()
+[raw_stderr]     db_session.refresh(review)
+[raw_stderr] 
+[raw_stderr]     loaded = db_session.get(Review, review.id)
+[raw_stderr]     assert loaded is not None
+[raw_stderr]     assert loaded.comment == "Initial comment"
+[raw_stderr] 
+[raw_stderr]     loaded.comment = "Updated comment"
+[raw_stderr]     loaded.rating = 5
+[raw_stderr]     db_session.commit()
+[raw_stderr]     db_session.refresh(loaded)
+[raw_stderr]     assert loaded.comment == "Updated comment"
+[raw_stderr]     assert loaded.rating == 5
+[raw_stderr] 
+[raw_stderr]     db_session.delete(loaded)
+[raw_stderr]     db_session.commit()
+[raw_stderr]     assert db_session.get(Review, review.id) is None
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_crud_with_items_and_delete_cascades(db_session: Session) -> None:
+[raw_stderr]     product = db_session.get(Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr] 
+[raw_stderr]     order = Order(
+[raw_stderr]         status="created",
+[raw_stderr]         shipping_name="Ada Lovelace",
+[raw_stderr]         shipping_street="Teststrasse 1",
+[raw_stderr]         shipping_zip="10115",
+[raw_stderr]         shipping_city="Berlin",
+[raw_stderr]         shipping_country="Germany",
+[raw_stderr]         email="ada@example.com",
+[raw_stderr]         payment_method="credit_card",
+[raw_stderr]         subtotal=Decimal("129.99"),
+[raw_stderr]         total=Decimal("129.99"),
+[raw_stderr]         items=[
+[raw_stderr]             OrderItem(
+[raw_stderr]                 product_id=product.id,
+[raw_stderr]                 name_snapshot=product.name,
+[raw_stderr]                 brand_snapshot=product.brand,
+[raw_stderr]                 price_snapshot=product.price,
+[raw_stderr]                 image_url_snapshot=product.image_url,
+[raw_stderr]                 size="42",
+[raw_stderr]                 quantity=1,
+[raw_stderr]                 line_total=product.price,
+[raw_stderr]             )
+[raw_stderr]         ],
+[raw_stderr]     )
+[raw_stderr]     db_session.add(order)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     saved_order = db_session.get(Order, order.id)
+[raw_stderr]     assert saved_order is not None
+[raw_stderr]     assert len(saved_order.items) == 1
+[raw_stderr]     assert saved_order.items[0].product_id == product.id
+[raw_stderr]     item_id = saved_order.items[0].id
+[raw_stderr] 
+[raw_stderr]     db_session.delete(saved_order)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     assert db_session.get(Order, order.id) is None
+[raw_stderr]     assert db_session.get(OrderItem, item_id) is None
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_item_rejects_unknown_product_foreign_key(db_session: Session) -> None:
+[raw_stderr]     order = Order(
+[raw_stderr]         status="created",
+[raw_stderr]         shipping_name="Ada Lovelace",
+[raw_stderr]         shipping_street="Teststrasse 1",
+[raw_stderr]         shipping_zip="10115",
+[raw_stderr]         shipping_city="Berlin",
+[raw_stderr]         shipping_country="Germany",
+[raw_stderr]         email="ada@example.com",
+[raw_stderr]         payment_method="credit_card",
+[raw_stderr]         subtotal=Decimal("10.00"),
+[raw_stderr]         total=Decimal("10.00"),
+[raw_stderr]         items=[
+[raw_stderr]             OrderItem(
+[raw_stderr]                 product_id=9999,
+[raw_stderr]                 name_snapshot="Missing Product",
+[raw_stderr]                 brand_snapshot="QA",
+[raw_stderr]                 price_snapshot=Decimal("10.00"),
+[raw_stderr]                 image_url_snapshot="/static/images/missing.jpg",
+[raw_stderr]                 size="42",
+[raw_stderr]                 quantity=1,
+[raw_stderr]                 line_total=Decimal("10.00"),
+[raw_stderr]             )
+[raw_stderr]         ],
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     db_session.add(order)
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_item_quantity_must_be_positive(db_session: Session) -> None:
+[raw_stderr]     product = db_session.get(Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr] 
+[raw_stderr]     order = Order(
+[raw_stderr]         status="created",
+[raw_stderr]         shipping_name="Ada Lovelace",
+[raw_stderr]         shipping_street="Teststrasse 1",
+[raw_stderr]         shipping_zip="10115",
+[raw_stderr]         shipping_city="Berlin",
+[raw_stderr]         shipping_country="Germany",
+[raw_stderr]         email="ada@example.com",
+[raw_stderr]         payment_method="credit_card",
+[raw_stderr]         subtotal=Decimal("0.00"),
+[raw_stderr]         total=Decimal("0.00"),
+[raw_stderr]         items=[
+[raw_stderr]             OrderItem(
+[raw_stderr]                 product_id=product.id,
+[raw_stderr]                 name_snapshot=product.name,
+[raw_stderr]                 brand_snapshot=product.brand,
+[raw_stderr]                 price_snapshot=product.price,
+[raw_stderr]                 image_url_snapshot=product.image_url,
+[raw_stderr]                 size="42",
+[raw_stderr]                 quantity=0,
+[raw_stderr]                 line_total=Decimal("0.00"),
+[raw_stderr]             )
+[raw_stderr]         ],
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     db_session.add(order)
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_negative_total_violates_database_constraint(db_session: Session) -> None:
+[raw_stderr]     db_session.add(
+[raw_stderr]         Order(
+[raw_stderr]             status="created",
+[raw_stderr]             shipping_name="Ada Lovelace",
+[raw_stderr]             shipping_street="Teststrasse 1",
+[raw_stderr]             shipping_zip="10115",
+[raw_stderr]             shipping_city="Berlin",
+[raw_stderr]             shipping_country="Germany",
+[raw_stderr]             email="ada@example.com",
+[raw_stderr]             payment_method="credit_card",
+[raw_stderr]             subtotal=Decimal("10.00"),
+[raw_stderr]             total=Decimal("-0.01"),
+[raw_stderr]         )
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_deleting_sneaker_cascades_reviews(db_session: Session) -> None:
+[raw_stderr]     product = db_session.get(Sneaker, 2)
+[raw_stderr]     assert product is not None
+[raw_stderr] 
+[raw_stderr]     review = Review(product_id=product.id, author="QA", rating=5, comment="Great")
+[raw_stderr]     db_session.add(review)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     assert len(product.reviews) == 1
+[raw_stderr] 
+[raw_stderr]     db_session.delete(product)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     assert db_session.get(Review, review.id) is None
+[raw_stderr] 
+[raw_stderr]  succeeded in 1154ms:
+[raw_stderr] from fastapi.testclient import TestClient
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.models import Sneaker
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_health_endpoint_returns_ok(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/health")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 200
+[raw_stderr]     assert response.json() == {"status": "ok"}
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_products_endpoint_returns_seeded_catalog(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/products")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 200
+[raw_stderr]     products = response.json()
+[raw_stderr]     assert len(products) == 6
+[raw_stderr]     assert products[0]["name"] == "Air Zoom Pulse"
+[raw_stderr]     assert products[0]["price"] == 129.99
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_product_detail_returns_seeded_product(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/products/1")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 200
+[raw_stderr]     product = response.json()
+[raw_stderr]     assert product["id"] == 1
+[raw_stderr]     assert product["name"] == "Air Zoom Pulse"
+[raw_stderr]     assert product["sizes"] == ["39", "40", "41", "42", "43", "44", "45"]
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_product_detail_returns_404_for_unknown_product(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/products/9999")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Product not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_rejects_unknown_product(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 9999, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Product not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_rejects_unavailable_size(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "99", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Selected size is not available for this product"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_rejects_quantity_above_stock(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 6, "size": "42", "quantity": 20},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Requested quantity exceeds available stock"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_update_rejects_quantity_above_stock(client: TestClient) -> None:
+[raw_stderr]     add_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 6, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr]     assert add_response.status_code == 201
+[raw_stderr]     item_id = add_response.json()["item_id"]
+[raw_stderr] 
+[raw_stderr]     response = client.patch(
+[raw_stderr]         f"/api/cart/items/{item_id}",
+[raw_stderr]         json={"quantity": 20},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Requested quantity exceeds available stock"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_rejects_invalid_quantity_payload(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 0},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 422
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_update_rejects_invalid_quantity_payload(client: TestClient) -> None:
+[raw_stderr]     add_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr]     assert add_response.status_code == 201
+[raw_stderr]     item_id = add_response.json()["item_id"]
+[raw_stderr] 
+[raw_stderr]     response = client.patch(
+[raw_stderr]         f"/api/cart/items/{item_id}",
+[raw_stderr]         json={"quantity": 0},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 422
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_starts_empty(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/cart")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 200
+[raw_stderr]     assert response.json() == {
+[raw_stderr]         "items": [],
+[raw_stderr]         "subtotal": 0.0,
+[raw_stderr]         "total": 0.0,
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]     }
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_api_combines_same_product_and_size(client: TestClient) -> None:
+[raw_stderr]     first_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr]     second_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 2},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert first_response.status_code == 201
+[raw_stderr]     assert second_response.status_code == 201
+[raw_stderr]     assert second_response.json()["item_id"] == first_response.json()["item_id"]
+[raw_stderr]     assert second_response.json()["quantity"] == 3
+[raw_stderr] 
+[raw_stderr]     cart_response = client.get("/api/cart")
+[raw_stderr]     assert cart_response.status_code == 200
+[raw_stderr]     cart = cart_response.json()
+[raw_stderr]     assert len(cart["items"]) == 1
+[raw_stderr]     assert cart["subtotal"] == 389.97
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_item_can_be_updated_and_deleted(client: TestClient) -> None:
+[raw_stderr]     add_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr]     assert add_response.status_code == 201
+[raw_stderr]     item_id = add_response.json()["item_id"]
+[raw_stderr] 
+[raw_stderr]     update_response = client.patch(
+[raw_stderr]         f"/api/cart/items/{item_id}",
+[raw_stderr]         json={"quantity": 3},
+[raw_stderr]     )
+[raw_stderr]     assert update_response.status_code == 204
+[raw_stderr] 
+[raw_stderr]     cart_response = client.get("/api/cart")
+[raw_stderr]     assert cart_response.status_code == 200
+[raw_stderr]     cart = cart_response.json()
+[raw_stderr]     assert cart["items"][0]["quantity"] == 3
+[raw_stderr]     assert cart["items"][0]["line_total"] == 389.97
+[raw_stderr]     assert cart["subtotal"] == 389.97
+[raw_stderr] 
+[raw_stderr]     delete_response = client.delete(f"/api/cart/items/{item_id}")
+[raw_stderr]     assert delete_response.status_code == 204
+[raw_stderr] 
+[raw_stderr]     empty_cart_response = client.get("/api/cart")
+[raw_stderr]     assert empty_cart_response.status_code == 200
+[raw_stderr]     assert empty_cart_response.json()["items"] == []
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_delete_returns_404_for_unknown_item(client: TestClient) -> None:
+[raw_stderr]     response = client.delete("/api/cart/items/9999")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Cart item not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_update_returns_404_for_unknown_item(client: TestClient) -> None:
+[raw_stderr]     response = client.patch("/api/cart/items/9999", json={"quantity": 2})
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Cart item not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_and_order_happy_path_persists_order_and_clears_cart(
+[raw_stderr]     client: TestClient,
+[raw_stderr] ) -> None:
+[raw_stderr]     cart_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 2},
+[raw_stderr]     )
+[raw_stderr]     assert cart_response.status_code == 201
+[raw_stderr]     assert cart_response.json()["line_total"] == 259.98
+[raw_stderr] 
+[raw_stderr]     order_response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "ada@example.com",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert order_response.status_code == 201
+[raw_stderr]     created_order = order_response.json()
+[raw_stderr]     assert created_order["status"] == "created"
+[raw_stderr]     assert created_order["total"] == 259.98
+[raw_stderr] 
+[raw_stderr]     persisted_response = client.get(f"/api/orders/{created_order['order_id']}")
+[raw_stderr]     assert persisted_response.status_code == 200
+[raw_stderr]     persisted_order = persisted_response.json()
+[raw_stderr]     assert persisted_order["subtotal"] == 259.98
+[raw_stderr]     assert persisted_order["items"][0]["name_snapshot"] == "Air Zoom Pulse"
+[raw_stderr]     assert persisted_order["items"][0]["quantity"] == 2
+[raw_stderr] 
+[raw_stderr]     product_response = client.get("/api/products/1")
+[raw_stderr]     assert product_response.status_code == 200
+[raw_stderr]     assert product_response.json()["stock"] == 32
+[raw_stderr] 
+[raw_stderr]     empty_cart_response = client.get("/api/cart")
+[raw_stderr]     assert empty_cart_response.status_code == 200
+[raw_stderr]     assert empty_cart_response.json() == {
+[raw_stderr]         "items": [],
+[raw_stderr]         "subtotal": 0.0,
+[raw_stderr]         "total": 0.0,
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]     }
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_creation_rejects_empty_cart(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "ada@example.com",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Cart is empty"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_creation_rejects_cart_quantity_when_stock_changed(
+[raw_stderr]     client: TestClient,
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     add_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 2},
+[raw_stderr]     )
+[raw_stderr]     assert add_response.status_code == 201
+[raw_stderr] 
+[raw_stderr]     product = db_session.get(Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr]     product.stock = 1
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "ada@example.com",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Cart quantity exceeds available stock"
+[raw_stderr] 
+[raw_stderr]     cart_response = client.get("/api/cart")
+[raw_stderr]     assert cart_response.status_code == 200
+[raw_stderr]     cart = cart_response.json()
+[raw_stderr]     assert len(cart["items"]) == 1
+[raw_stderr]     assert cart["items"][0]["quantity"] == 2
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_creation_rejects_cart_product_removed_after_add(
+[raw_stderr]     client: TestClient,
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     add_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr]     assert add_response.status_code == 201
+[raw_stderr] 
+[raw_stderr]     product = db_session.get(Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr]     db_session.delete(product)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "ada@example.com",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Cart contains an unavailable product"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_creation_rejects_cart_size_removed_after_add(
+[raw_stderr]     client: TestClient,
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     add_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr]     assert add_response.status_code == 201
+[raw_stderr] 
+[raw_stderr]     product = db_session.get(Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr]     product.sizes = ["39", "40", "41"]
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "ada@example.com",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Cart contains an unavailable product size"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_creation_rejects_invalid_shipping_email(client: TestClient) -> None:
+[raw_stderr]     client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "not-an-email",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 422
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_detail_returns_404_for_unknown_order(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/orders/9999")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Order not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_reviews_happy_path_updates_product_average_rating(client: TestClient) -> None:
+[raw_stderr]     first_response = client.post(
+[raw_stderr]         "/api/products/1/reviews",
+[raw_stderr]         json={"author": "QA", "rating": 5, "comment": "Excellent"},
+[raw_stderr]     )
+[raw_stderr]     second_response = client.post(
+[raw_stderr]         "/api/products/1/reviews",
+[raw_stderr]         json={"author": "QA", "rating": 3, "comment": "Okay"},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert first_response.status_code == 201
+[raw_stderr]     assert second_response.status_code == 201
+[raw_stderr] 
+[raw_stderr]     reviews_response = client.get("/api/products/1/reviews")
+[raw_stderr]     assert reviews_response.status_code == 200
+[raw_stderr]     reviews = reviews_response.json()
+[raw_stderr]     assert reviews["average_rating"] == 4.0
+[raw_stderr]     assert [review["rating"] for review in reviews["reviews"]] == [3, 5]
+[raw_stderr] 
+[raw_stderr]     product_response = client.get("/api/products/1")
+[raw_stderr]     assert product_response.status_code == 200
+[raw_stderr]     assert product_response.json()["rating"] == 4.0
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_review_listing_returns_empty_collection_for_unreviewed_product(
+[raw_stderr]     client: TestClient,
+[raw_stderr] ) -> None:
+[raw_stderr]     response = client.get("/api/products/2/reviews")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 200
+[raw_stderr]     assert response.json() == {"average_rating": 0.0, "reviews": []}
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_review_listing_returns_404_for_unknown_product(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/products/9999/reviews")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Product not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_review_creation_rejects_invalid_rating(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/products/1/reviews",
+[raw_stderr]         json={"author": "QA", "rating": 6, "comment": "Too high"},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 422
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_review_creation_returns_404_for_unknown_product(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/products/9999/reviews",
+[raw_stderr]         json={"author": "QA", "rating": 5, "comment": "No product"},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Product not found"
+[raw_stderr] 
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content requirements.txt' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\test_frontend_components.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\seed.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content requirements-dev.txt' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 657ms:
+[raw_stderr] fastapi>=0.111.0
+[raw_stderr] uvicorn[standard]>=0.30.0
+[raw_stderr] SQLAlchemy>=2.0.0
+[raw_stderr] pydantic>=2.7.0
+[raw_stderr] 
+[raw_stderr]  succeeded in 649ms:
+[raw_stderr] pytest>=8.0.0
+[raw_stderr] httpx>=0.27.0
+[raw_stderr] 
+[raw_stderr]  succeeded in 722ms:
+[raw_stderr] """Seed data for the e-commerce catalog."""
+[raw_stderr] 
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] from sqlalchemy import select
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import SessionLocal, init_db
+[raw_stderr] from backend.app.models import Sneaker
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] SEED_SNEAKERS = [
+[raw_stderr]     {
+[raw_stderr]         "name": "Air Zoom Pulse",
+[raw_stderr]         "brand": "Nike",
+[raw_stderr]         "price": Decimal("129.99"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Leichter Performance-Sneaker fuer den Alltag.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Air Zoom Pulse kombiniert reaktionsfreudige Daempfung mit "
+[raw_stderr]             "atmungsaktivem Mesh und einer griffigen Laufsohle."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/air-zoom-pulse.jpg",
+[raw_stderr]         "sizes": ["39", "40", "41", "42", "43", "44", "45"],
+[raw_stderr]         "color": "White / Volt",
+[raw_stderr]         "material": "Mesh, Synthetik, Gummi",
+[raw_stderr]         "stock": 34,
+[raw_stderr]         "rating": 4.6,
+[raw_stderr]         "is_new": True,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Ultraboost Street",
+[raw_stderr]         "brand": "Adidas",
+[raw_stderr]         "price": Decimal("159.95"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Komfortabler Laufschuh mit Boost-Daempfung.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Ultraboost Street bietet ein flexibles Primeknit-Obermaterial, "
+[raw_stderr]             "stabile Fersenfuehrung und energierueckfuehrende Daempfung."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/ultraboost-street.jpg",
+[raw_stderr]         "sizes": ["38", "39", "40", "41", "42", "43", "44", "46"],
+[raw_stderr]         "color": "Core Black",
+[raw_stderr]         "material": "Primeknit, Textil, Continental-Gummi",
+[raw_stderr]         "stock": 27,
+[raw_stderr]         "rating": 4.8,
+[raw_stderr]         "is_new": False,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Classic Leather 85",
+[raw_stderr]         "brand": "Reebok",
+[raw_stderr]         "price": Decimal("89.90"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Zeitloser Leder-Sneaker mit Retro-Silhouette.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Classic Leather 85 setzt auf weiches Leder, eine gepolsterte "
+[raw_stderr]             "Zwischensohle und ein reduziertes Design fuer jeden Tag."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/classic-leather-85.jpg",
+[raw_stderr]         "sizes": ["37", "38", "39", "40", "41", "42", "43", "44"],
+[raw_stderr]         "color": "Chalk White",
+[raw_stderr]         "material": "Leder, Textilfutter, Gummi",
+[raw_stderr]         "stock": 48,
+[raw_stderr]         "rating": 4.4,
+[raw_stderr]         "is_new": False,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Suede Vintage",
+[raw_stderr]         "brand": "Puma",
+[raw_stderr]         "price": Decimal("94.95"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Klassischer Sneaker aus hochwertigem Wildleder.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Suede Vintage liefert einen cleanen Court-Look mit weichem "
+[raw_stderr]             "Wildleder-Obermaterial und robuster Cupsole."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/suede-vintage.jpg",
+[raw_stderr]         "sizes": ["38", "39", "40", "41", "42", "43", "44", "45"],
+[raw_stderr]         "color": "Navy / White",
+[raw_stderr]         "material": "Wildleder, Textil, Gummi",
+[raw_stderr]         "stock": 22,
+[raw_stderr]         "rating": 4.3,
+[raw_stderr]         "is_new": True,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Chuck 70 High",
+[raw_stderr]         "brand": "Converse",
+[raw_stderr]         "price": Decimal("99.99"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "High-Top Klassiker mit Premium-Canvas.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Chuck 70 High bringt verstaerktes Canvas, Ortholite-Daempfung "
+[raw_stderr]             "und ikonische Details in eine langlebige Alltagssilhouette."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/chuck-70-high.jpg",
+[raw_stderr]         "sizes": ["36", "37", "38", "39", "40", "41", "42", "43", "44"],
+[raw_stderr]         "color": "Black / Egret",
+[raw_stderr]         "material": "Canvas, Ortholite, Gummi",
+[raw_stderr]         "stock": 51,
+[raw_stderr]         "rating": 4.7,
+[raw_stderr]         "is_new": False,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Gel-City Runner",
+[raw_stderr]         "brand": "ASICS",
+[raw_stderr]         "price": Decimal("139.95"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Stabiler Running-Sneaker fuer lange Tage.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Gel-City Runner verbindet GEL-Daempfung im Rueckfussbereich "
+[raw_stderr]             "mit einer stabilen Mittelsohle und belueftetem Obermaterial."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/gel-city-runner.jpg",
+[raw_stderr]         "sizes": ["39", "40", "41", "42", "43", "44", "45", "46"],
+[raw_stderr]         "color": "Graphite Grey",
+[raw_stderr]         "material": "Mesh, TPU, Gummi",
+[raw_stderr]         "stock": 19,
+[raw_stderr]         "rating": 4.5,
+[raw_stderr]         "is_new": True,
+[raw_stderr]     },
+[raw_stderr] ]
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def seed_sneakers(db: Session) -> int:
+[raw_stderr]     """Insert seed sneakers if they do not already exist."""
+[raw_stderr]     inserted = 0
+[raw_stderr] 
+[raw_stderr]     for sneaker_data in SEED_SNEAKERS:
+[raw_stderr]         existing = db.execute(
+[raw_stderr]             select(Sneaker).where(
+[raw_stderr]                 Sneaker.name == sneaker_data["name"],
+[raw_stderr]                 Sneaker.brand == sneaker_data["brand"],
+[raw_stderr]             )
+[raw_stderr]         ).scalar_one_or_none()
+[raw_stderr] 
+[raw_stderr]         if existing is not None:
+[raw_stderr]             continue
+[raw_stderr] 
+[raw_stderr]         db.add(Sneaker(**sneaker_data))
+[raw_stderr]         inserted += 1
+[raw_stderr] 
+[raw_stderr]     db.commit()
+[raw_stderr]     return inserted
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def run_seed() -> int:
+[raw_stderr]     """Initialize the database and seed catalog data."""
+[raw_stderr]     init_db()
+[raw_stderr] 
+[raw_stderr]     with SessionLocal() as db:
+[raw_stderr]         return seed_sneakers(db)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] if __name__ == "__main__":
+[raw_stderr]     created_count = run_seed()
+[raw_stderr]     print(f"Seed complete. Inserted {created_count} sneakers.")
+[raw_stderr] 
+[raw_stderr]  succeeded in 792ms:
+[raw_stderr] import subprocess
+[raw_stderr] import textwrap
+[raw_stderr] from pathlib import Path
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] PROJECT_ROOT = Path(__file__).resolve().parents[1]
+[raw_stderr] COMPONENT_DIR = PROJECT_ROOT / "frontend" / "components"
+[raw_stderr] 
+[raw_stderr] EXPECTED_COMPONENTS = {
+[raw_stderr]     "product-list.js": "product-list",
+[raw_stderr]     "product-detail.js": "product-detail",
+[raw_stderr]     "shopping-cart.js": "shopping-cart",
+[raw_stderr]     "checkout-page.js": "checkout-page",
+[raw_stderr]     "order-confirmation.js": "order-confirmation",
+[raw_stderr]     "imprint-page.js": "imprint-page",
+[raw_stderr]     "terms-page.js": "terms-page",
+[raw_stderr]     "contact-page.js": "contact-page",
+[raw_stderr]     "not-found.js": "not-found",
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def read_component(filename: str) -> str:
+[raw_stderr]     return (COMPONENT_DIR / filename).read_text(encoding="utf-8")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def run_node_script(script: str) -> subprocess.CompletedProcess[str]:
+[raw_stderr]     return subprocess.run(
+[raw_stderr]         ["node", "--input-type=module", "--eval", script],
+[raw_stderr]         check=False,
+[raw_stderr]         capture_output=True,
+[raw_stderr]         text=True,
+[raw_stderr]         timeout=10,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_all_architected_web_components_are_registered() -> None:
+[raw_stderr]     app_source = read_component("app.js")
+[raw_stderr] 
+[raw_stderr]     for filename, tag_name in EXPECTED_COMPONENTS.items():
+[raw_stderr]         source = read_component(filename)
+[raw_stderr] 
+[raw_stderr]         assert f'import "./{filename}";' in app_source
+[raw_stderr]         assert "extends HTMLElement" in source
+[raw_stderr]         assert f'customElements.define("{tag_name}"' in source
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_index_bootstraps_tailwind_and_app_root() -> None:
+[raw_stderr]     index = (PROJECT_ROOT / "frontend" / "index.html").read_text(encoding="utf-8")
+[raw_stderr] 
+[raw_stderr]     assert '<script src="https://cdn.tailwindcss.com"></script>' in index
+[raw_stderr]     assert '<link rel="stylesheet" href="/styles/app.css" />' in index
+[raw_stderr]     assert "<app-root></app-root>" in index
+[raw_stderr]     assert '<script type="module" src="/components/app.js"></script>' in index
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_app_router_maps_all_required_frontend_routes() -> None:
+[raw_stderr]     source = read_component("app.js")
+[raw_stderr] 
+[raw_stderr]     expected_routes = {
+[raw_stderr]         'route === "/"': "<product-list></product-list>",
+[raw_stderr]         'route.startsWith("/products/")': "<product-detail></product-detail>",
+[raw_stderr]         'route === "/cart"': "<shopping-cart></shopping-cart>",
+[raw_stderr]         'route === "/checkout"': "<checkout-page></checkout-page>",
+[raw_stderr]         'route.startsWith("/orders/")': "<order-confirmation></order-confirmation>",
+[raw_stderr]         'route === "/imprint"': "<imprint-page></imprint-page>",
+[raw_stderr]         'route === "/terms"': "<terms-page></terms-page>",
+[raw_stderr]         'route === "/contact"': "<contact-page></contact-page>",
+[raw_stderr]         "return \"<not-found></not-found>\"": "<not-found></not-found>",
+[raw_stderr]     }
+[raw_stderr] 
+[raw_stderr]     for route_check, component_markup in expected_routes.items():
+[raw_stderr]         assert route_check in source
+[raw_stderr]         assert component_markup in source
+[raw_stderr] 
+[raw_stderr]     assert "detail.productId = id" in source
+[raw_stderr]     assert "confirmation.orderId = id" in source
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_product_components_use_required_api_contracts_and_ui_hooks() -> None:
+[raw_stderr]     list_source = read_component("product-list.js")
+[raw_stderr]     detail_source = read_component("product-detail.js")
+[raw_stderr] 
+[raw_stderr]     assert 'api.get("/api/products")' in list_source
+[raw_stderr]     assert "data-search" in list_source
+[raw_stderr]     assert "data-brand" in list_source
+[raw_stderr]     assert 'href="#/products/${product.id}"' in list_source
+[raw_stderr] 
+[raw_stderr]     assert "api.get(`/api/products/${this._productId}`)" in detail_source
+[raw_stderr]     assert "api.get(`/api/products/${this._productId}/reviews`)" in detail_source
+[raw_stderr]     assert 'api.post("/api/cart/items"' in detail_source
+[raw_stderr]     assert "product_id: this.product.id" in detail_source
+[raw_stderr]     assert "quantity: Number(form.get(\"quantity\"))" in detail_source
+[raw_stderr]     assert "api.post(`/api/products/${this.product.id}/reviews`" in detail_source
+[raw_stderr]     assert 'new CustomEvent("cart:changed")' in detail_source
+[raw_stderr]     assert 'static get observedAttributes()' in detail_source
+[raw_stderr]     assert 'return ["product-id"];' in detail_source
+[raw_stderr]     assert "connectedCallback()" in detail_source
+[raw_stderr]     assert "attributeChangedCallback" in detail_source
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_checkout_and_order_components_use_required_api_contracts() -> None:
+[raw_stderr]     cart_source = read_component("shopping-cart.js")
+[raw_stderr]     checkout_source = read_component("checkout-page.js")
+[raw_stderr]     confirmation_source = read_component("order-confirmation.js")
+[raw_stderr] 
+[raw_stderr]     assert 'api.get("/api/cart")' in cart_source
+[raw_stderr]     assert "api.patch(`/api/cart/items/${itemId}`" in cart_source
+[raw_stderr]     assert "api.delete(`/api/cart/items/${event.currentTarget.dataset.remove}`)" in cart_source
+[raw_stderr]     assert 'setRoute("/checkout")' in cart_source
+[raw_stderr] 
+[raw_stderr]     assert 'api.get("/api/cart")' in checkout_source
+[raw_stderr]     assert 'api.post("/api/orders"' in checkout_source
+[raw_stderr]     assert "shipping:" in checkout_source
+[raw_stderr]     assert 'payment_method: form.get("payment_method")' in checkout_source
+[raw_stderr]     assert "setRoute(`/orders/${order.order_id}`)" in checkout_source
+[raw_stderr] 
+[raw_stderr]     assert "api.get(`/api/orders/${this._orderId}`)" in confirmation_source
+[raw_stderr]     assert "this.order.items.map" in confirmation_source
+[raw_stderr]     assert "shipping_name" in confirmation_source
+[raw_stderr]     assert 'return ["order-id"];' in confirmation_source
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_checkout_and_contact_components_define_expected_form_behaviour() -> None:
+[raw_stderr]     checkout_source = read_component("checkout-page.js")
+[raw_stderr]     contact_source = read_component("contact-page.js")
+[raw_stderr] 
+[raw_stderr]     for field in ("name", "email", "street", "zip", "city", "country"):
+[raw_stderr]         assert f'this.input("{field}"' in checkout_source
+[raw_stderr] 
+[raw_stderr]     assert 'this.input("email", "E-Mail", "email")' in checkout_source
+[raw_stderr]     assert "required" in checkout_source
+[raw_stderr]     assert "event.preventDefault();" in checkout_source
+[raw_stderr]     assert 'window.dispatchEvent(new CustomEvent("cart:changed"))' in checkout_source
+[raw_stderr] 
+[raw_stderr]     assert "data-contact-form" in contact_source
+[raw_stderr]     assert 'name="name"' in contact_source
+[raw_stderr]     assert 'name="email"' in contact_source
+[raw_stderr]     assert 'name="message"' in contact_source
+[raw_stderr]     assert "event.preventDefault();" in contact_source
+[raw_stderr]     assert "event.currentTarget.reset();" in contact_source
+[raw_stderr]     assert "Nachricht wurde erfasst." in contact_source
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_static_page_components_render_required_content() -> None:
+[raw_stderr]     imprint_source = read_component("imprint-page.js")
+[raw_stderr]     terms_source = read_component("terms-page.js")
+[raw_stderr]     not_found_source = read_component("not-found.js")
+[raw_stderr] 
+[raw_stderr]     assert "Sole Market GmbH" in imprint_source
+[raw_stderr]     assert "service@sole-market.example" in imprint_source
+[raw_stderr]     assert "Allgemeine Geschaeftsbedingungen" in terms_source
+[raw_stderr]     assert "Vertragsschluss" in terms_source
+[raw_stderr]     assert "Die angeforderte Seite wurde nicht gefunden." in not_found_source
+[raw_stderr]     assert "escapeHtml(message)" in not_found_source
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_frontend_api_helpers_behave_correctly_in_node() -> None:
+[raw_stderr]     script = textwrap.dedent(
+[raw_stderr]         f"""
+[raw_stderr]         globalThis.window = {{ location: {{ hash: "" }} }};
+[raw_stderr]         const calls = [];
+[raw_stderr]         globalThis.fetch = async (path, options = {{}}) => {{
+[raw_stderr]           calls.push({{ path, options }});
+[raw_stderr]           if (path === "/fail") {{
+[raw_stderr]             return {{
+[raw_stderr]               ok: false,
+[raw_stderr]               status: 400,
+[raw_stderr]               async json() {{ return {{ detail: "Bad request" }}; }},
+[raw_stderr]             }};
+[raw_stderr]           }}
+[raw_stderr]           if (options.method === "PATCH") {{
+[raw_stderr]             return {{ ok: true, status: 204, async json() {{ return {{}}; }} }};
+[raw_stderr]           }}
+[raw_stderr]           return {{
+[raw_stderr]             ok: true,
+[raw_stderr]             status: 200,
+[raw_stderr]             async json() {{ return {{ ok: true, path }}; }},
+[raw_stderr]           }};
+[raw_stderr]         }};
+[raw_stderr] 
+[raw_stderr]         const module = await import({(COMPONENT_DIR / "api.js").as_uri()!r});
+[raw_stderr] 
+[raw_stderr]         if (module.escapeHtml("<script>'&\\"</script>") !== "&lt;script&gt;&#039;&amp;&quot;&lt;/script&gt;") {{
+[raw_stderr]           throw new Error("escapeHtml did not encode unsafe characters");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const price = module.formatMoney(129.95, "EUR");
+[raw_stderr]         if (!price.includes("129,95") || !/\\p{{Sc}}/u.test(price)) {{
+[raw_stderr]           throw new Error(`formatMoney returned unexpected value: ${{price}}`);
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const placeholder = module.placeholderImage("Runner");
+[raw_stderr]         if (!placeholder.startsWith("data:image/svg+xml;charset=UTF-8,")) {{
+[raw_stderr]           throw new Error("placeholderImage did not return an SVG data URL");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         module.setRoute("/cart");
+[raw_stderr]         if (globalThis.window.location.hash !== "/cart" || module.currentRoute() !== "/cart") {{
+[raw_stderr]           throw new Error("route helpers did not update or read window.location.hash");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const result = await module.api.post("/ok", {{ quantity: 2 }});
+[raw_stderr]         if (!result.ok || calls.at(-1).options.method !== "POST") {{
+[raw_stderr]           throw new Error("api.post did not issue a POST request");
+[raw_stderr]         }}
+[raw_stderr]         if (calls.at(-1).options.headers["Content-Type"] !== "application/json") {{
+[raw_stderr]           throw new Error("api.post did not set JSON headers");
+[raw_stderr]         }}
+[raw_stderr]         if (calls.at(-1).options.body !== JSON.stringify({{ quantity: 2 }})) {{
+[raw_stderr]           throw new Error("api.post did not serialize payload");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const empty = await module.api.patch("/ok", {{ quantity: 1 }});
+[raw_stderr]         if (empty !== null) {{
+[raw_stderr]           throw new Error("api.patch did not return null for 204 responses");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         try {{
+[raw_stderr]           await module.api.get("/fail");
+[raw_stderr]           throw new Error("api.get did not throw for failed responses");
+[raw_stderr]         }} catch (error) {{
+[raw_stderr]           if (error.message !== "Bad request") {{
+[raw_stderr]             throw error;
+[raw_stderr]           }}
+[raw_stderr]         }}
+[raw_stderr]         """
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     result = run_node_script(script)
+[raw_stderr] 
+[raw_stderr]     assert result.returncode == 0, result.stderr
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_detail_and_order_components_support_attribute_driven_loading() -> None:
+[raw_stderr]     detail_source = read_component("product-detail.js")
+[raw_stderr]     confirmation_source = read_component("order-confirmation.js")
+[raw_stderr] 
+[raw_stderr]     assert 'const productId = Number(this.getAttribute("product-id"));' in detail_source
+[raw_stderr]     assert "this.productId = productId;" in detail_source
+[raw_stderr]     assert 'name === "product-id"' in detail_source
+[raw_stderr]     assert "this.productId = Number(newValue);" in detail_source
+[raw_stderr]     assert "if (!this._productId)" in detail_source
+[raw_stderr] 
+[raw_stderr]     assert 'const orderId = Number(this.getAttribute("order-id"));' in confirmation_source
+[raw_stderr]     assert "this.orderId = orderId;" in confirmation_source
+[raw_stderr]     assert 'name === "order-id"' in confirmation_source
+[raw_stderr]     assert "this.orderId = Number(newValue);" in confirmation_source
+[raw_stderr]     assert "if (!this._orderId)" in confirmation_source
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_web_component_modules_import_in_node_smoke_environment() -> None:
+[raw_stderr]     script = textwrap.dedent(
+[raw_stderr]         f"""
+[raw_stderr]         globalThis.window = {{
+[raw_stderr]           location: {{ hash: "" }},
+[raw_stderr]           addEventListener() {{}},
+[raw_stderr]           dispatchEvent() {{}},
+[raw_stderr]         }};
+[raw_stderr]         globalThis.CustomEvent = class CustomEvent {{
+[raw_stderr]           constructor(type) {{
+[raw_stderr]             this.type = type;
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         globalThis.HTMLElement = class HTMLElement {{
+[raw_stderr]           constructor() {{
+[raw_stderr]             this.innerHTML = "";
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         const registry = new Map();
+[raw_stderr]         globalThis.customElements = {{
+[raw_stderr]           define(name, klass) {{
+[raw_stderr]             registry.set(name, klass);
+[raw_stderr]           }},
+[raw_stderr]           get(name) {{
+[raw_stderr]             return registry.get(name);
+[raw_stderr]           }},
+[raw_stderr]         }};
+[raw_stderr] 
+[raw_stderr]         await import({(COMPONENT_DIR / "app.js").as_uri()!r});
+[raw_stderr] 
+[raw_stderr]         const expected = {sorted(EXPECTED_COMPONENTS.values())!r};
+[raw_stderr]         expected.push("app-root");
+[raw_stderr]         const missing = expected.filter((name) => !registry.has(name));
+[raw_stderr]         if (missing.length) {{
+[raw_stderr]           throw new Error(`Missing custom elements: ${{missing.join(", ")}}`);
+[raw_stderr]         }}
+[raw_stderr]         """
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     result = run_node_script(script)
+[raw_stderr] 
+[raw_stderr]     assert result.returncode == 0, result.stderr
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_web_component_render_methods_behave_in_node_smoke_environment() -> None:
+[raw_stderr]     script = textwrap.dedent(
+[raw_stderr]         f"""
+[raw_stderr]         globalThis.window = {{
+[raw_stderr]           location: {{ hash: "" }},
+[raw_stderr]           addEventListener() {{}},
+[raw_stderr]           dispatchEvent() {{}},
+[raw_stderr]         }};
+[raw_stderr]         globalThis.CustomEvent = class CustomEvent {{
+[raw_stderr]           constructor(type) {{
+[raw_stderr]             this.type = type;
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         globalThis.HTMLElement = class HTMLElement {{
+[raw_stderr]           constructor() {{
+[raw_stderr]             this.innerHTML = "";
+[raw_stderr]             this.isConnected = true;
+[raw_stderr]             this.attrs = new Map();
+[raw_stderr]             this.nodes = new Map();
+[raw_stderr]           }}
+[raw_stderr]           getAttribute(name) {{
+[raw_stderr]             return this.attrs.get(name) || null;
+[raw_stderr]           }}
+[raw_stderr]           setAttribute(name, value) {{
+[raw_stderr]             this.attrs.set(name, String(value));
+[raw_stderr]           }}
+[raw_stderr]           querySelector(selector) {{
+[raw_stderr]             if (!this.nodes.has(selector)) {{
+[raw_stderr]               this.nodes.set(selector, {{
+[raw_stderr]                 className: "",
+[raw_stderr]                 dataset: {{}},
+[raw_stderr]                 listeners: {{}},
+[raw_stderr]                 textContent: "",
+[raw_stderr]                 value: "",
+[raw_stderr]                 addEventListener(type, callback) {{
+[raw_stderr]                   this.listeners[type] = callback;
+[raw_stderr]                 }},
+[raw_stderr]                 reset() {{
+[raw_stderr]                   this.wasReset = true;
+[raw_stderr]                 }},
+[raw_stderr]               }});
+[raw_stderr]             }}
+[raw_stderr]             return this.nodes.get(selector);
+[raw_stderr]           }}
+[raw_stderr]           querySelectorAll() {{
+[raw_stderr]             return [];
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         const registry = new Map();
+[raw_stderr]         globalThis.customElements = {{
+[raw_stderr]           define(name, klass) {{
+[raw_stderr]             registry.set(name, klass);
+[raw_stderr]           }},
+[raw_stderr]           get(name) {{
+[raw_stderr]             return registry.get(name);
+[raw_stderr]           }},
+[raw_stderr]         }};
+[raw_stderr] 
+[raw_stderr]         await import({(COMPONENT_DIR / "product-list.js").as_uri()!r});
+[raw_stderr]         await import({(COMPONENT_DIR / "shopping-cart.js").as_uri()!r});
+[raw_stderr]         await import({(COMPONENT_DIR / "checkout-page.js").as_uri()!r});
+[raw_stderr]         await import({(COMPONENT_DIR / "order-confirmation.js").as_uri()!r});
+[raw_stderr]         await import({(COMPONENT_DIR / "imprint-page.js").as_uri()!r});
+[raw_stderr]         await import({(COMPONENT_DIR / "terms-page.js").as_uri()!r});
+[raw_stderr]         await import({(COMPONENT_DIR / "contact-page.js").as_uri()!r});
+[raw_stderr]         await import({(COMPONENT_DIR / "not-found.js").as_uri()!r});
+[raw_stderr] 
+[raw_stderr]         const ProductList = registry.get("product-list");
+[raw_stderr]         const productList = new ProductList();
+[raw_stderr]         const card = productList.productCard({{
+[raw_stderr]           id: 7,
+[raw_stderr]           name: "Runner <Pro>",
+[raw_stderr]           brand: "ACME",
+[raw_stderr]           price: 129.95,
+[raw_stderr]           currency: "EUR",
+[raw_stderr]           short_description: "Leicht und schnell",
+[raw_stderr]           image_url: "/images/runner.jpg",
+[raw_stderr]           rating: 4.6,
+[raw_stderr]           is_new: true,
+[raw_stderr]         }});
+[raw_stderr]         if (!card.includes('href="#/products/7"') || !card.includes("Runner &lt;Pro&gt;")) {{
+[raw_stderr]           throw new Error("product card did not render escaped detail link");
+[raw_stderr]         }}
+[raw_stderr]         if (!card.includes("Neu") || !card.includes("4.6 / 5")) {{
+[raw_stderr]           throw new Error("product card did not render product badges and rating");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const ShoppingCart = registry.get("shopping-cart");
+[raw_stderr]         const shoppingCart = new ShoppingCart();
+[raw_stderr]         const cartItem = shoppingCart.renderItem({{
+[raw_stderr]           item_id: 3,
+[raw_stderr]           image_url: "/images/cart.jpg",
+[raw_stderr]           name: "Daily Runner",
+[raw_stderr]           brand: "ACME",
+[raw_stderr]           size: "42",
+[raw_stderr]           quantity: 2,
+[raw_stderr]           line_total: 259.9,
+[raw_stderr]           currency: "EUR",
+[raw_stderr]         }});
+[raw_stderr]         if (!cartItem.includes('data-quantity="3"') || !cartItem.includes('data-remove="3"')) {{
+[raw_stderr]           throw new Error("cart item did not expose quantity and remove controls");
+[raw_stderr]         }}
+[raw_stderr]         if (!cartItem.includes("Groesse 42") || !cartItem.includes("Entfernen")) {{
+[raw_stderr]           throw new Error("cart item did not render size and remove action");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const CheckoutPage = registry.get("checkout-page");
+[raw_stderr]         const checkoutPage = new CheckoutPage();
+[raw_stderr]         const emailInput = checkoutPage.input("email", "E-Mail", "email");
+[raw_stderr]         if (!emailInput.includes('name="email"') || !emailInput.includes('type="email"') || !emailInput.includes("required")) {{
+[raw_stderr]           throw new Error("checkout input helper did not render required field metadata");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const OrderConfirmation = registry.get("order-confirmation");
+[raw_stderr]         const orderConfirmation = new OrderConfirmation();
+[raw_stderr]         const orderItem = orderConfirmation.renderItem({{
+[raw_stderr]           image_url_snapshot: "/images/order.jpg",
+[raw_stderr]           name_snapshot: "Court Classic",
+[raw_stderr]           brand_snapshot: "Sole",
+[raw_stderr]           size: "43",
+[raw_stderr]           quantity: 1,
+[raw_stderr]           line_total: 89.99,
+[raw_stderr]         }});
+[raw_stderr]         if (!orderItem.includes("Court Classic") || !orderItem.includes("Groesse 43")) {{
+[raw_stderr]           throw new Error("order item did not render snapshot data");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         for (const name of ["imprint-page", "terms-page"]) {{
+[raw_stderr]           const Component = registry.get(name);
+[raw_stderr]           const element = new Component();
+[raw_stderr]           element.connectedCallback();
+[raw_stderr]           if (!element.innerHTML.includes("<section") || !element.innerHTML.includes("Sole Market")) {{
+[raw_stderr]             throw new Error(`${{name}} did not render static page content`);
+[raw_stderr]           }}
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const NotFound = registry.get("not-found");
+[raw_stderr]         const notFound = new NotFound();
+[raw_stderr]         notFound.setAttribute("message", "<missing>");
+[raw_stderr]         notFound.connectedCallback();
+[raw_stderr]         if (!notFound.innerHTML.includes("&lt;missing&gt;")) {{
+[raw_stderr]           throw new Error("not-found did not escape custom messages");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const ContactPage = registry.get("contact-page");
+[raw_stderr]         const contactPage = new ContactPage();
+[raw_stderr]         contactPage.connectedCallback();
+[raw_stderr]         if (!contactPage.innerHTML.includes('name="name"') || !contactPage.innerHTML.includes('name="message"')) {{
+[raw_stderr]           throw new Error("contact form did not render named fields");
+[raw_stderr]         }}
+[raw_stderr]         const form = contactPage.querySelector("[data-contact-form]");
+[raw_stderr]         const status = contactPage.querySelector("[data-status]");
+[raw_stderr]         let prevented = false;
+[raw_stderr]         const submittedForm = {{
+[raw_stderr]           reset() {{
+[raw_stderr]             this.wasReset = true;
+[raw_stderr]           }},
+[raw_stderr]         }};
+[raw_stderr]         form.listeners.submit({{
+[raw_stderr]           preventDefault() {{
+[raw_stderr]             prevented = true;
+[raw_stderr]           }},
+[raw_stderr]           currentTarget: submittedForm,
+[raw_stderr]         }});
+[raw_stderr]         if (!prevented || !submittedForm.wasReset || status.textContent !== "Nachricht wurde erfasst.") {{
+[raw_stderr]           throw new Error("contact form submit handler did not prevent, reset, and report success");
+[raw_stderr]         }}
+[raw_stderr]         """
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     result = run_node_script(script)
+[raw_stderr] 
+[raw_stderr]     assert result.returncode == 0, result.stderr
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_app_root_resolves_routes_and_updates_cart_badge_in_node() -> None:
+[raw_stderr]     script = textwrap.dedent(
+[raw_stderr]         f"""
+[raw_stderr]         globalThis.window = {{
+[raw_stderr]           location: {{ hash: "" }},
+[raw_stderr]           addEventListener() {{}},
+[raw_stderr]           dispatchEvent() {{}},
+[raw_stderr]         }};
+[raw_stderr]         globalThis.fetch = async (path) => {{
+[raw_stderr]           if (path !== "/api/cart") {{
+[raw_stderr]             throw new Error(`Unexpected fetch path: ${{path}}`);
+[raw_stderr]           }}
+[raw_stderr]           return {{
+[raw_stderr]             ok: true,
+[raw_stderr]             status: 200,
+[raw_stderr]             async json() {{
+[raw_stderr]               return {{
+[raw_stderr]                 items: [
+[raw_stderr]                   {{ quantity: 2 }},
+[raw_stderr]                   {{ quantity: 3 }},
+[raw_stderr]                 ],
+[raw_stderr]               }};
+[raw_stderr]             }},
+[raw_stderr]           }};
+[raw_stderr]         }};
+[raw_stderr]         globalThis.CustomEvent = class CustomEvent {{
+[raw_stderr]           constructor(type) {{
+[raw_stderr]             this.type = type;
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         globalThis.HTMLElement = class HTMLElement {{
+[raw_stderr]           constructor() {{
+[raw_stderr]             this.innerHTML = "";
+[raw_stderr]             this.nodes = new Map();
+[raw_stderr]           }}
+[raw_stderr]           querySelector(selector) {{
+[raw_stderr]             if (!this.nodes.has(selector)) {{
+[raw_stderr]               this.nodes.set(selector, {{ textContent: "" }});
+[raw_stderr]             }}
+[raw_stderr]             return this.nodes.get(selector);
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         const registry = new Map();
+[raw_stderr]         globalThis.customElements = {{
+[raw_stderr]           define(name, klass) {{
+[raw_stderr]             registry.set(name, klass);
+[raw_stderr]           }},
+[raw_stderr]           get(name) {{
+[raw_stderr]             return registry.get(name);
+[raw_stderr]           }},
+[raw_stderr]         }};
+[raw_stderr] 
+[raw_stderr]         await import({(COMPONENT_DIR / "app.js").as_uri()!r});
+[raw_stderr] 
+[raw_stderr]         const AppRoot = registry.get("app-root");
+[raw_stderr]         const app = new AppRoot();
+[raw_stderr] 
+[raw_stderr]         const expectations = new Map([
+[raw_stderr]           ["/", "<product-list></product-list>"],
+[raw_stderr]           ["/products/4", "<product-detail></product-detail>"],
+[raw_stderr]           ["/products/not-a-number", "<not-found></not-found>"],
+[raw_stderr]           ["/cart", "<shopping-cart></shopping-cart>"],
+[raw_stderr]           ["/checkout", "<checkout-page></checkout-page>"],
+[raw_stderr]           ["/orders/9", "<order-confirmation></order-confirmation>"],
+[raw_stderr]           ["/orders/new", "<not-found></not-found>"],
+[raw_stderr]           ["/imprint", "<imprint-page></imprint-page>"],
+[raw_stderr]           ["/terms", "<terms-page></terms-page>"],
+[raw_stderr]           ["/contact", "<contact-page></contact-page>"],
+[raw_stderr]           ["/missing", "<not-found></not-found>"],
+[raw_stderr]         ]);
+[raw_stderr] 
+[raw_stderr]         for (const [route, markup] of expectations.entries()) {{
+[raw_stderr]           if (app.resolvePage(route) !== markup) {{
+[raw_stderr]             throw new Error(`Unexpected component for ${{route}}`);
+[raw_stderr]           }}
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         await app.loadCartCount();
+[raw_stderr]         if (app.cartCount !== 5) {{
+[raw_stderr]           throw new Error(`Unexpected cart count: ${{app.cartCount}}`);
+[raw_stderr]         }}
+[raw_stderr]         if (app.querySelector("[data-cart-count]").textContent !== "5") {{
+[raw_stderr]           throw new Error("Cart badge was not updated");
+[raw_stderr]         }}
+[raw_stderr]         """
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     result = run_node_script(script)
+[raw_stderr] 
+[raw_stderr]     assert result.returncode == 0, result.stderr
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_product_detail_submit_handlers_call_cart_and_review_apis() -> None:
+[raw_stderr]     script = textwrap.dedent(
+[raw_stderr]         f"""
+[raw_stderr]         const requests = [];
+[raw_stderr]         const dispatched = [];
+[raw_stderr] 
+[raw_stderr]         globalThis.window = {{
+[raw_stderr]           location: {{ hash: "" }},
+[raw_stderr]           addEventListener() {{}},
+[raw_stderr]           dispatchEvent(event) {{
+[raw_stderr]             dispatched.push(event.type);
+[raw_stderr]           }},
+[raw_stderr]         }};
+[raw_stderr]         globalThis.setTimeout = (callback) => callback();
+[raw_stderr]         globalThis.CustomEvent = class CustomEvent {{
+[raw_stderr]           constructor(type) {{
+[raw_stderr]             this.type = type;
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         globalThis.fetch = async (path, options = {{}}) => {{
+[raw_stderr]           requests.push({{ path, options }});
+[raw_stderr]           return {{
+[raw_stderr]             ok: true,
+[raw_stderr]             status: 201,
+[raw_stderr]             async json() {{
+[raw_stderr]               return {{ ok: true }};
+[raw_stderr]             }},
+[raw_stderr]           }};
+[raw_stderr]         }};
+[raw_stderr]         globalThis.FormData = class FormData {{
+[raw_stderr]           constructor(form) {{
+[raw_stderr]             this.values = form.values;
+[raw_stderr]           }}
+[raw_stderr]           get(name) {{
+[raw_stderr]             return this.values[name] ?? null;
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         globalThis.HTMLElement = class HTMLElement {{
+[raw_stderr]           constructor() {{
+[raw_stderr]             this.innerHTML = "";
+[raw_stderr]             this.nodes = new Map();
+[raw_stderr]           }}
+[raw_stderr]           querySelector(selector) {{
+[raw_stderr]             if (!this.nodes.has(selector)) {{
+[raw_stderr]               this.nodes.set(selector, {{
+[raw_stderr]                 className: "",
+[raw_stderr]                 listeners: {{}},
+[raw_stderr]                 textContent: "",
+[raw_stderr]                 addEventListener(type, callback) {{
+[raw_stderr]                   this.listeners[type] = callback;
+[raw_stderr]                 }},
+[raw_stderr]               }});
+[raw_stderr]             }}
+[raw_stderr]             return this.nodes.get(selector);
+[raw_stderr]           }}
+[raw_stderr]         }};
+[raw_stderr]         const registry = new Map();
+[raw_stderr]         globalThis.customElements = {{
+[raw_stderr]           define(name, klass) {{
+[raw_stderr]             registry.set(name, klass);
+[raw_stderr]           }},
+[raw_stderr]           get(name) {{
+[raw_stderr]             return registry.get(name);
+[raw_stderr]           }},
+[raw_stderr]         }};
+[raw_stderr] 
+[raw_stderr]         await import({(COMPONENT_DIR / "product-detail.js").as_uri()!r});
+[raw_stderr] 
+[raw_stderr]         const ProductDetail = registry.get("product-detail");
+[raw_stderr]         const detail = new ProductDetail();
+[raw_stderr]         detail.product = {{
+[raw_stderr]           id: 11,
+[raw_stderr]           name: "Tempo",
+[raw_stderr]           brand: "Sole",
+[raw_stderr]           price: 99.95,
+[raw_stderr]           currency: "EUR",
+[raw_stderr]           long_description: "Leichter Sneaker",
+[raw_stderr]           image_url: "/tempo.jpg",
+[raw_stderr]           sizes: ["41", "42"],
+[raw_stderr]           color: "Weiss",
+[raw_stderr]           material: "Mesh",
+[raw_stderr]           stock: 8,
+[raw_stderr]           rating: 4.4,
+[raw_stderr]         }};
+[raw_stderr]         detail.reviewData = {{ reviews: [] }};
+[raw_stderr]         detail.load = async () => {{
+[raw_stderr]           detail.reviewReloaded = true;
+[raw_stderr]         }};
+[raw_stderr]         detail.render();
+[raw_stderr] 
+[raw_stderr]         const cartForm = detail.querySelector("[data-cart-form]");
+[raw_stderr]         cartForm.values = {{ size: "42", quantity: "2" }};
+[raw_stderr]         await cartForm.listeners.submit({{
+[raw_stderr]           preventDefault() {{}},
+[raw_stderr]           currentTarget: cartForm,
+[raw_stderr]         }});
+[raw_stderr] 
+[raw_stderr]         const cartRequest = requests.at(-1);
+[raw_stderr]         if (cartRequest.path !== "/api/cart/items") {{
+[raw_stderr]           throw new Error(`Unexpected cart request path: ${{cartRequest.path}}`);
+[raw_stderr]         }}
+[raw_stderr]         if (cartRequest.options.method !== "POST") {{
+[raw_stderr]           throw new Error("Cart handler did not use POST");
+[raw_stderr]         }}
+[raw_stderr]         const cartPayload = JSON.parse(cartRequest.options.body);
+[raw_stderr]         if (cartPayload.product_id !== 11 || cartPayload.size !== "42" || cartPayload.quantity !== 2) {{
+[raw_stderr]           throw new Error(`Unexpected cart payload: ${{cartRequest.options.body}}`);
+[raw_stderr]         }}
+[raw_stderr]         if (!dispatched.includes("cart:changed")) {{
+[raw_stderr]           throw new Error("Cart handler did not dispatch cart:changed");
+[raw_stderr]         }}
+[raw_stderr]         if (globalThis.window.location.hash !== "/cart") {{
+[raw_stderr]           throw new Error("Cart handler did not navigate to cart");
+[raw_stderr]         }}
+[raw_stderr] 
+[raw_stderr]         const reviewForm = detail.querySelector("[data-review-form]");
+[raw_stderr]         reviewForm.values = {{
+[raw_stderr]           author: "Ada",
+[raw_stderr]           rating: "5",
+[raw_stderr]           comment: "Sehr bequem",
+[raw_stderr]         }};
+[raw_stderr]         await reviewForm.listeners.submit({{
+[raw_stderr]           preventDefault() {{}},
+[raw_stderr]           currentTarget: reviewForm,
+[raw_stderr]         }});
+[raw_stderr] 
+[raw_stderr]         const reviewRequest = requests.at(-1);
+[raw_stderr]         if (reviewRequest.path !== "/api/products/11/reviews") {{
+[raw_stderr]           throw new Error(`Unexpected review request path: ${{reviewRequest.path}}`);
+[raw_stderr]         }}
+[raw_stderr]         const reviewPayload = JSON.parse(reviewRequest.options.body);
+[raw_stderr]         if (reviewPayload.author !== "Ada" || reviewPayload.rating !== 5 || reviewPayload.comment !== "Sehr bequem") {{
+[raw_stderr]           throw new Error(`Unexpected review payload: ${{reviewRequest.options.body}}`);
+[raw_stderr]         }}
+[raw_stderr]         if (!detail.reviewReloaded) {{
+[raw_stderr]           throw new Error("Review handler did not reload product detail");
+[raw_stderr]         }}
+[raw_stderr]         """
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     result = run_node_script(script)
+[raw_stderr] 
+[raw_stderr]     assert result.returncode == 0, result.stderr
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Die Backend-Abdeckung ist schon breit: API-Happy-Path, mehrere 400/404/422-Fälle, DB-Constraints und Cart-Berechnungen sind vorhanden. Für das konkrete Responsive-Design-Work-Item ergänze ich jetzt schmale statische Tests, die Viewport-Meta, Breakpoints und responsive Layout-Klassen absichern.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content frontend\\index.html" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content frontend\\styles\\app.css" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content frontend\\components\\shopping-cart.js" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content frontend\\components\\checkout-page.js" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content frontend\\components\\product-list.js" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 803ms:
+[raw_stderr] import { api, escapeHtml, formatMoney, placeholderImage } from "./api.js";
+[raw_stderr] 
+[raw_stderr] class ProductList extends HTMLElement {
+[raw_stderr]   connectedCallback() {
+[raw_stderr]     this.renderShell();
+[raw_stderr]     this.loadProducts();
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   renderShell() {
+[raw_stderr]     this.innerHTML = `
+[raw_stderr]       <section class="mb-8 grid gap-4 md:grid-cols-[1.3fr_0.7fr] md:items-end">
+[raw_stderr]         <div>
+[raw_stderr]           <p class="mb-2 text-sm font-semibold uppercase tracking-normal text-teal-700">Neue Drops und Klassiker</p>
+[raw_stderr]           <h1 class="max-w-3xl text-3xl font-bold tracking-normal text-zinc-950 sm:text-4xl md:text-5xl">Sneaker fuer Alltag, Training und Stadt.</h1>
+[raw_stderr]         </div>
+[raw_stderr]         <div class="grid gap-3 sm:grid-cols-[1fr_auto] md:justify-end">
+[raw_stderr]           <input data-search class="focus-ring w-full rounded-md border border-zinc-300 bg-white px-3 py-2 md:w-64" placeholder="Suche" />
+[raw_stderr]           <select data-brand class="focus-ring w-full rounded-md border border-zinc-300 bg-white px-3 py-2 sm:w-auto">
+[raw_stderr]             <option value="">Alle Marken</option>
+[raw_stderr]           </select>
+[raw_stderr]         </div>
+[raw_stderr]       </section>
+[raw_stderr]       <section data-products class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></section>
+[raw_stderr]     `;
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   async loadProducts() {
+[raw_stderr]     const grid = this.querySelector("[data-products]");
+[raw_stderr]     grid.innerHTML = "<p class='text-zinc-600'>Produkte werden geladen...</p>";
+[raw_stderr]     try {
+[raw_stderr]       this.products = await api.get("/api/products");
+[raw_stderr]       this.fillFilters();
+[raw_stderr]       this.renderProducts();
+[raw_stderr]       this.querySelector("[data-search]").addEventListener("input", () => this.renderProducts());
+[raw_stderr]       this.querySelector("[data-brand]").addEventListener("change", () => this.renderProducts());
+[raw_stderr]     } catch (error) {
+[raw_stderr]       grid.innerHTML = `<p class="text-red-700">${error.message}</p>`;
+[raw_stderr]     }
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   fillFilters() {
+[raw_stderr]     const select = this.querySelector("[data-brand]");
+[raw_stderr]     const brands = [...new Set(this.products.map((product) => product.brand))].sort();
+[raw_stderr]     select.innerHTML += brands
+[raw_stderr]       .map((brand) => `<option value="${escapeHtml(brand)}">${escapeHtml(brand)}</option>`)
+[raw_stderr]       .join("");
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   renderProducts() {
+[raw_stderr]     const search = this.querySelector("[data-search]").value.toLowerCase();
+[raw_stderr]     const brand = this.querySelector("[data-brand]").value;
+[raw_stderr]     const filtered = this.products.filter((product) => {
+[raw_stderr]       const matchesSearch = `${product.brand} ${product.name}`.toLowerCase().includes(search);
+[raw_stderr]       return matchesSearch && (!brand || product.brand === brand);
+[raw_stderr]     });
+[raw_stderr] 
+[raw_stderr]     this.querySelector("[data-products]").innerHTML = filtered
+[raw_stderr]       .map((product) => this.productCard(product))
+[raw_stderr]       .join("") || "<p class='text-zinc-600'>Keine passenden Produkte gefunden.</p>";
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   productCard(product) {
+[raw_stderr]     return `
+[raw_stderr]       <article class="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm">
+[raw_stderr]         <a href="#/products/${product.id}" class="block">
+[raw_stderr]           <img class="h-56 w-full bg-zinc-100 object-cover" src="${escapeHtml(product.image_url)}" alt="${escapeHtml(product.name)}" onerror="this.src='${placeholderImage(product.name)}'" />
+[raw_stderr]         </a>
+[raw_stderr]         <div class="p-4">
+[raw_stderr]           <div class="mb-2 flex items-start justify-between gap-3">
+[raw_stderr]             <div>
+[raw_stderr]               <p class="text-sm font-semibold text-zinc-500">${escapeHtml(product.brand)}</p>
+[raw_stderr]               <h2 class="text-lg font-bold">${escapeHtml(product.name)}</h2>
+[raw_stderr]             </div>
+[raw_stderr]             ${product.is_new ? "<span class='rounded bg-teal-100 px-2 py-1 text-xs font-bold text-teal-800'>Neu</span>" : ""}
+[raw_stderr]           </div>
+[raw_stderr]           <p class="min-h-12 text-sm text-zinc-600">${escapeHtml(product.short_description)}</p>
+[raw_stderr]           <div class="mt-4 flex items-center justify-between">
+[raw_stderr]             <span class="font-bold">${formatMoney(product.price, product.currency)}</span>
+[raw_stderr]             <span class="text-sm text-zinc-600">${product.rating.toFixed(1)} / 5</span>
+[raw_stderr]           </div>
+[raw_stderr]         </div>
+[raw_stderr]       </article>
+[raw_stderr]     `;
+[raw_stderr]   }
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] customElements.define("product-list", ProductList);
+[raw_stderr] 
+[raw_stderr]  succeeded in 810ms:
+[raw_stderr] import { api, escapeHtml, formatMoney, placeholderImage, setRoute } from "./api.js";
+[raw_stderr] 
+[raw_stderr] class ShoppingCart extends HTMLElement {
+[raw_stderr]   connectedCallback() {
+[raw_stderr]     this.load();
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   async load() {
+[raw_stderr]     this.innerHTML = "<p class='text-zinc-600'>Warenkorb wird geladen...</p>";
+[raw_stderr]     try {
+[raw_stderr]       this.cart = await api.get("/api/cart");
+[raw_stderr]       this.render();
+[raw_stderr]     } catch (error) {
+[raw_stderr]       this.innerHTML = `<p class="text-red-700">${error.message}</p>`;
+[raw_stderr]     }
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   render() {
+[raw_stderr]     if (!this.cart.items.length) {
+[raw_stderr]       this.innerHTML = `
+[raw_stderr]         <section class="rounded-lg border border-zinc-200 bg-white p-8 text-center">
+[raw_stderr]           <h1 class="text-3xl font-bold">Der Warenkorb ist leer.</h1>
+[raw_stderr]           <a class="mt-5 inline-flex rounded-md bg-zinc-950 px-4 py-3 font-bold text-white" href="#/">Produkte ansehen</a>
+[raw_stderr]         </section>
+[raw_stderr]       `;
+[raw_stderr]       return;
+[raw_stderr]     }
+[raw_stderr] 
+[raw_stderr]     this.innerHTML = `
+[raw_stderr]       <section class="grid gap-8 lg:grid-cols-[1fr_360px]">
+[raw_stderr]         <div>
+[raw_stderr]           <h1 class="mb-5 text-3xl font-bold">Warenkorb</h1>
+[raw_stderr]           <div class="space-y-3">
+[raw_stderr]             ${this.cart.items.map((item) => this.renderItem(item)).join("")}
+[raw_stderr]           </div>
+[raw_stderr]         </div>
+[raw_stderr]         <aside class="h-fit rounded-lg border border-zinc-200 bg-white p-5">
+[raw_stderr]           <h2 class="mb-4 text-xl font-bold">Zusammenfassung</h2>
+[raw_stderr]           <div class="mb-2 flex justify-between text-zinc-700"><span>Zwischensumme</span><span>${formatMoney(this.cart.subtotal, this.cart.currency)}</span></div>
+[raw_stderr]           <div class="mb-5 flex justify-between text-lg font-bold"><span>Gesamt</span><span>${formatMoney(this.cart.total, this.cart.currency)}</span></div>
+[raw_stderr]           <button data-checkout class="focus-ring w-full rounded-md bg-zinc-950 px-4 py-3 font-bold text-white hover:bg-zinc-800">Zur Kasse</button>
+[raw_stderr]           <p data-status class="mt-3 text-sm"></p>
+[raw_stderr]         </aside>
+[raw_stderr]       </section>
+[raw_stderr]     `;
+[raw_stderr]     this.bindEvents();
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   renderItem(item) {
+[raw_stderr]     return `
+[raw_stderr]       <article class="grid gap-4 rounded-lg border border-zinc-200 bg-white p-4 sm:grid-cols-[120px_1fr_auto]">
+[raw_stderr]         <img class="h-28 w-full rounded-md bg-zinc-100 object-cover sm:w-28" src="${escapeHtml(item.image_url)}" alt="${escapeHtml(item.name)}" onerror="this.src='${placeholderImage(item.name)}'" />
+[raw_stderr]         <div>
+[raw_stderr]           <p class="text-sm font-semibold text-zinc-500">${escapeHtml(item.brand)}</p>
+[raw_stderr]           <h2 class="font-bold">${escapeHtml(item.name)}</h2>
+[raw_stderr]           <p class="text-sm text-zinc-600">Groesse ${escapeHtml(item.size)}</p>
+[raw_stderr]           <p class="mt-2 font-semibold">${formatMoney(item.line_total, item.currency)}</p>
+[raw_stderr]         </div>
+[raw_stderr]         <div class="flex items-center gap-2 sm:flex-col sm:items-end">
+[raw_stderr]           <input data-quantity="${item.item_id}" class="focus-ring w-20 rounded-md border border-zinc-300 px-2 py-1" type="number" min="1" value="${item.quantity}" />
+[raw_stderr]           <button data-remove="${item.item_id}" class="focus-ring rounded-md px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50">Entfernen</button>
+[raw_stderr]         </div>
+[raw_stderr]       </article>
+[raw_stderr]     `;
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   bindEvents() {
+[raw_stderr]     this.querySelector("[data-checkout]").addEventListener("click", () => setRoute("/checkout"));
+[raw_stderr]     const status = this.querySelector("[data-status]");
+[raw_stderr]     this.querySelectorAll("[data-quantity]").forEach((input) => {
+[raw_stderr]       input.addEventListener("change", async (event) => {
+[raw_stderr]         const itemId = event.currentTarget.dataset.quantity;
+[raw_stderr]         try {
+[raw_stderr]           await api.patch(`/api/cart/items/${itemId}`, {
+[raw_stderr]             quantity: Number(event.currentTarget.value),
+[raw_stderr]           });
+[raw_stderr]           window.dispatchEvent(new CustomEvent("cart:changed"));
+[raw_stderr]           this.load();
+[raw_stderr]         } catch (error) {
+[raw_stderr]           status.className = "mt-3 text-sm text-red-700";
+[raw_stderr]           status.textContent = error.message;
+[raw_stderr]         }
+[raw_stderr]       });
+[raw_stderr]     });
+[raw_stderr]     this.querySelectorAll("[data-remove]").forEach((button) => {
+[raw_stderr]       button.addEventListener("click", async (event) => {
+[raw_stderr]         try {
+[raw_stderr]           await api.delete(`/api/cart/items/${event.currentTarget.dataset.remove}`);
+[raw_stderr]           window.dispatchEvent(new CustomEvent("cart:changed"));
+[raw_stderr]           this.load();
+[raw_stderr]         } catch (error) {
+[raw_stderr]           status.className = "mt-3 text-sm text-red-700";
+[raw_stderr]           status.textContent = error.message;
+[raw_stderr]         }
+[raw_stderr]       });
+[raw_stderr]     });
+[raw_stderr]   }
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] customElements.define("shopping-cart", ShoppingCart);
+[raw_stderr] 
+[raw_stderr]  succeeded in 817ms:
+[raw_stderr] <!doctype html>
+[raw_stderr] <html lang="de">
+[raw_stderr]   <head>
+[raw_stderr]     <meta charset="utf-8" />
+[raw_stderr]     <meta name="viewport" content="width=device-width, initial-scale=1" />
+[raw_stderr]     <title>Sole Market</title>
+[raw_stderr]     <script src="https://cdn.tailwindcss.com"></script>
+[raw_stderr]     <link rel="stylesheet" href="/styles/app.css" />
+[raw_stderr]   </head>
+[raw_stderr]   <body class="bg-zinc-50 text-zinc-950 antialiased">
+[raw_stderr]     <app-root></app-root>
+[raw_stderr]     <script type="module" src="/components/app.js"></script>
+[raw_stderr]   </body>
+[raw_stderr] </html>
+[raw_stderr] 
+[raw_stderr]  succeeded in 814ms:
+[raw_stderr] :root {
+[raw_stderr]   color-scheme: light;
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] body {
+[raw_stderr]   min-height: 100vh;
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] * {
+[raw_stderr]   min-width: 0;
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] img {
+[raw_stderr]   max-width: 100%;
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] button,
+[raw_stderr] input,
+[raw_stderr] select,
+[raw_stderr] textarea {
+[raw_stderr]   font: inherit;
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] .focus-ring:focus-visible {
+[raw_stderr]   outline: 3px solid rgb(20 184 166 / 0.35);
+[raw_stderr]   outline-offset: 2px;
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr]  succeeded in 811ms:
+[raw_stderr] import { api, escapeHtml, formatMoney, setRoute } from "./api.js";
+[raw_stderr] 
+[raw_stderr] class CheckoutPage extends HTMLElement {
+[raw_stderr]   connectedCallback() {
+[raw_stderr]     this.load();
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   async load() {
+[raw_stderr]     this.innerHTML = "<p class='text-zinc-600'>Checkout wird geladen...</p>";
+[raw_stderr]     try {
+[raw_stderr]       this.cart = await api.get("/api/cart");
+[raw_stderr]       this.render();
+[raw_stderr]     } catch (error) {
+[raw_stderr]       this.innerHTML = `<p class="text-red-700">${error.message}</p>`;
+[raw_stderr]     }
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   render() {
+[raw_stderr]     if (!this.cart.items.length) {
+[raw_stderr]       this.innerHTML = "<shopping-cart></shopping-cart>";
+[raw_stderr]       return;
+[raw_stderr]     }
+[raw_stderr]     this.innerHTML = `
+[raw_stderr]       <section class="grid gap-8 lg:grid-cols-[1fr_360px]">
+[raw_stderr]         <form data-checkout-form class="rounded-lg border border-zinc-200 bg-white p-5">
+[raw_stderr]           <h1 class="mb-5 text-3xl font-bold">Checkout</h1>
+[raw_stderr]           <div class="grid gap-4 sm:grid-cols-2">
+[raw_stderr]             ${this.input("name", "Name")}
+[raw_stderr]             ${this.input("email", "E-Mail", "email")}
+[raw_stderr]             ${this.input("street", "Strasse", "text", "sm:col-span-2")}
+[raw_stderr]             ${this.input("zip", "PLZ")}
+[raw_stderr]             ${this.input("city", "Stadt")}
+[raw_stderr]             ${this.input("country", "Land", "text", "", "Deutschland")}
+[raw_stderr]             <label class="block text-sm font-semibold sm:col-span-2">Zahlungsart
+[raw_stderr]               <select name="payment_method" class="focus-ring mt-1 w-full rounded-md border border-zinc-300 px-3 py-2">
+[raw_stderr]                 <option value="credit_card">Kreditkarte</option>
+[raw_stderr]                 <option value="paypal">PayPal</option>
+[raw_stderr]                 <option value="invoice">Rechnung</option>
+[raw_stderr]               </select>
+[raw_stderr]             </label>
+[raw_stderr]           </div>
+[raw_stderr]           <button class="focus-ring mt-6 w-full rounded-md bg-zinc-950 px-5 py-3 font-bold text-white hover:bg-zinc-800 sm:w-auto" type="submit">Bestellung abschliessen</button>
+[raw_stderr]           <p data-status class="mt-3 text-sm"></p>
+[raw_stderr]         </form>
+[raw_stderr]         <aside class="h-fit rounded-lg border border-zinc-200 bg-white p-5">
+[raw_stderr]           <h2 class="mb-4 text-xl font-bold">Bestellung</h2>
+[raw_stderr]           <div class="space-y-3">
+[raw_stderr]             ${this.cart.items
+[raw_stderr]               .map(
+[raw_stderr]                 (item) => `
+[raw_stderr]                   <div class="flex justify-between gap-4 text-sm">
+[raw_stderr]                     <span class="min-w-0 break-words">${item.quantity}x ${escapeHtml(item.name)}, ${escapeHtml(item.size)}</span>
+[raw_stderr]                     <span class="shrink-0">${formatMoney(item.line_total, item.currency)}</span>
+[raw_stderr]                   </div>
+[raw_stderr]                 `
+[raw_stderr]               )
+[raw_stderr]               .join("")}
+[raw_stderr]           </div>
+[raw_stderr]           <div class="mt-5 flex justify-between border-t border-zinc-200 pt-4 text-lg font-bold">
+[raw_stderr]             <span>Gesamt</span><span>${formatMoney(this.cart.total, this.cart.currency)}</span>
+[raw_stderr]           </div>
+[raw_stderr]         </aside>
+[raw_stderr]       </section>
+[raw_stderr]     `;
+[raw_stderr]     this.querySelector("[data-checkout-form]").addEventListener("submit", (event) => this.submit(event));
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   input(name, label, type = "text", classes = "", value = "") {
+[raw_stderr]     return `
+[raw_stderr]       <label class="block text-sm font-semibold ${classes}">${label}
+[raw_stderr]         <input name="${name}" type="${type}" value="${value}" class="focus-ring mt-1 w-full rounded-md border border-zinc-300 px-3 py-2" required />
+[raw_stderr]       </label>
+[raw_stderr]     `;
+[raw_stderr]   }
+[raw_stderr] 
+[raw_stderr]   async submit(event) {
+[raw_stderr]     event.preventDefault();
+[raw_stderr]     const form = new FormData(event.currentTarget);
+[raw_stderr]     const status = this.querySelector("[data-status]");
+[raw_stderr]     try {
+[raw_stderr]       const order = await api.post("/api/orders", {
+[raw_stderr]         shipping: {
+[raw_stderr]           name: form.get("name"),
+[raw_stderr]           street: form.get("street"),
+[raw_stderr]           zip: form.get("zip"),
+[raw_stderr]           city: form.get("city"),
+[raw_stderr]           country: form.get("country"),
+[raw_stderr]           email: form.get("email"),
+[raw_stderr]         },
+[raw_stderr]         payment_method: form.get("payment_method"),
+[raw_stderr]       });
+[raw_stderr]       window.dispatchEvent(new CustomEvent("cart:changed"));
+[raw_stderr]       setRoute(`/orders/${order.order_id}`);
+[raw_stderr]     } catch (error) {
+[raw_stderr]       status.className = "mt-3 text-sm text-red-700";
+[raw_stderr]       status.textContent = error.message;
+[raw_stderr]     }
+[raw_stderr]   }
+[raw_stderr] }
+[raw_stderr] 
+[raw_stderr] customElements.define("checkout-page", CheckoutPage);
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Ich mache eine reine Test-Ergänzung, keinen Produktivcode-Eingriff. Die neuen Checks bleiben statisch und schnell, weil das Responsive-Verhalten hier über Tailwind-Klassen und globale CSS-Regeln ausgedrückt wird.
+[raw_stderr] apply patch
+[raw_stderr] patch: completed
+[raw_stderr] C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code\tests\test_responsive_design.py
+[raw_stderr] diff --git a/tests/test_responsive_design.py b/tests/test_responsive_design.py
+[raw_stderr] new file mode 100644
+[raw_stderr] index 0000000000000000000000000000000000000000..8922bd8fb3e4c531176622d3f2f7e24208b5a2f3
+[raw_stderr] --- /dev/null
+[raw_stderr] +++ b/tests/test_responsive_design.py
+[raw_stderr] @@ -0,0 +1,63 @@
+[raw_stderr] +from pathlib import Path
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +PROJECT_ROOT = Path(__file__).resolve().parents[1]
+[raw_stderr] +FRONTEND_DIR = PROJECT_ROOT / "frontend"
+[raw_stderr] +COMPONENT_DIR = FRONTEND_DIR / "components"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_frontend_file(relative_path: str) -> str:
+[raw_stderr] +    return (FRONTEND_DIR / relative_path).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_component(filename: str) -> str:
+[raw_stderr] +    return (COMPONENT_DIR / filename).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_index_declares_mobile_viewport_and_global_stylesheet() -> None:
+[raw_stderr] +    index = read_frontend_file("index.html")
+[raw_stderr] +
+[raw_stderr] +    assert '<meta name="viewport" content="width=device-width, initial-scale=1" />' in index
+[raw_stderr] +    assert '<link rel="stylesheet" href="/styles/app.css" />' in index
+[raw_stderr] +    assert '<body class="bg-zinc-50 text-zinc-950 antialiased">' in index
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_global_css_prevents_common_mobile_overflow_sources() -> None:
+[raw_stderr] +    css = read_frontend_file("styles/app.css")
+[raw_stderr] +
+[raw_stderr] +    assert "min-height: 100vh;" in css
+[raw_stderr] +    assert "* {\n  min-width: 0;\n}" in css
+[raw_stderr] +    assert "img {\n  max-width: 100%;\n}" in css
+[raw_stderr] +    assert "button,\ninput,\nselect,\ntextarea" in css
+[raw_stderr] +    assert ".focus-ring:focus-visible" in css
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_catalog_page_uses_responsive_filter_and_product_grids() -> None:
+[raw_stderr] +    source = read_component("product-list.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 md:grid-cols-[1.3fr_0.7fr] md:items-end" in source
+[raw_stderr] +    assert "grid gap-3 sm:grid-cols-[1fr_auto] md:justify-end" in source
+[raw_stderr] +    assert "w-full rounded-md border border-zinc-300 bg-white px-3 py-2 md:w-64" in source
+[raw_stderr] +    assert "grid gap-5 sm:grid-cols-2 lg:grid-cols-3" in source
+[raw_stderr] +    assert "text-3xl font-bold tracking-normal text-zinc-950 sm:text-4xl md:text-5xl" in source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_cart_and_checkout_promote_sidebar_only_on_large_screens() -> None:
+[raw_stderr] +    cart_source = read_component("shopping-cart.js")
+[raw_stderr] +    checkout_source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in cart_source
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in checkout_source
+[raw_stderr] +    assert "sm:grid-cols-[120px_1fr_auto]" in cart_source
+[raw_stderr] +    assert "h-28 w-full rounded-md bg-zinc-100 object-cover sm:w-28" in cart_source
+[raw_stderr] +    assert "flex items-center gap-2 sm:flex-col sm:items-end" in cart_source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_checkout_form_fields_stack_on_mobile_and_split_on_wider_viewports() -> None:
+[raw_stderr] +    source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 sm:grid-cols-2" in source
+[raw_stderr] +    assert 'this.input("street", "Strasse", "text", "sm:col-span-2")' in source
+[raw_stderr] +    assert 'class="focus-ring mt-6 w-full rounded-md bg-zinc-950 px-5 py-3 font-bold text-white hover:bg-zinc-800 sm:w-auto"' in source
+[raw_stderr] +    assert 'class="min-w-0 break-words"' in source
+[raw_stderr] +    assert 'class="shrink-0"' in source
+[raw_stderr] 
+[raw_stderr] diff --git a/tests/test_responsive_design.py b/tests/test_responsive_design.py
+[raw_stderr] new file mode 100644
+[raw_stderr] index 0000000000000000000000000000000000000000..8922bd8fb3e4c531176622d3f2f7e24208b5a2f3
+[raw_stderr] --- /dev/null
+[raw_stderr] +++ b/tests/test_responsive_design.py
+[raw_stderr] @@ -0,0 +1,63 @@
+[raw_stderr] +from pathlib import Path
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +PROJECT_ROOT = Path(__file__).resolve().parents[1]
+[raw_stderr] +FRONTEND_DIR = PROJECT_ROOT / "frontend"
+[raw_stderr] +COMPONENT_DIR = FRONTEND_DIR / "components"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_frontend_file(relative_path: str) -> str:
+[raw_stderr] +    return (FRONTEND_DIR / relative_path).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_component(filename: str) -> str:
+[raw_stderr] +    return (COMPONENT_DIR / filename).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_index_declares_mobile_viewport_and_global_stylesheet() -> None:
+[raw_stderr] +    index = read_frontend_file("index.html")
+[raw_stderr] +
+[raw_stderr] +    assert '<meta name="viewport" content="width=device-width, initial-scale=1" />' in index
+[raw_stderr] +    assert '<link rel="stylesheet" href="/styles/app.css" />' in index
+[raw_stderr] +    assert '<body class="bg-zinc-50 text-zinc-950 antialiased">' in index
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_global_css_prevents_common_mobile_overflow_sources() -> None:
+[raw_stderr] +    css = read_frontend_file("styles/app.css")
+[raw_stderr] +
+[raw_stderr] +    assert "min-height: 100vh;" in css
+[raw_stderr] +    assert "* {\n  min-width: 0;\n}" in css
+[raw_stderr] +    assert "img {\n  max-width: 100%;\n}" in css
+[raw_stderr] +    assert "button,\ninput,\nselect,\ntextarea" in css
+[raw_stderr] +    assert ".focus-ring:focus-visible" in css
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_catalog_page_uses_responsive_filter_and_product_grids() -> None:
+[raw_stderr] +    source = read_component("product-list.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 md:grid-cols-[1.3fr_0.7fr] md:items-end" in source
+[raw_stderr] +    assert "grid gap-3 sm:grid-cols-[1fr_auto] md:justify-end" in source
+[raw_stderr] +    assert "w-full rounded-md border border-zinc-300 bg-white px-3 py-2 md:w-64" in source
+[raw_stderr] +    assert "grid gap-5 sm:grid-cols-2 lg:grid-cols-3" in source
+[raw_stderr] +    assert "text-3xl font-bold tracking-normal text-zinc-950 sm:text-4xl md:text-5xl" in source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_cart_and_checkout_promote_sidebar_only_on_large_screens() -> None:
+[raw_stderr] +    cart_source = read_component("shopping-cart.js")
+[raw_stderr] +    checkout_source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in cart_source
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in checkout_source
+[raw_stderr] +    assert "sm:grid-cols-[120px_1fr_auto]" in cart_source
+[raw_stderr] +    assert "h-28 w-full rounded-md bg-zinc-100 object-cover sm:w-28" in cart_source
+[raw_stderr] +    assert "flex items-center gap-2 sm:flex-col sm:items-end" in cart_source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_checkout_form_fields_stack_on_mobile_and_split_on_wider_viewports() -> None:
+[raw_stderr] +    source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 sm:grid-cols-2" in source
+[raw_stderr] +    assert 'this.input("street", "Strasse", "text", "sm:col-span-2")' in source
+[raw_stderr] +    assert 'class="focus-ring mt-6 w-full rounded-md bg-zinc-950 px-5 py-3 font-bold text-white hover:bg-zinc-800 sm:w-auto"' in source
+[raw_stderr] +    assert 'class="min-w-0 break-words"' in source
+[raw_stderr] +    assert 'class="shrink-0"' in source
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Die Responsive-Tests sind angelegt. Ich verifiziere jetzt zumindest Syntax/Imports und versuche anschließend die Pytest-Suite direkt auszuführen; falls `pytest` weiterhin nicht installiert ist, dokumentiere ich das sauber.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python -m compileall backend tests' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python -m pytest -q' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] 2026-06-15T19:24:19.475648Z ERROR codex_core::tools::router: error=Exit code: 1
+[raw_stderr] Wall time: 0.5 seconds
+[raw_stderr] Output:
+[raw_stderr] C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\.venv\Scripts\python.exe: No module named pytest
+[raw_stderr] 
+[raw_stderr]  exited 1 in 493ms:
+[raw_stderr] C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\.venv\Scripts\python.exe: No module named pytest
+[raw_stderr] 
+[raw_stderr]  succeeded in 681ms:
+[raw_stderr] Listing 'backend'...
+[raw_stderr] Listing 'backend\\app'...
+[raw_stderr] Listing 'backend\\app\\api'...
+[raw_stderr] Listing 'tests'...
+[raw_stderr] Compiling 'tests\\test_responsive_design.py'...
+[raw_stderr] 
+[raw_stderr] diff --git a/tests/test_responsive_design.py b/tests/test_responsive_design.py
+[raw_stderr] new file mode 100644
+[raw_stderr] index 0000000000000000000000000000000000000000..8922bd8fb3e4c531176622d3f2f7e24208b5a2f3
+[raw_stderr] --- /dev/null
+[raw_stderr] +++ b/tests/test_responsive_design.py
+[raw_stderr] @@ -0,0 +1,63 @@
+[raw_stderr] +from pathlib import Path
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +PROJECT_ROOT = Path(__file__).resolve().parents[1]
+[raw_stderr] +FRONTEND_DIR = PROJECT_ROOT / "frontend"
+[raw_stderr] +COMPONENT_DIR = FRONTEND_DIR / "components"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_frontend_file(relative_path: str) -> str:
+[raw_stderr] +    return (FRONTEND_DIR / relative_path).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_component(filename: str) -> str:
+[raw_stderr] +    return (COMPONENT_DIR / filename).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_index_declares_mobile_viewport_and_global_stylesheet() -> None:
+[raw_stderr] +    index = read_frontend_file("index.html")
+[raw_stderr] +
+[raw_stderr] +    assert '<meta name="viewport" content="width=device-width, initial-scale=1" />' in index
+[raw_stderr] +    assert '<link rel="stylesheet" href="/styles/app.css" />' in index
+[raw_stderr] +    assert '<body class="bg-zinc-50 text-zinc-950 antialiased">' in index
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_global_css_prevents_common_mobile_overflow_sources() -> None:
+[raw_stderr] +    css = read_frontend_file("styles/app.css")
+[raw_stderr] +
+[raw_stderr] +    assert "min-height: 100vh;" in css
+[raw_stderr] +    assert "* {\n  min-width: 0;\n}" in css
+[raw_stderr] +    assert "img {\n  max-width: 100%;\n}" in css
+[raw_stderr] +    assert "button,\ninput,\nselect,\ntextarea" in css
+[raw_stderr] +    assert ".focus-ring:focus-visible" in css
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_catalog_page_uses_responsive_filter_and_product_grids() -> None:
+[raw_stderr] +    source = read_component("product-list.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 md:grid-cols-[1.3fr_0.7fr] md:items-end" in source
+[raw_stderr] +    assert "grid gap-3 sm:grid-cols-[1fr_auto] md:justify-end" in source
+[raw_stderr] +    assert "w-full rounded-md border border-zinc-300 bg-white px-3 py-2 md:w-64" in source
+[raw_stderr] +    assert "grid gap-5 sm:grid-cols-2 lg:grid-cols-3" in source
+[raw_stderr] +    assert "text-3xl font-bold tracking-normal text-zinc-950 sm:text-4xl md:text-5xl" in source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_cart_and_checkout_promote_sidebar_only_on_large_screens() -> None:
+[raw_stderr] +    cart_source = read_component("shopping-cart.js")
+[raw_stderr] +    checkout_source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in cart_source
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in checkout_source
+[raw_stderr] +    assert "sm:grid-cols-[120px_1fr_auto]" in cart_source
+[raw_stderr] +    assert "h-28 w-full rounded-md bg-zinc-100 object-cover sm:w-28" in cart_source
+[raw_stderr] +    assert "flex items-center gap-2 sm:flex-col sm:items-end" in cart_source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_checkout_form_fields_stack_on_mobile_and_split_on_wider_viewports() -> None:
+[raw_stderr] +    source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 sm:grid-cols-2" in source
+[raw_stderr] +    assert 'this.input("street", "Strasse", "text", "sm:col-span-2")' in source
+[raw_stderr] +    assert 'class="focus-ring mt-6 w-full rounded-md bg-zinc-950 px-5 py-3 font-bold text-white hover:bg-zinc-800 sm:w-auto"' in source
+[raw_stderr] +    assert 'class="min-w-0 break-words"' in source
+[raw_stderr] +    assert 'class="shrink-0"' in source
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] `pytest` ist in der aktiven Umgebung nicht verfügbar, daher kann die komplette Suite nicht laufen. Ich führe die neu ergänzten statischen Responsive-Tests noch direkt über Python aus, damit zumindest diese Assertions unabhängig von Pytest geprüft sind.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "@'
+[raw_stderr] from tests import test_responsive_design as t
+[raw_stderr] for name in sorted(dir(t)):
+[raw_stderr]     if name.startswith('test_'):
+[raw_stderr]         getattr(t, name)()
+[raw_stderr]         print(f'{name}: ok')
+[raw_stderr] '@ | python -" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 545ms:
+[raw_stderr] test_cart_and_checkout_promote_sidebar_only_on_large_screens: ok
+[raw_stderr] test_catalog_page_uses_responsive_filter_and_product_grids: ok
+[raw_stderr] test_checkout_form_fields_stack_on_mobile_and_split_on_wider_viewports: ok
+[raw_stderr] test_global_css_prevents_common_mobile_overflow_sources: ok
+[raw_stderr] test_index_declares_mobile_viewport_and_global_stylesheet: ok
+[raw_stderr] 
+[raw_stderr] diff --git a/tests/test_responsive_design.py b/tests/test_responsive_design.py
+[raw_stderr] new file mode 100644
+[raw_stderr] index 0000000000000000000000000000000000000000..8922bd8fb3e4c531176622d3f2f7e24208b5a2f3
+[raw_stderr] --- /dev/null
+[raw_stderr] +++ b/tests/test_responsive_design.py
+[raw_stderr] @@ -0,0 +1,63 @@
+[raw_stderr] +from pathlib import Path
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +PROJECT_ROOT = Path(__file__).resolve().parents[1]
+[raw_stderr] +FRONTEND_DIR = PROJECT_ROOT / "frontend"
+[raw_stderr] +COMPONENT_DIR = FRONTEND_DIR / "components"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_frontend_file(relative_path: str) -> str:
+[raw_stderr] +    return (FRONTEND_DIR / relative_path).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_component(filename: str) -> str:
+[raw_stderr] +    return (COMPONENT_DIR / filename).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_index_declares_mobile_viewport_and_global_stylesheet() -> None:
+[raw_stderr] +    index = read_frontend_file("index.html")
+[raw_stderr] +
+[raw_stderr] +    assert '<meta name="viewport" content="width=device-width, initial-scale=1" />' in index
+[raw_stderr] +    assert '<link rel="stylesheet" href="/styles/app.css" />' in index
+[raw_stderr] +    assert '<body class="bg-zinc-50 text-zinc-950 antialiased">' in index
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_global_css_prevents_common_mobile_overflow_sources() -> None:
+[raw_stderr] +    css = read_frontend_file("styles/app.css")
+[raw_stderr] +
+[raw_stderr] +    assert "min-height: 100vh;" in css
+[raw_stderr] +    assert "* {\n  min-width: 0;\n}" in css
+[raw_stderr] +    assert "img {\n  max-width: 100%;\n}" in css
+[raw_stderr] +    assert "button,\ninput,\nselect,\ntextarea" in css
+[raw_stderr] +    assert ".focus-ring:focus-visible" in css
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_catalog_page_uses_responsive_filter_and_product_grids() -> None:
+[raw_stderr] +    source = read_component("product-list.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 md:grid-cols-[1.3fr_0.7fr] md:items-end" in source
+[raw_stderr] +    assert "grid gap-3 sm:grid-cols-[1fr_auto] md:justify-end" in source
+[raw_stderr] +    assert "w-full rounded-md border border-zinc-300 bg-white px-3 py-2 md:w-64" in source
+[raw_stderr] +    assert "grid gap-5 sm:grid-cols-2 lg:grid-cols-3" in source
+[raw_stderr] +    assert "text-3xl font-bold tracking-normal text-zinc-950 sm:text-4xl md:text-5xl" in source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_cart_and_checkout_promote_sidebar_only_on_large_screens() -> None:
+[raw_stderr] +    cart_source = read_component("shopping-cart.js")
+[raw_stderr] +    checkout_source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in cart_source
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in checkout_source
+[raw_stderr] +    assert "sm:grid-cols-[120px_1fr_auto]" in cart_source
+[raw_stderr] +    assert "h-28 w-full rounded-md bg-zinc-100 object-cover sm:w-28" in cart_source
+[raw_stderr] +    assert "flex items-center gap-2 sm:flex-col sm:items-end" in cart_source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_checkout_form_fields_stack_on_mobile_and_split_on_wider_viewports() -> None:
+[raw_stderr] +    source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 sm:grid-cols-2" in source
+[raw_stderr] +    assert 'this.input("street", "Strasse", "text", "sm:col-span-2")' in source
+[raw_stderr] +    assert 'class="focus-ring mt-6 w-full rounded-md bg-zinc-950 px-5 py-3 font-bold text-white hover:bg-zinc-800 sm:w-auto"' in source
+[raw_stderr] +    assert 'class="min-w-0 break-words"' in source
+[raw_stderr] +    assert 'class="shrink-0"' in source
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Erledigt. Ich habe die bestehende `pytest`-Suite ergänzt und keine produktiven Dateien geändert.
+[raw_stderr] 
+[raw_stderr] Neu angelegt:
+[raw_stderr] - [tests/test_responsive_design.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_responsive_design.py)
+[raw_stderr] 
+[raw_stderr] Abdeckung jetzt zusätzlich:
+[raw_stderr] - Mobile Viewport + Stylesheet-Bootstrap
+[raw_stderr] - globale CSS-Regeln gegen mobile Overflow-Probleme
+[raw_stderr] - responsive Produktgrid-/Filter-Layouts
+[raw_stderr] - Warenkorb-/Checkout-Sidebar erst ab großen Viewports
+[raw_stderr] - mobile Form-Stacking- und Textumbruch-Regeln im Checkout
+[raw_stderr] 
+[raw_stderr] Verifikation:
+[raw_stderr] - `python -m compileall backend tests`: bestanden
+[raw_stderr] - Neue Responsive-Tests direkt per Python ausgeführt: bestanden
+[raw_stderr] - `python -m pytest -q`: nicht ausführbar, weil `pytest` in der Umgebung fehlt (`No module named pytest`)
+[raw_stderr] 
+[raw_stderr] `requirements-dev.txt` enthält bereits `pytest>=8.0.0` und `httpx>=0.27.0`, daher habe ich dort nichts geändert.
+[raw_stderr] diff --git a/tests/test_responsive_design.py b/tests/test_responsive_design.py
+[raw_stderr] new file mode 100644
+[raw_stderr] index 0000000000000000000000000000000000000000..8922bd8fb3e4c531176622d3f2f7e24208b5a2f3
+[raw_stderr] --- /dev/null
+[raw_stderr] +++ b/tests/test_responsive_design.py
+[raw_stderr] @@ -0,0 +1,63 @@
+[raw_stderr] +from pathlib import Path
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +PROJECT_ROOT = Path(__file__).resolve().parents[1]
+[raw_stderr] +FRONTEND_DIR = PROJECT_ROOT / "frontend"
+[raw_stderr] +COMPONENT_DIR = FRONTEND_DIR / "components"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_frontend_file(relative_path: str) -> str:
+[raw_stderr] +    return (FRONTEND_DIR / relative_path).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def read_component(filename: str) -> str:
+[raw_stderr] +    return (COMPONENT_DIR / filename).read_text(encoding="utf-8")
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_index_declares_mobile_viewport_and_global_stylesheet() -> None:
+[raw_stderr] +    index = read_frontend_file("index.html")
+[raw_stderr] +
+[raw_stderr] +    assert '<meta name="viewport" content="width=device-width, initial-scale=1" />' in index
+[raw_stderr] +    assert '<link rel="stylesheet" href="/styles/app.css" />' in index
+[raw_stderr] +    assert '<body class="bg-zinc-50 text-zinc-950 antialiased">' in index
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_global_css_prevents_common_mobile_overflow_sources() -> None:
+[raw_stderr] +    css = read_frontend_file("styles/app.css")
+[raw_stderr] +
+[raw_stderr] +    assert "min-height: 100vh;" in css
+[raw_stderr] +    assert "* {\n  min-width: 0;\n}" in css
+[raw_stderr] +    assert "img {\n  max-width: 100%;\n}" in css
+[raw_stderr] +    assert "button,\ninput,\nselect,\ntextarea" in css
+[raw_stderr] +    assert ".focus-ring:focus-visible" in css
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_catalog_page_uses_responsive_filter_and_product_grids() -> None:
+[raw_stderr] +    source = read_component("product-list.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 md:grid-cols-[1.3fr_0.7fr] md:items-end" in source
+[raw_stderr] +    assert "grid gap-3 sm:grid-cols-[1fr_auto] md:justify-end" in source
+[raw_stderr] +    assert "w-full rounded-md border border-zinc-300 bg-white px-3 py-2 md:w-64" in source
+[raw_stderr] +    assert "grid gap-5 sm:grid-cols-2 lg:grid-cols-3" in source
+[raw_stderr] +    assert "text-3xl font-bold tracking-normal text-zinc-950 sm:text-4xl md:text-5xl" in source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_cart_and_checkout_promote_sidebar_only_on_large_screens() -> None:
+[raw_stderr] +    cart_source = read_component("shopping-cart.js")
+[raw_stderr] +    checkout_source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in cart_source
+[raw_stderr] +    assert "grid gap-8 lg:grid-cols-[1fr_360px]" in checkout_source
+[raw_stderr] +    assert "sm:grid-cols-[120px_1fr_auto]" in cart_source
+[raw_stderr] +    assert "h-28 w-full rounded-md bg-zinc-100 object-cover sm:w-28" in cart_source
+[raw_stderr] +    assert "flex items-center gap-2 sm:flex-col sm:items-end" in cart_source
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr] +def test_checkout_form_fields_stack_on_mobile_and_split_on_wider_viewports() -> None:
+[raw_stderr] +    source = read_component("checkout-page.js")
+[raw_stderr] +
+[raw_stderr] +    assert "grid gap-4 sm:grid-cols-2" in source
+[raw_stderr] +    assert 'this.input("street", "Strasse", "text", "sm:col-span-2")' in source
+[raw_stderr] +    assert 'class="focus-ring mt-6 w-full rounded-md bg-zinc-950 px-5 py-3 font-bold text-white hover:bg-zinc-800 sm:w-auto"' in source
+[raw_stderr] +    assert 'class="min-w-0 break-words"' in source
+[raw_stderr] +    assert 'class="shrink-0"' in source
+[raw_stderr] 
+[raw_stderr] tokens used
+[raw_stdout] Erledigt. Ich habe die bestehende `pytest`-Suite ergänzt und keine produktiven Dateien geändert.
+[raw_stderr] 63.422
+[raw_stdout] 
+[raw_stdout] Neu angelegt:
+[raw_stdout] - [tests/test_responsive_design.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_responsive_design.py)
+[raw_stdout] 
+[raw_stdout] Abdeckung jetzt zusätzlich:
+[raw_stdout] - Mobile Viewport + Stylesheet-Bootstrap
+[raw_stdout] - globale CSS-Regeln gegen mobile Overflow-Probleme
+[raw_stdout] - responsive Produktgrid-/Filter-Layouts
+[raw_stdout] - Warenkorb-/Checkout-Sidebar erst ab großen Viewports
+[raw_stdout] - mobile Form-Stacking- und Textumbruch-Regeln im Checkout
+[raw_stdout] 
+[raw_stdout] Verifikation:
+[raw_stdout] - `python -m compileall backend tests`: bestanden
+[raw_stdout] - Neue Responsive-Tests direkt per Python ausgeführt: bestanden
+[raw_stdout] - `python -m pytest -q`: nicht ausführbar, weil `pytest` in der Umgebung fehlt (`No module named pytest`)
+[raw_stdout] 
+[raw_stdout] `requirements-dev.txt` enthält bereits `pytest>=8.0.0` und `httpx>=0.27.0`, daher habe ich dort nichts geändert.

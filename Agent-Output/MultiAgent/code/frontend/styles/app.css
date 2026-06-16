@@ -1,0 +1,27 @@
+:root {
+  color-scheme: light;
+}
+
+body {
+  min-height: 100vh;
+}
+
+* {
+  min-width: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.focus-ring:focus-visible {
+  outline: 3px solid rgb(20 184 166 / 0.35);
+  outline-offset: 2px;
+}

@@ -1,0 +1,1935 @@
+[raw_stderr] Reading additional input from stdin...
+[raw_stderr] OpenAI Codex v0.139.0
+[raw_stderr] --------
+[raw_stderr] workdir: C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] model: gpt-5.5
+[raw_stderr] provider: openai
+[raw_stderr] approval: never
+[raw_stderr] sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+[raw_stderr] reasoning effort: medium
+[raw_stderr] reasoning summaries: none
+[raw_stderr] session id: 019ecca5-4dff-7500-9b08-2b6cfd8f0349
+[raw_stderr] --------
+[raw_stderr] user
+[raw_stderr] # Role: Tester Agent (Zero-Shot)
+[raw_stderr] 
+[raw_stderr] Du bist ein QA Engineer. Deine Aufgabe ist es, die Qualität und Korrektheit der Implementierung durch automatisierte Tests sicherzustellen.
+[raw_stderr] 
+[raw_stderr] ## Dein Auftrag:
+[raw_stderr] Erstelle ein Test-Suite (`tests/`), die folgende Bereiche abdeckt:
+[raw_stderr] 1. **API-Tests:** Überprüfung der FastAPI-Endpunkte (funktionale Korrektheit).
+[raw_stderr] 2. **Datenbank-Tests:** Sicherstellen, dass CRUD-Operationen funktionieren.
+[raw_stderr] 3. **Logik-Tests:** Validierung der Warenkorb-Berechnungen.
+[raw_stderr] 
+[raw_stderr] ## Vorgaben:
+[raw_stderr] - Nutze das Framework `pytest`.
+[raw_stderr] - Schreibe Tests, die unabhängig von einer laufenden Instanz (mit Mocking oder Test-Datenbank) funktionieren.
+[raw_stderr] 
+[raw_stderr] **Hinweis:** Dein Ziel ist es, Lücken in der Implementierung des Developers aufzudecken.
+[raw_stderr] 
+[raw_stderr] ## Work-Item: Responsive Design umsetzen
+[raw_stderr] ## Urspruengliche Entwickler-Aufgabe (Kontext)
+[raw_stderr] ---
+[raw_stderr] Stelle sicher, dass das Frontend ein modernes, responsives Design hat, das auf verschiedenen Geräten gut aussieht und funktioniert.
+[raw_stderr] ---
+[raw_stderr] 
+[raw_stderr] ## Zusammenfassung der Developer-Implementierung
+[raw_stderr] ---
+[raw_stderr] Implementierung liegt in der vorgegebenen Struktur vor. Ich habe das Frontend für das Work-Item responsiver gemacht:
+[raw_stderr] 
+[raw_stderr] - Mobile Header-Navigation in [app.js](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/frontend/components/app.js:44)
+[raw_stderr] - Responsive Such-/Filterzeile in [product-list.js](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/frontend/components/product-list.js:14)
+[raw_stderr] - Mobile-freundlichere Produktdetails, Checkout-, Kontakt- und Bestellansichten
+[raw_stderr] - Globale Overflow-Schutzregeln in [app.css](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/frontend/styles/app.css:10)
+[raw_stderr] 
+[raw_stderr] Verifikation:
+[raw_stderr] - `python -m compileall backend` erfolgreich
+[raw_stderr] - FastAPI-Smoke-Test erfolgreich: Produkte, Warenkorb, Bestellung und Order-Abruf funktionieren
+[raw_stderr] - `pytest` konnte nicht laufen, weil `pytest` in der Umgebung nicht installiert ist
+[raw_stderr] 
+[raw_stderr] Der Dev-Server konnte hier nicht dauerhaft gestartet werden, weil die Umgebung `Start-Process` blockiert. Lokal startest du ihn mit:
+[raw_stderr] 
+[raw_stderr] ```bash
+[raw_stderr] python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+[raw_stderr] ```
+[raw_stderr] 
+[raw_stderr] Dann ist die App unter `http://127.0.0.1:8000/` erreichbar.
+[raw_stderr] ---
+[raw_stderr] 
+[raw_stderr] ## Konkrete Vorgaben fuer die Tests
+[raw_stderr] - Verwende pytest.
+[raw_stderr] - Lege Tests in ./tests/ ab (Pfad relativ zum Projekt-Root, lege den Ordner an falls noetig).
+[raw_stderr] - Decke Happy-Path UND mindestens 2 Edge Cases / Fehlerfaelle ab.
+[raw_stderr] - Fuer HTTP-APIs: nutze TestClient/HTTPX gegen die FastAPI-App.
+[raw_stderr] - Keine Mocks, wo echte Aufrufe einfach moeglich sind (SQLite-Test-DB ist ok).
+[raw_stderr] - Fuege ggf. notwendige Test-Dependencies in requirements-dev.txt hinzu.
+[raw_stderr] - Aendere produktiven Code NUR, wenn er offensichtlich nicht testbar ist;   dokumentiere solche Aenderungen in der Antwort.
+[raw_stderr] - Gib am Ende eine kurze Liste der angelegten Testdateien aus.
+[raw_stderr] codex
+[raw_stderr] Ich prüfe zuerst die Projektstruktur und wie App, Datenbank und Warenkorb verdrahtet sind. Danach lege ich die Tests passend zu den vorhandenen Modulen an, ohne produktiven Code anzufassen, sofern die App schon testbar ist.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem -Force' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'rg --files' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'git status --short' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 517ms:
+[raw_stderr] uvicorn-8000.log
+[raw_stderr] uvicorn-8000.err.log
+[raw_stderr] ecommerce.sqlite3
+[raw_stderr] README.md
+[raw_stderr] requirements-dev.txt
+[raw_stderr] requirements.txt
+[raw_stderr] tests\test_api.py
+[raw_stderr] tests\conftest.py
+[raw_stderr] tests\test_cart_logic.py
+[raw_stderr] tests\test_database.py
+[raw_stderr] tests\__pycache__\test_database.cpython-314.pyc
+[raw_stderr] tests\__pycache__\test_cart_logic.cpython-314.pyc
+[raw_stderr] tests\__pycache__\test_api.cpython-314.pyc
+[raw_stderr] tests\__pycache__\conftest.cpython-314.pyc
+[raw_stderr] frontend\components\not-found.js
+[raw_stderr] frontend\components\imprint-page.js
+[raw_stderr] frontend\components\contact-page.js
+[raw_stderr] frontend\components\checkout-page.js
+[raw_stderr] frontend\components\app.js
+[raw_stderr] frontend\components\api.js
+[raw_stderr] frontend\components\product-list.js
+[raw_stderr] frontend\components\product-detail.js
+[raw_stderr] frontend\components\order-confirmation.js
+[raw_stderr] frontend\components\shopping-cart.js
+[raw_stderr] frontend\components\terms-page.js
+[raw_stderr] frontend\index.html
+[raw_stderr] frontend\styles\app.css
+[raw_stderr] backend\__pycache__\__init__.cpython-314.pyc
+[raw_stderr] backend\__init__.py
+[raw_stderr] backend\app\database.py
+[raw_stderr] backend\app\api\products.py
+[raw_stderr] backend\app\seed.py
+[raw_stderr] backend\app\__init__.py
+[raw_stderr] backend\app\api\orders.py
+[raw_stderr] backend\app\api\cart.py
+[raw_stderr] backend\app\api\__init__.py
+[raw_stderr] backend\app\main.py
+[raw_stderr] backend\app\models.py
+[raw_stderr] backend\app\api\reviews.py
+[raw_stderr] backend\app\schemas.py
+[raw_stderr] backend\app\__pycache__\__init__.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\seed.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\schemas.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\models.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\main.cpython-314.pyc
+[raw_stderr] backend\app\__pycache__\database.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\__init__.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\reviews.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\products.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\orders.cpython-314.pyc
+[raw_stderr] backend\app\api\__pycache__\cart.cpython-314.pyc
+[raw_stderr] 
+[raw_stderr] 2026-06-15T18:57:33.633127Z ERROR codex_core::tools::router: error=Exit code: 1
+[raw_stderr] Wall time: 0.5 seconds
+[raw_stderr] Output:
+[raw_stderr] fatal: not a git repository (or any of the parent directories): .git
+[raw_stderr] 
+[raw_stderr]  exited 1 in 536ms:
+[raw_stderr] fatal: not a git repository (or any of the parent directories): .git
+[raw_stderr] 
+[raw_stderr]  succeeded in 636ms:
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr]     Verzeichnis: C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] Mode                 LastWriteTime         Length Name                                                                                
+[raw_stderr] ----                 -------------         ------ ----                                                                                
+[raw_stderr] d-----        15.06.2026     20:28                backend                                                                             
+[raw_stderr] d-----        15.06.2026     20:32                frontend                                                                            
+[raw_stderr] d-----        15.06.2026     20:51                tests                                                                               
+[raw_stderr] -a----        15.06.2026     20:46          57344 ecommerce.sqlite3                                                                   
+[raw_stderr] -a----        15.06.2026     20:48           6225 README.md                                                                           
+[raw_stderr] -a----        15.06.2026     20:50             28 requirements-dev.txt                                                                
+[raw_stderr] -a----        15.06.2026     20:30             77 requirements.txt                                                                    
+[raw_stderr] -a----        15.06.2026     20:43              0 uvicorn-8000.err.log                                                                
+[raw_stderr] -a----        15.06.2026     20:43              0 uvicorn-8000.log                                                                    
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Es gibt bereits einen `tests/`-Ordner und `requirements-dev.txt`; ich lese die vorhandenen Tests jetzt gegen den Backend-Code. Falls sie unvollständig oder fragil sind, erweitere ich sie gezielt statt blind neu zu erzeugen.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\main.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content requirements-dev.txt' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\database.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\models.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\conftest.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 791ms:
+[raw_stderr] pytest>=8.0.0
+[raw_stderr] httpx>=0.27.0
+[raw_stderr] 
+[raw_stderr]  succeeded in 778ms:
+[raw_stderr] from collections.abc import Generator
+[raw_stderr] 
+[raw_stderr] import pytest
+[raw_stderr] from fastapi.testclient import TestClient
+[raw_stderr] from sqlalchemy import create_engine
+[raw_stderr] from sqlalchemy.orm import Session, sessionmaker
+[raw_stderr] from sqlalchemy.pool import StaticPool
+[raw_stderr] 
+[raw_stderr] from backend.app.api import cart as cart_api
+[raw_stderr] from backend.app.database import Base, get_db
+[raw_stderr] from backend.app.main import app
+[raw_stderr] from backend.app.seed import seed_sneakers
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @pytest.fixture()
+[raw_stderr] def db_session_factory() -> Generator[sessionmaker[Session], None, None]:
+[raw_stderr]     engine = create_engine(
+[raw_stderr]         "sqlite://",
+[raw_stderr]         connect_args={"check_same_thread": False},
+[raw_stderr]         poolclass=StaticPool,
+[raw_stderr]         future=True,
+[raw_stderr]     )
+[raw_stderr]     TestingSessionLocal = sessionmaker(
+[raw_stderr]         autocommit=False,
+[raw_stderr]         autoflush=False,
+[raw_stderr]         bind=engine,
+[raw_stderr]         future=True,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     Base.metadata.create_all(bind=engine)
+[raw_stderr]     with TestingSessionLocal() as db:
+[raw_stderr]         seed_sneakers(db)
+[raw_stderr] 
+[raw_stderr]     try:
+[raw_stderr]         yield TestingSessionLocal
+[raw_stderr]     finally:
+[raw_stderr]         Base.metadata.drop_all(bind=engine)
+[raw_stderr]         engine.dispose()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @pytest.fixture()
+[raw_stderr] def db_session(db_session_factory: sessionmaker[Session]) -> Generator[Session, None, None]:
+[raw_stderr]     with db_session_factory() as db:
+[raw_stderr]         yield db
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @pytest.fixture(autouse=True)
+[raw_stderr] def clear_cart_state() -> Generator[None, None, None]:
+[raw_stderr]     cart_api.clear_cart()
+[raw_stderr]     yield
+[raw_stderr]     cart_api.clear_cart()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @pytest.fixture()
+[raw_stderr] def client(db_session_factory: sessionmaker[Session]) -> Generator[TestClient, None, None]:
+[raw_stderr]     def override_get_db() -> Generator[Session, None, None]:
+[raw_stderr]         with db_session_factory() as db:
+[raw_stderr]             yield db
+[raw_stderr] 
+[raw_stderr]     app.dependency_overrides[get_db] = override_get_db
+[raw_stderr] 
+[raw_stderr]     test_client = TestClient(app)
+[raw_stderr]     try:
+[raw_stderr]         yield test_client
+[raw_stderr]     finally:
+[raw_stderr]         test_client.close()
+[raw_stderr] 
+[raw_stderr]         app.dependency_overrides.clear()
+[raw_stderr] 
+[raw_stderr]  succeeded in 840ms:
+[raw_stderr] """FastAPI application entry point."""
+[raw_stderr] 
+[raw_stderr] from pathlib import Path
+[raw_stderr] 
+[raw_stderr] from fastapi import FastAPI
+[raw_stderr] from fastapi.staticfiles import StaticFiles
+[raw_stderr] 
+[raw_stderr] from backend.app.api import cart, orders, products, reviews
+[raw_stderr] from backend.app.database import SessionLocal, init_db
+[raw_stderr] from backend.app.seed import seed_sneakers
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] PROJECT_ROOT = Path(__file__).resolve().parents[2]
+[raw_stderr] FRONTEND_DIR = PROJECT_ROOT / "frontend"
+[raw_stderr] 
+[raw_stderr] app = FastAPI(title="Sneaker E-Commerce API")
+[raw_stderr] app.include_router(products.router)
+[raw_stderr] app.include_router(cart.router)
+[raw_stderr] app.include_router(orders.router)
+[raw_stderr] app.include_router(reviews.router)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @app.on_event("startup")
+[raw_stderr] def on_startup() -> None:
+[raw_stderr]     """Create database tables and seed the initial product catalog."""
+[raw_stderr]     init_db()
+[raw_stderr]     with SessionLocal() as db:
+[raw_stderr]         seed_sneakers(db)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @app.get("/health", tags=["system"])
+[raw_stderr] def health_check() -> dict[str, str]:
+[raw_stderr]     """Return basic service health information."""
+[raw_stderr]     return {"status": "ok"}
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] if FRONTEND_DIR.exists():
+[raw_stderr]     app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
+[raw_stderr] 
+[raw_stderr]  succeeded in 857ms:
+[raw_stderr] """Database configuration and initialization helpers."""
+[raw_stderr] 
+[raw_stderr] from collections.abc import Generator
+[raw_stderr] from pathlib import Path
+[raw_stderr] 
+[raw_stderr] from sqlalchemy import create_engine
+[raw_stderr] from sqlalchemy.orm import Session, declarative_base, sessionmaker
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] PROJECT_ROOT = Path(__file__).resolve().parents[2]
+[raw_stderr] DATABASE_URL = f"sqlite:///{PROJECT_ROOT / 'ecommerce.sqlite3'}"
+[raw_stderr] 
+[raw_stderr] engine = create_engine(
+[raw_stderr]     DATABASE_URL,
+[raw_stderr]     connect_args={"check_same_thread": False},
+[raw_stderr]     future=True,
+[raw_stderr] )
+[raw_stderr] 
+[raw_stderr] SessionLocal = sessionmaker(
+[raw_stderr]     autocommit=False,
+[raw_stderr]     autoflush=False,
+[raw_stderr]     bind=engine,
+[raw_stderr]     future=True,
+[raw_stderr] )
+[raw_stderr] 
+[raw_stderr] Base = declarative_base()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def init_db() -> None:
+[raw_stderr]     """Create all database tables declared by the ORM models."""
+[raw_stderr]     from backend.app import models  # noqa: F401
+[raw_stderr] 
+[raw_stderr]     Base.metadata.create_all(bind=engine)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def get_db() -> Generator[Session, None, None]:
+[raw_stderr]     """Yield a database session for FastAPI dependencies."""
+[raw_stderr]     db = SessionLocal()
+[raw_stderr]     try:
+[raw_stderr]         yield db
+[raw_stderr]     finally:
+[raw_stderr]         db.close()
+[raw_stderr] 
+[raw_stderr]  succeeded in 897ms:
+[raw_stderr] """SQLAlchemy ORM models for the e-commerce application."""
+[raw_stderr] 
+[raw_stderr] from datetime import datetime
+[raw_stderr] 
+[raw_stderr] from sqlalchemy import (
+[raw_stderr]     Boolean,
+[raw_stderr]     CheckConstraint,
+[raw_stderr]     Column,
+[raw_stderr]     DateTime,
+[raw_stderr]     Float,
+[raw_stderr]     ForeignKey,
+[raw_stderr]     Integer,
+[raw_stderr]     JSON,
+[raw_stderr]     Numeric,
+[raw_stderr]     String,
+[raw_stderr] )
+[raw_stderr] from sqlalchemy.orm import relationship
+[raw_stderr] 
+[raw_stderr] from backend.app.database import Base
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class Sneaker(Base):
+[raw_stderr]     """Product table containing sneaker catalog data."""
+[raw_stderr] 
+[raw_stderr]     __tablename__ = "sneakers"
+[raw_stderr] 
+[raw_stderr]     id = Column(Integer, primary_key=True, index=True)
+[raw_stderr]     name = Column(String, nullable=False, index=True)
+[raw_stderr]     brand = Column(String, nullable=False, index=True)
+[raw_stderr]     price = Column(Numeric(10, 2), nullable=False)
+[raw_stderr]     currency = Column(String, nullable=False, default="EUR")
+[raw_stderr]     short_description = Column(String, nullable=False)
+[raw_stderr]     long_description = Column(String, nullable=False)
+[raw_stderr]     image_url = Column(String, nullable=False)
+[raw_stderr]     sizes = Column(JSON, nullable=False)
+[raw_stderr]     color = Column(String, nullable=False)
+[raw_stderr]     material = Column(String, nullable=False)
+[raw_stderr]     stock = Column(Integer, nullable=False, default=0)
+[raw_stderr]     rating = Column(Float, nullable=False, default=0.0)
+[raw_stderr]     is_new = Column(Boolean, nullable=False, default=False)
+[raw_stderr] 
+[raw_stderr]     reviews = relationship(
+[raw_stderr]         "Review",
+[raw_stderr]         back_populates="product",
+[raw_stderr]         cascade="all, delete-orphan",
+[raw_stderr]     )
+[raw_stderr]     order_items = relationship("OrderItem", back_populates="product")
+[raw_stderr] 
+[raw_stderr]     __table_args__ = (
+[raw_stderr]         CheckConstraint("price >= 0", name="ck_sneaker_price_non_negative"),
+[raw_stderr]         CheckConstraint("stock >= 0", name="ck_sneaker_stock_non_negative"),
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "rating >= 0 AND rating <= 5",
+[raw_stderr]             name="ck_sneaker_rating_range",
+[raw_stderr]         ),
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class Review(Base):
+[raw_stderr]     """Customer review for a sneaker product."""
+[raw_stderr] 
+[raw_stderr]     __tablename__ = "reviews"
+[raw_stderr] 
+[raw_stderr]     id = Column(Integer, primary_key=True, index=True)
+[raw_stderr]     product_id = Column(
+[raw_stderr]         Integer,
+[raw_stderr]         ForeignKey("sneakers.id", ondelete="CASCADE"),
+[raw_stderr]         nullable=False,
+[raw_stderr]         index=True,
+[raw_stderr]     )
+[raw_stderr]     author = Column(String, nullable=True)
+[raw_stderr]     rating = Column(Integer, nullable=False)
+[raw_stderr]     comment = Column(String, nullable=False)
+[raw_stderr]     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+[raw_stderr] 
+[raw_stderr]     product = relationship("Sneaker", back_populates="reviews")
+[raw_stderr] 
+[raw_stderr]     __table_args__ = (
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "rating >= 1 AND rating <= 5",
+[raw_stderr]             name="ck_review_rating_range",
+[raw_stderr]         ),
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class Order(Base):
+[raw_stderr]     """Order header with shipping, payment, and totals."""
+[raw_stderr] 
+[raw_stderr]     __tablename__ = "orders"
+[raw_stderr] 
+[raw_stderr]     id = Column(Integer, primary_key=True, index=True)
+[raw_stderr]     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+[raw_stderr]     status = Column(String, nullable=False, default="created")
+[raw_stderr]     shipping_name = Column(String, nullable=False)
+[raw_stderr]     shipping_street = Column(String, nullable=False)
+[raw_stderr]     shipping_zip = Column(String, nullable=False)
+[raw_stderr]     shipping_city = Column(String, nullable=False)
+[raw_stderr]     shipping_country = Column(String, nullable=False)
+[raw_stderr]     email = Column(String, nullable=False)
+[raw_stderr]     payment_method = Column(String, nullable=False)
+[raw_stderr]     subtotal = Column(Numeric(10, 2), nullable=False)
+[raw_stderr]     total = Column(Numeric(10, 2), nullable=False)
+[raw_stderr] 
+[raw_stderr]     items = relationship(
+[raw_stderr]         "OrderItem",
+[raw_stderr]         back_populates="order",
+[raw_stderr]         cascade="all, delete-orphan",
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     __table_args__ = (
+[raw_stderr]         CheckConstraint("subtotal >= 0", name="ck_order_subtotal_non_negative"),
+[raw_stderr]         CheckConstraint("total >= 0", name="ck_order_total_non_negative"),
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderItem(Base):
+[raw_stderr]     """Immutable snapshot of a product line inside an order."""
+[raw_stderr] 
+[raw_stderr]     __tablename__ = "order_items"
+[raw_stderr] 
+[raw_stderr]     id = Column(Integer, primary_key=True, index=True)
+[raw_stderr]     order_id = Column(
+[raw_stderr]         Integer,
+[raw_stderr]         ForeignKey("orders.id", ondelete="CASCADE"),
+[raw_stderr]         nullable=False,
+[raw_stderr]         index=True,
+[raw_stderr]     )
+[raw_stderr]     product_id = Column(
+[raw_stderr]         Integer,
+[raw_stderr]         ForeignKey("sneakers.id", ondelete="RESTRICT"),
+[raw_stderr]         nullable=False,
+[raw_stderr]         index=True,
+[raw_stderr]     )
+[raw_stderr]     name_snapshot = Column(String, nullable=False)
+[raw_stderr]     brand_snapshot = Column(String, nullable=False)
+[raw_stderr]     price_snapshot = Column(Numeric(10, 2), nullable=False)
+[raw_stderr]     image_url_snapshot = Column(String, nullable=False)
+[raw_stderr]     size = Column(String, nullable=False)
+[raw_stderr]     quantity = Column(Integer, nullable=False)
+[raw_stderr]     line_total = Column(Numeric(10, 2), nullable=False)
+[raw_stderr] 
+[raw_stderr]     order = relationship("Order", back_populates="items")
+[raw_stderr]     product = relationship("Sneaker", back_populates="order_items")
+[raw_stderr] 
+[raw_stderr]     __table_args__ = (
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "price_snapshot >= 0",
+[raw_stderr]             name="ck_order_item_price_non_negative",
+[raw_stderr]         ),
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "quantity > 0",
+[raw_stderr]             name="ck_order_item_quantity_positive",
+[raw_stderr]         ),
+[raw_stderr]         CheckConstraint(
+[raw_stderr]             "line_total >= 0",
+[raw_stderr]             name="ck_order_item_line_total_non_negative",
+[raw_stderr]         ),
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Die Test-Infrastruktur ist schon angelegt: In-Memory-SQLite mit `StaticPool`, Dependency-Override und Warenkorb-Reset. Ich prüfe jetzt, ob die Tests die geforderten Bereiche tatsächlich abdecken und ob sie gegen die aktuelle API laufen.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\test_api.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\test_database.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\api\\orders.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\api\\cart.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content tests\\test_cart_logic.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 722ms:
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] import pytest
+[raw_stderr] from sqlalchemy import exc, select
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.models import Order, OrderItem, Review, Sneaker
+[raw_stderr] from backend.app.seed import seed_sneakers
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_seed_sneakers_is_idempotent(db_session: Session) -> None:
+[raw_stderr]     initial_count = len(db_session.scalars(select(Sneaker)).all())
+[raw_stderr] 
+[raw_stderr]     inserted = seed_sneakers(db_session)
+[raw_stderr]     final_count = len(db_session.scalars(select(Sneaker)).all())
+[raw_stderr] 
+[raw_stderr]     assert initial_count == 6
+[raw_stderr]     assert inserted == 0
+[raw_stderr]     assert final_count == initial_count
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_sneaker_crud_roundtrip(db_session: Session) -> None:
+[raw_stderr]     sneaker = Sneaker(
+[raw_stderr]         name="Test Runner",
+[raw_stderr]         brand="QA",
+[raw_stderr]         price=Decimal("79.50"),
+[raw_stderr]         currency="EUR",
+[raw_stderr]         short_description="Short",
+[raw_stderr]         long_description="Long",
+[raw_stderr]         image_url="/static/images/test-runner.jpg",
+[raw_stderr]         sizes=["41", "42"],
+[raw_stderr]         color="Black",
+[raw_stderr]         material="Mesh",
+[raw_stderr]         stock=3,
+[raw_stderr]         rating=4.0,
+[raw_stderr]         is_new=True,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     db_session.add(sneaker)
+[raw_stderr]     db_session.commit()
+[raw_stderr]     db_session.refresh(sneaker)
+[raw_stderr] 
+[raw_stderr]     loaded = db_session.get(Sneaker, sneaker.id)
+[raw_stderr]     assert loaded is not None
+[raw_stderr]     assert loaded.name == "Test Runner"
+[raw_stderr] 
+[raw_stderr]     loaded.stock = 2
+[raw_stderr]     db_session.commit()
+[raw_stderr]     db_session.refresh(loaded)
+[raw_stderr]     assert loaded.stock == 2
+[raw_stderr] 
+[raw_stderr]     db_session.delete(loaded)
+[raw_stderr]     db_session.commit()
+[raw_stderr]     assert db_session.get(Sneaker, sneaker.id) is None
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_negative_stock_violates_database_constraint(db_session: Session) -> None:
+[raw_stderr]     db_session.add(
+[raw_stderr]         Sneaker(
+[raw_stderr]             name="Broken Stock",
+[raw_stderr]             brand="QA",
+[raw_stderr]             price=Decimal("10.00"),
+[raw_stderr]             currency="EUR",
+[raw_stderr]             short_description="Short",
+[raw_stderr]             long_description="Long",
+[raw_stderr]             image_url="/static/images/broken-stock.jpg",
+[raw_stderr]             sizes=["42"],
+[raw_stderr]             color="Black",
+[raw_stderr]             material="Mesh",
+[raw_stderr]             stock=-1,
+[raw_stderr]             rating=3.0,
+[raw_stderr]             is_new=False,
+[raw_stderr]         )
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(exc.IntegrityError):
+[raw_stderr]         db_session.commit()
+[raw_stderr] 
+[raw_stderr]     db_session.rollback()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_crud_with_items_and_delete_cascades(db_session: Session) -> None:
+[raw_stderr]     product = db_session.get(Sneaker, 1)
+[raw_stderr]     assert product is not None
+[raw_stderr] 
+[raw_stderr]     order = Order(
+[raw_stderr]         status="created",
+[raw_stderr]         shipping_name="Ada Lovelace",
+[raw_stderr]         shipping_street="Teststrasse 1",
+[raw_stderr]         shipping_zip="10115",
+[raw_stderr]         shipping_city="Berlin",
+[raw_stderr]         shipping_country="Germany",
+[raw_stderr]         email="ada@example.com",
+[raw_stderr]         payment_method="credit_card",
+[raw_stderr]         subtotal=Decimal("129.99"),
+[raw_stderr]         total=Decimal("129.99"),
+[raw_stderr]         items=[
+[raw_stderr]             OrderItem(
+[raw_stderr]                 product_id=product.id,
+[raw_stderr]                 name_snapshot=product.name,
+[raw_stderr]                 brand_snapshot=product.brand,
+[raw_stderr]                 price_snapshot=product.price,
+[raw_stderr]                 image_url_snapshot=product.image_url,
+[raw_stderr]                 size="42",
+[raw_stderr]                 quantity=1,
+[raw_stderr]                 line_total=product.price,
+[raw_stderr]             )
+[raw_stderr]         ],
+[raw_stderr]     )
+[raw_stderr]     db_session.add(order)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     saved_order = db_session.get(Order, order.id)
+[raw_stderr]     assert saved_order is not None
+[raw_stderr]     assert len(saved_order.items) == 1
+[raw_stderr]     assert saved_order.items[0].product_id == product.id
+[raw_stderr]     item_id = saved_order.items[0].id
+[raw_stderr] 
+[raw_stderr]     db_session.delete(saved_order)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     assert db_session.get(Order, order.id) is None
+[raw_stderr]     assert db_session.get(OrderItem, item_id) is None
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_deleting_sneaker_cascades_reviews(db_session: Session) -> None:
+[raw_stderr]     product = db_session.get(Sneaker, 2)
+[raw_stderr]     assert product is not None
+[raw_stderr] 
+[raw_stderr]     review = Review(product_id=product.id, author="QA", rating=5, comment="Great")
+[raw_stderr]     db_session.add(review)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     assert len(product.reviews) == 1
+[raw_stderr] 
+[raw_stderr]     db_session.delete(product)
+[raw_stderr]     db_session.commit()
+[raw_stderr] 
+[raw_stderr]     assert db_session.get(Review, review.id) is None
+[raw_stderr] 
+[raw_stderr]  succeeded in 786ms:
+[raw_stderr] from fastapi.testclient import TestClient
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_products_endpoint_returns_seeded_catalog(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/products")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 200
+[raw_stderr]     products = response.json()
+[raw_stderr]     assert len(products) == 6
+[raw_stderr]     assert products[0]["name"] == "Air Zoom Pulse"
+[raw_stderr]     assert products[0]["price"] == 129.99
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_product_detail_returns_seeded_product(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/products/1")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 200
+[raw_stderr]     product = response.json()
+[raw_stderr]     assert product["id"] == 1
+[raw_stderr]     assert product["name"] == "Air Zoom Pulse"
+[raw_stderr]     assert product["sizes"] == ["39", "40", "41", "42", "43", "44", "45"]
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_product_detail_returns_404_for_unknown_product(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/products/9999")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Product not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_rejects_unknown_product(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 9999, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Product not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_rejects_unavailable_size(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "99", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Selected size is not available for this product"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_rejects_quantity_above_stock(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 6, "size": "42", "quantity": 20},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Requested quantity exceeds available stock"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_rejects_invalid_quantity_payload(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 0},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 422
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_item_can_be_updated_and_deleted(client: TestClient) -> None:
+[raw_stderr]     add_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr]     assert add_response.status_code == 201
+[raw_stderr]     item_id = add_response.json()["item_id"]
+[raw_stderr] 
+[raw_stderr]     update_response = client.patch(
+[raw_stderr]         f"/api/cart/items/{item_id}",
+[raw_stderr]         json={"quantity": 3},
+[raw_stderr]     )
+[raw_stderr]     assert update_response.status_code == 204
+[raw_stderr] 
+[raw_stderr]     cart_response = client.get("/api/cart")
+[raw_stderr]     assert cart_response.status_code == 200
+[raw_stderr]     cart = cart_response.json()
+[raw_stderr]     assert cart["items"][0]["quantity"] == 3
+[raw_stderr]     assert cart["items"][0]["line_total"] == 389.97
+[raw_stderr]     assert cart["subtotal"] == 389.97
+[raw_stderr] 
+[raw_stderr]     delete_response = client.delete(f"/api/cart/items/{item_id}")
+[raw_stderr]     assert delete_response.status_code == 204
+[raw_stderr] 
+[raw_stderr]     empty_cart_response = client.get("/api/cart")
+[raw_stderr]     assert empty_cart_response.status_code == 200
+[raw_stderr]     assert empty_cart_response.json()["items"] == []
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_delete_returns_404_for_unknown_item(client: TestClient) -> None:
+[raw_stderr]     response = client.delete("/api/cart/items/9999")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Cart item not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_cart_and_order_happy_path_persists_order_and_clears_cart(
+[raw_stderr]     client: TestClient,
+[raw_stderr] ) -> None:
+[raw_stderr]     cart_response = client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 2},
+[raw_stderr]     )
+[raw_stderr]     assert cart_response.status_code == 201
+[raw_stderr]     assert cart_response.json()["line_total"] == 259.98
+[raw_stderr] 
+[raw_stderr]     order_response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "ada@example.com",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert order_response.status_code == 201
+[raw_stderr]     created_order = order_response.json()
+[raw_stderr]     assert created_order["status"] == "created"
+[raw_stderr]     assert created_order["total"] == 259.98
+[raw_stderr] 
+[raw_stderr]     persisted_response = client.get(f"/api/orders/{created_order['order_id']}")
+[raw_stderr]     assert persisted_response.status_code == 200
+[raw_stderr]     persisted_order = persisted_response.json()
+[raw_stderr]     assert persisted_order["subtotal"] == 259.98
+[raw_stderr]     assert persisted_order["items"][0]["name_snapshot"] == "Air Zoom Pulse"
+[raw_stderr]     assert persisted_order["items"][0]["quantity"] == 2
+[raw_stderr] 
+[raw_stderr]     empty_cart_response = client.get("/api/cart")
+[raw_stderr]     assert empty_cart_response.status_code == 200
+[raw_stderr]     assert empty_cart_response.json() == {
+[raw_stderr]         "items": [],
+[raw_stderr]         "subtotal": 0.0,
+[raw_stderr]         "total": 0.0,
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]     }
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_creation_rejects_empty_cart(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "ada@example.com",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 400
+[raw_stderr]     assert response.json()["detail"] == "Cart is empty"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_creation_rejects_invalid_shipping_email(client: TestClient) -> None:
+[raw_stderr]     client.post(
+[raw_stderr]         "/api/cart/items",
+[raw_stderr]         json={"product_id": 1, "size": "42", "quantity": 1},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/orders",
+[raw_stderr]         json={
+[raw_stderr]             "shipping": {
+[raw_stderr]                 "name": "Ada Lovelace",
+[raw_stderr]                 "street": "Teststrasse 1",
+[raw_stderr]                 "zip": "10115",
+[raw_stderr]                 "city": "Berlin",
+[raw_stderr]                 "country": "Germany",
+[raw_stderr]                 "email": "not-an-email",
+[raw_stderr]             },
+[raw_stderr]             "payment_method": "credit_card",
+[raw_stderr]         },
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 422
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_order_detail_returns_404_for_unknown_order(client: TestClient) -> None:
+[raw_stderr]     response = client.get("/api/orders/9999")
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 404
+[raw_stderr]     assert response.json()["detail"] == "Order not found"
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_reviews_happy_path_updates_product_average_rating(client: TestClient) -> None:
+[raw_stderr]     first_response = client.post(
+[raw_stderr]         "/api/products/1/reviews",
+[raw_stderr]         json={"author": "QA", "rating": 5, "comment": "Excellent"},
+[raw_stderr]     )
+[raw_stderr]     second_response = client.post(
+[raw_stderr]         "/api/products/1/reviews",
+[raw_stderr]         json={"author": "QA", "rating": 3, "comment": "Okay"},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert first_response.status_code == 201
+[raw_stderr]     assert second_response.status_code == 201
+[raw_stderr] 
+[raw_stderr]     reviews_response = client.get("/api/products/1/reviews")
+[raw_stderr]     assert reviews_response.status_code == 200
+[raw_stderr]     reviews = reviews_response.json()
+[raw_stderr]     assert reviews["average_rating"] == 4.0
+[raw_stderr]     assert [review["rating"] for review in reviews["reviews"]] == [3, 5]
+[raw_stderr] 
+[raw_stderr]     product_response = client.get("/api/products/1")
+[raw_stderr]     assert product_response.status_code == 200
+[raw_stderr]     assert product_response.json()["rating"] == 4.0
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_review_creation_rejects_invalid_rating(client: TestClient) -> None:
+[raw_stderr]     response = client.post(
+[raw_stderr]         "/api/products/1/reviews",
+[raw_stderr]         json={"author": "QA", "rating": 6, "comment": "Too high"},
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert response.status_code == 422
+[raw_stderr] 
+[raw_stderr]  succeeded in 764ms:
+[raw_stderr] """Order API endpoints."""
+[raw_stderr] 
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] from fastapi import APIRouter, Depends, HTTPException, status
+[raw_stderr] from sqlalchemy.orm import Session, selectinload
+[raw_stderr] 
+[raw_stderr] from backend.app.api.cart import clear_cart, get_stored_cart_items
+[raw_stderr] from backend.app.database import get_db
+[raw_stderr] from backend.app.models import Order, OrderItem, Sneaker
+[raw_stderr] from backend.app.schemas import OrderCreate, OrderCreated, OrderRead
+[raw_stderr] 
+[raw_stderr] router = APIRouter(prefix="/api/orders", tags=["orders"])
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.post("", response_model=OrderCreated, status_code=status.HTTP_201_CREATED)
+[raw_stderr] def create_order(
+[raw_stderr]     payload: OrderCreate,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> OrderCreated:
+[raw_stderr]     """Create an order from the current cart and clear the cart."""
+[raw_stderr]     cart_items = get_stored_cart_items()
+[raw_stderr]     if not cart_items:
+[raw_stderr]         raise HTTPException(
+[raw_stderr]             status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]             detail="Cart is empty",
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     order_lines: list[OrderItem] = []
+[raw_stderr]     subtotal = Decimal("0.00")
+[raw_stderr] 
+[raw_stderr]     for cart_item in cart_items:
+[raw_stderr]         product = db.get(Sneaker, cart_item.product_id)
+[raw_stderr]         if product is None:
+[raw_stderr]             raise HTTPException(
+[raw_stderr]                 status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]                 detail="Cart contains an unavailable product",
+[raw_stderr]             )
+[raw_stderr] 
+[raw_stderr]         if cart_item.size not in product.sizes:
+[raw_stderr]             raise HTTPException(
+[raw_stderr]                 status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]                 detail="Cart contains an unavailable product size",
+[raw_stderr]             )
+[raw_stderr] 
+[raw_stderr]         if cart_item.quantity > product.stock:
+[raw_stderr]             raise HTTPException(
+[raw_stderr]                 status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]                 detail="Cart quantity exceeds available stock",
+[raw_stderr]             )
+[raw_stderr] 
+[raw_stderr]         line_total = product.price * cart_item.quantity
+[raw_stderr]         subtotal += line_total
+[raw_stderr]         order_lines.append(
+[raw_stderr]             OrderItem(
+[raw_stderr]                 product_id=product.id,
+[raw_stderr]                 name_snapshot=product.name,
+[raw_stderr]                 brand_snapshot=product.brand,
+[raw_stderr]                 price_snapshot=product.price,
+[raw_stderr]                 image_url_snapshot=product.image_url,
+[raw_stderr]                 size=cart_item.size,
+[raw_stderr]                 quantity=cart_item.quantity,
+[raw_stderr]                 line_total=line_total,
+[raw_stderr]             )
+[raw_stderr]         )
+[raw_stderr]         product.stock -= cart_item.quantity
+[raw_stderr] 
+[raw_stderr]     order = Order(
+[raw_stderr]         status="created",
+[raw_stderr]         shipping_name=payload.shipping.name,
+[raw_stderr]         shipping_street=payload.shipping.street,
+[raw_stderr]         shipping_zip=payload.shipping.zip,
+[raw_stderr]         shipping_city=payload.shipping.city,
+[raw_stderr]         shipping_country=payload.shipping.country,
+[raw_stderr]         email=str(payload.shipping.email),
+[raw_stderr]         payment_method=payload.payment_method,
+[raw_stderr]         subtotal=subtotal,
+[raw_stderr]         total=subtotal,
+[raw_stderr]         items=order_lines,
+[raw_stderr]     )
+[raw_stderr]     db.add(order)
+[raw_stderr]     db.commit()
+[raw_stderr]     db.refresh(order)
+[raw_stderr]     clear_cart()
+[raw_stderr] 
+[raw_stderr]     return OrderCreated(order_id=order.id, status=order.status, total=order.total)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("/{order_id}", response_model=OrderRead)
+[raw_stderr] def get_order(order_id: int, db: Session = Depends(get_db)) -> Order:
+[raw_stderr]     """Return a persisted order or 404 when it does not exist."""
+[raw_stderr]     order = db.get(
+[raw_stderr]         Order,
+[raw_stderr]         order_id,
+[raw_stderr]         options=[selectinload(Order.items)],
+[raw_stderr]     )
+[raw_stderr]     if order is None:
+[raw_stderr]         raise HTTPException(status_code=404, detail="Order not found")
+[raw_stderr]     return order
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr]  succeeded in 775ms:
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] import pytest
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.api import cart as cart_api
+[raw_stderr] from backend.app.api.cart import StoredCartItem, build_cart_response
+[raw_stderr] from backend.app.schemas import CartItemCreate
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_build_cart_response_calculates_subtotal_and_line_totals(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     cart_api._cart_items[1] = StoredCartItem(
+[raw_stderr]         item_id=1,
+[raw_stderr]         product_id=1,
+[raw_stderr]         size="42",
+[raw_stderr]         quantity=2,
+[raw_stderr]     )
+[raw_stderr]     cart_api._cart_items[2] = StoredCartItem(
+[raw_stderr]         item_id=2,
+[raw_stderr]         product_id=3,
+[raw_stderr]         size="41",
+[raw_stderr]         quantity=1,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     cart = build_cart_response(db_session)
+[raw_stderr] 
+[raw_stderr]     assert len(cart.items) == 2
+[raw_stderr]     assert cart.items[0].line_total == Decimal("259.98")
+[raw_stderr]     assert cart.items[1].line_total == Decimal("89.90")
+[raw_stderr]     assert cart.subtotal == Decimal("349.88")
+[raw_stderr]     assert cart.total == Decimal("349.88")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_build_cart_response_skips_removed_products(db_session: Session) -> None:
+[raw_stderr]     cart_api._cart_items[1] = StoredCartItem(
+[raw_stderr]         item_id=1,
+[raw_stderr]         product_id=9999,
+[raw_stderr]         size="42",
+[raw_stderr]         quantity=2,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     cart = build_cart_response(db_session)
+[raw_stderr] 
+[raw_stderr]     assert cart.items == []
+[raw_stderr]     assert cart.subtotal == Decimal("0.00")
+[raw_stderr]     assert cart.total == Decimal("0.00")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_add_cart_item_combines_same_product_and_size(db_session: Session) -> None:
+[raw_stderr]     first_item = cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="42", quantity=1),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr]     second_item = cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=1, size="42", quantity=2),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     assert second_item.item_id == first_item.item_id
+[raw_stderr]     assert second_item.quantity == 3
+[raw_stderr]     assert second_item.line_total == Decimal("389.97")
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def test_add_cart_item_validates_combined_quantity_against_stock(
+[raw_stderr]     db_session: Session,
+[raw_stderr] ) -> None:
+[raw_stderr]     cart_api.add_cart_item(
+[raw_stderr]         CartItemCreate(product_id=6, size="42", quantity=10),
+[raw_stderr]         db_session,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr]     with pytest.raises(cart_api.HTTPException) as error:
+[raw_stderr]         cart_api.add_cart_item(
+[raw_stderr]             CartItemCreate(product_id=6, size="42", quantity=10),
+[raw_stderr]             db_session,
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     assert error.value.status_code == 400
+[raw_stderr]     assert error.value.detail == "Requested quantity exceeds available stock"
+[raw_stderr] 
+[raw_stderr]  succeeded in 820ms:
+[raw_stderr] """Shopping cart API endpoints.
+[raw_stderr] 
+[raw_stderr] The architecture defines no cart table, so the cart is kept in process memory.
+[raw_stderr] This is suitable for the single-user demo frontend and keeps persistence scoped
+[raw_stderr] to the declared order schema.
+[raw_stderr] """
+[raw_stderr] 
+[raw_stderr] from dataclasses import dataclass
+[raw_stderr] from decimal import Decimal
+[raw_stderr] from itertools import count
+[raw_stderr] from threading import Lock
+[raw_stderr] 
+[raw_stderr] from fastapi import APIRouter, Depends, HTTPException, Response, status
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import get_db
+[raw_stderr] from backend.app.models import Sneaker
+[raw_stderr] from backend.app.schemas import (
+[raw_stderr]     CartItemCreate,
+[raw_stderr]     CartItemRead,
+[raw_stderr]     CartItemUpdate,
+[raw_stderr]     CartRead,
+[raw_stderr] )
+[raw_stderr] 
+[raw_stderr] router = APIRouter(prefix="/api/cart", tags=["cart"])
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @dataclass
+[raw_stderr] class StoredCartItem:
+[raw_stderr]     """Minimal cart state stored between requests."""
+[raw_stderr] 
+[raw_stderr]     item_id: int
+[raw_stderr]     product_id: int
+[raw_stderr]     size: str
+[raw_stderr]     quantity: int
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] _cart_items: dict[int, StoredCartItem] = {}
+[raw_stderr] _cart_item_ids = count(1)
+[raw_stderr] _cart_lock = Lock()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def _get_product(db: Session, product_id: int) -> Sneaker:
+[raw_stderr]     """Return a product or raise a 404 HTTP error."""
+[raw_stderr]     product = db.get(Sneaker, product_id)
+[raw_stderr]     if product is None:
+[raw_stderr]         raise HTTPException(status_code=404, detail="Product not found")
+[raw_stderr]     return product
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def _validate_cart_item(product: Sneaker, size: str, quantity: int) -> None:
+[raw_stderr]     """Validate size and stock constraints for a cart line."""
+[raw_stderr]     if size not in product.sizes:
+[raw_stderr]         raise HTTPException(
+[raw_stderr]             status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]             detail="Selected size is not available for this product",
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     if quantity > product.stock:
+[raw_stderr]         raise HTTPException(
+[raw_stderr]             status_code=status.HTTP_400_BAD_REQUEST,
+[raw_stderr]             detail="Requested quantity exceeds available stock",
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def get_stored_cart_items() -> list[StoredCartItem]:
+[raw_stderr]     """Return a stable snapshot of the current cart state."""
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         return list(_cart_items.values())
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def clear_cart() -> None:
+[raw_stderr]     """Remove all cart items after successful checkout."""
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         _cart_items.clear()
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def build_cart_response(db: Session) -> CartRead:
+[raw_stderr]     """Build a cart response from stored cart lines and current products."""
+[raw_stderr]     response_items: list[CartItemRead] = []
+[raw_stderr]     subtotal = Decimal("0.00")
+[raw_stderr] 
+[raw_stderr]     for stored_item in get_stored_cart_items():
+[raw_stderr]         product = db.get(Sneaker, stored_item.product_id)
+[raw_stderr]         if product is None:
+[raw_stderr]             continue
+[raw_stderr] 
+[raw_stderr]         line_total = product.price * stored_item.quantity
+[raw_stderr]         subtotal += line_total
+[raw_stderr]         response_items.append(
+[raw_stderr]             CartItemRead(
+[raw_stderr]                 item_id=stored_item.item_id,
+[raw_stderr]                 product_id=product.id,
+[raw_stderr]                 name=product.name,
+[raw_stderr]                 brand=product.brand,
+[raw_stderr]                 price=product.price,
+[raw_stderr]                 currency=product.currency,
+[raw_stderr]                 image_url=product.image_url,
+[raw_stderr]                 size=stored_item.size,
+[raw_stderr]                 quantity=stored_item.quantity,
+[raw_stderr]                 line_total=line_total,
+[raw_stderr]             )
+[raw_stderr]         )
+[raw_stderr] 
+[raw_stderr]     return CartRead(items=response_items, subtotal=subtotal, total=subtotal)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("", response_model=CartRead)
+[raw_stderr] def get_cart(db: Session = Depends(get_db)) -> CartRead:
+[raw_stderr]     """Return the current shopping cart."""
+[raw_stderr]     return build_cart_response(db)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.post(
+[raw_stderr]     "/items",
+[raw_stderr]     response_model=CartItemRead,
+[raw_stderr]     status_code=status.HTTP_201_CREATED,
+[raw_stderr] )
+[raw_stderr] def add_cart_item(
+[raw_stderr]     payload: CartItemCreate,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> CartItemRead:
+[raw_stderr]     """Add a product line to the cart or increase an existing line."""
+[raw_stderr]     product = _get_product(db, payload.product_id)
+[raw_stderr] 
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         existing = next(
+[raw_stderr]             (
+[raw_stderr]                 item
+[raw_stderr]                 for item in _cart_items.values()
+[raw_stderr]                 if item.product_id == payload.product_id
+[raw_stderr]                 and item.size == payload.size
+[raw_stderr]             ),
+[raw_stderr]             None,
+[raw_stderr]         )
+[raw_stderr]         requested_quantity = payload.quantity
+[raw_stderr]         if existing is not None:
+[raw_stderr]             requested_quantity += existing.quantity
+[raw_stderr] 
+[raw_stderr]         _validate_cart_item(product, payload.size, requested_quantity)
+[raw_stderr] 
+[raw_stderr]         if existing is None:
+[raw_stderr]             item_id = next(_cart_item_ids)
+[raw_stderr]             _cart_items[item_id] = StoredCartItem(
+[raw_stderr]                 item_id=item_id,
+[raw_stderr]                 product_id=payload.product_id,
+[raw_stderr]                 size=payload.size,
+[raw_stderr]                 quantity=payload.quantity,
+[raw_stderr]             )
+[raw_stderr]         else:
+[raw_stderr]             existing.quantity = requested_quantity
+[raw_stderr]             item_id = existing.item_id
+[raw_stderr] 
+[raw_stderr]     cart = build_cart_response(db)
+[raw_stderr]     return next(item for item in cart.items if item.item_id == item_id)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.patch(
+[raw_stderr]     "/items/{item_id}",
+[raw_stderr]     status_code=status.HTTP_204_NO_CONTENT,
+[raw_stderr]     response_class=Response,
+[raw_stderr] )
+[raw_stderr] def update_cart_item(
+[raw_stderr]     item_id: int,
+[raw_stderr]     payload: CartItemUpdate,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> Response:
+[raw_stderr]     """Update the quantity of an existing cart item."""
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         stored_item = _cart_items.get(item_id)
+[raw_stderr]         if stored_item is None:
+[raw_stderr]             raise HTTPException(status_code=404, detail="Cart item not found")
+[raw_stderr] 
+[raw_stderr]         product = _get_product(db, stored_item.product_id)
+[raw_stderr]         _validate_cart_item(product, stored_item.size, payload.quantity)
+[raw_stderr]         stored_item.quantity = payload.quantity
+[raw_stderr] 
+[raw_stderr]     return Response(status_code=status.HTTP_204_NO_CONTENT)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.delete(
+[raw_stderr]     "/items/{item_id}",
+[raw_stderr]     status_code=status.HTTP_204_NO_CONTENT,
+[raw_stderr]     response_class=Response,
+[raw_stderr] )
+[raw_stderr] def delete_cart_item(item_id: int) -> Response:
+[raw_stderr]     """Remove an item from the current cart."""
+[raw_stderr]     with _cart_lock:
+[raw_stderr]         if item_id not in _cart_items:
+[raw_stderr]             raise HTTPException(status_code=404, detail="Cart item not found")
+[raw_stderr]         del _cart_items[item_id]
+[raw_stderr] 
+[raw_stderr]     return Response(status_code=status.HTTP_204_NO_CONTENT)
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Die Abdeckung ist schon ziemlich breit: API-Happy-Paths, mehrere Fehlerfälle, CRUD und Warenkorb-Berechnungen sind vorhanden. Ich führe die Suite jetzt aus; falls sie scheitert, korrigiere ich die Tests oder die Test-Isolation.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python -m pytest -q' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] 2026-06-15T18:57:54.281047Z ERROR codex_core::tools::router: error=Exit code: 1
+[raw_stderr] Wall time: 0.4 seconds
+[raw_stderr] Output:
+[raw_stderr] C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\.venv\Scripts\python.exe: No module named pytest
+[raw_stderr] 
+[raw_stderr]  exited 1 in 444ms:
+[raw_stderr] C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\.venv\Scripts\python.exe: No module named pytest
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] `pytest` ist in dieser Umgebung weiterhin nicht installiert, daher kann ich die Suite hier nicht ausführen. Ich prüfe deshalb noch statisch gegen Schemas und Routen, ob Payloads, Statuscodes und Imports zu den aktuellen Implementierungen passen.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\schemas.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\seed.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\api\\reviews.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content requirements.txt' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content backend\\app\\api\\products.py" in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 881ms:
+[raw_stderr] """Pydantic schemas for API request and response payloads."""
+[raw_stderr] 
+[raw_stderr] from datetime import datetime
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] from pydantic import BaseModel, ConfigDict, Field, field_serializer
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class SneakerRead(BaseModel):
+[raw_stderr]     """Public representation of a sneaker product."""
+[raw_stderr] 
+[raw_stderr]     model_config = ConfigDict(from_attributes=True)
+[raw_stderr] 
+[raw_stderr]     id: int
+[raw_stderr]     name: str
+[raw_stderr]     brand: str
+[raw_stderr]     price: Decimal
+[raw_stderr]     currency: str
+[raw_stderr]     short_description: str
+[raw_stderr]     long_description: str
+[raw_stderr]     image_url: str
+[raw_stderr]     sizes: list[str]
+[raw_stderr]     color: str
+[raw_stderr]     material: str
+[raw_stderr]     stock: int
+[raw_stderr]     rating: float
+[raw_stderr]     is_new: bool
+[raw_stderr] 
+[raw_stderr]     @field_serializer("price")
+[raw_stderr]     def serialize_price(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class CartItemCreate(BaseModel):
+[raw_stderr]     """Payload for adding a product to the cart."""
+[raw_stderr] 
+[raw_stderr]     product_id: int = Field(gt=0)
+[raw_stderr]     size: str = Field(min_length=1, max_length=20)
+[raw_stderr]     quantity: int = Field(gt=0)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class CartItemUpdate(BaseModel):
+[raw_stderr]     """Payload for updating a cart item quantity."""
+[raw_stderr] 
+[raw_stderr]     quantity: int = Field(gt=0)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class CartItemRead(BaseModel):
+[raw_stderr]     """Cart line enriched with product data."""
+[raw_stderr] 
+[raw_stderr]     item_id: int
+[raw_stderr]     product_id: int
+[raw_stderr]     name: str
+[raw_stderr]     brand: str
+[raw_stderr]     price: Decimal
+[raw_stderr]     currency: str
+[raw_stderr]     image_url: str
+[raw_stderr]     size: str
+[raw_stderr]     quantity: int
+[raw_stderr]     line_total: Decimal
+[raw_stderr] 
+[raw_stderr]     @field_serializer("price", "line_total")
+[raw_stderr]     def serialize_money(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class CartRead(BaseModel):
+[raw_stderr]     """Current shopping cart response."""
+[raw_stderr] 
+[raw_stderr]     items: list[CartItemRead]
+[raw_stderr]     subtotal: Decimal
+[raw_stderr]     total: Decimal
+[raw_stderr]     currency: str = "EUR"
+[raw_stderr] 
+[raw_stderr]     @field_serializer("subtotal", "total")
+[raw_stderr]     def serialize_totals(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class ShippingAddress(BaseModel):
+[raw_stderr]     """Shipping and customer contact data for checkout."""
+[raw_stderr] 
+[raw_stderr]     name: str = Field(min_length=1, max_length=255)
+[raw_stderr]     street: str = Field(min_length=1, max_length=255)
+[raw_stderr]     zip: str = Field(min_length=1, max_length=30)
+[raw_stderr]     city: str = Field(min_length=1, max_length=120)
+[raw_stderr]     country: str = Field(min_length=1, max_length=120)
+[raw_stderr]     email: str = Field(
+[raw_stderr]         min_length=3,
+[raw_stderr]         max_length=255,
+[raw_stderr]         pattern=r"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderCreate(BaseModel):
+[raw_stderr]     """Payload for creating an order from the current cart."""
+[raw_stderr] 
+[raw_stderr]     shipping: ShippingAddress
+[raw_stderr]     payment_method: str = Field(min_length=1, max_length=80)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderItemRead(BaseModel):
+[raw_stderr]     """Public representation of a persisted order line."""
+[raw_stderr] 
+[raw_stderr]     model_config = ConfigDict(from_attributes=True)
+[raw_stderr] 
+[raw_stderr]     id: int
+[raw_stderr]     product_id: int
+[raw_stderr]     name_snapshot: str
+[raw_stderr]     brand_snapshot: str
+[raw_stderr]     price_snapshot: Decimal
+[raw_stderr]     image_url_snapshot: str
+[raw_stderr]     size: str
+[raw_stderr]     quantity: int
+[raw_stderr]     line_total: Decimal
+[raw_stderr] 
+[raw_stderr]     @field_serializer("price_snapshot", "line_total")
+[raw_stderr]     def serialize_money(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderRead(BaseModel):
+[raw_stderr]     """Public representation of an order."""
+[raw_stderr] 
+[raw_stderr]     model_config = ConfigDict(from_attributes=True)
+[raw_stderr] 
+[raw_stderr]     id: int
+[raw_stderr]     created_at: datetime
+[raw_stderr]     status: str
+[raw_stderr]     shipping_name: str
+[raw_stderr]     shipping_street: str
+[raw_stderr]     shipping_zip: str
+[raw_stderr]     shipping_city: str
+[raw_stderr]     shipping_country: str
+[raw_stderr]     email: str
+[raw_stderr]     payment_method: str
+[raw_stderr]     subtotal: Decimal
+[raw_stderr]     total: Decimal
+[raw_stderr]     items: list[OrderItemRead]
+[raw_stderr] 
+[raw_stderr]     @field_serializer("subtotal", "total")
+[raw_stderr]     def serialize_totals(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class OrderCreated(BaseModel):
+[raw_stderr]     """Response returned after successful checkout."""
+[raw_stderr] 
+[raw_stderr]     order_id: int
+[raw_stderr]     status: str
+[raw_stderr]     total: Decimal
+[raw_stderr] 
+[raw_stderr]     @field_serializer("total")
+[raw_stderr]     def serialize_total(self, value: Decimal) -> float:
+[raw_stderr]         """Return money values as JSON numbers for frontend consumption."""
+[raw_stderr]         return float(value)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class ReviewCreate(BaseModel):
+[raw_stderr]     """Payload for creating a product review."""
+[raw_stderr] 
+[raw_stderr]     author: str | None = Field(default=None, max_length=120)
+[raw_stderr]     rating: int = Field(ge=1, le=5)
+[raw_stderr]     comment: str = Field(min_length=1, max_length=1000)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class ReviewRead(BaseModel):
+[raw_stderr]     """Public representation of a customer review."""
+[raw_stderr] 
+[raw_stderr]     model_config = ConfigDict(from_attributes=True)
+[raw_stderr] 
+[raw_stderr]     id: int
+[raw_stderr]     product_id: int
+[raw_stderr]     author: str | None
+[raw_stderr]     rating: int
+[raw_stderr]     comment: str
+[raw_stderr]     created_at: datetime
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] class ProductReviewsRead(BaseModel):
+[raw_stderr]     """Review listing with aggregate product rating."""
+[raw_stderr] 
+[raw_stderr]     average_rating: float
+[raw_stderr]     reviews: list[ReviewRead]
+[raw_stderr] 
+[raw_stderr]  succeeded in 773ms:
+[raw_stderr] """Product API endpoints."""
+[raw_stderr] 
+[raw_stderr] from fastapi import APIRouter, Depends, HTTPException
+[raw_stderr] from sqlalchemy import select
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import get_db
+[raw_stderr] from backend.app.models import Sneaker
+[raw_stderr] from backend.app.schemas import SneakerRead
+[raw_stderr] 
+[raw_stderr] router = APIRouter(prefix="/api/products", tags=["products"])
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("", response_model=list[SneakerRead])
+[raw_stderr] def list_products(db: Session = Depends(get_db)) -> list[Sneaker]:
+[raw_stderr]     """Return all products in catalog order."""
+[raw_stderr]     return list(db.scalars(select(Sneaker).order_by(Sneaker.id)).all())
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("/{product_id}", response_model=SneakerRead)
+[raw_stderr] def get_product(product_id: int, db: Session = Depends(get_db)) -> Sneaker:
+[raw_stderr]     """Return one product or 404 when it does not exist."""
+[raw_stderr]     product = db.get(Sneaker, product_id)
+[raw_stderr]     if product is None:
+[raw_stderr]         raise HTTPException(status_code=404, detail="Product not found")
+[raw_stderr]     return product
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr]  succeeded in 852ms:
+[raw_stderr] fastapi>=0.111.0
+[raw_stderr] uvicorn[standard]>=0.30.0
+[raw_stderr] SQLAlchemy>=2.0.0
+[raw_stderr] pydantic>=2.7.0
+[raw_stderr] 
+[raw_stderr]  succeeded in 904ms:
+[raw_stderr] """Seed data for the e-commerce catalog."""
+[raw_stderr] 
+[raw_stderr] from decimal import Decimal
+[raw_stderr] 
+[raw_stderr] from sqlalchemy import select
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import SessionLocal, init_db
+[raw_stderr] from backend.app.models import Sneaker
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] SEED_SNEAKERS = [
+[raw_stderr]     {
+[raw_stderr]         "name": "Air Zoom Pulse",
+[raw_stderr]         "brand": "Nike",
+[raw_stderr]         "price": Decimal("129.99"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Leichter Performance-Sneaker fuer den Alltag.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Air Zoom Pulse kombiniert reaktionsfreudige Daempfung mit "
+[raw_stderr]             "atmungsaktivem Mesh und einer griffigen Laufsohle."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/air-zoom-pulse.jpg",
+[raw_stderr]         "sizes": ["39", "40", "41", "42", "43", "44", "45"],
+[raw_stderr]         "color": "White / Volt",
+[raw_stderr]         "material": "Mesh, Synthetik, Gummi",
+[raw_stderr]         "stock": 34,
+[raw_stderr]         "rating": 4.6,
+[raw_stderr]         "is_new": True,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Ultraboost Street",
+[raw_stderr]         "brand": "Adidas",
+[raw_stderr]         "price": Decimal("159.95"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Komfortabler Laufschuh mit Boost-Daempfung.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Ultraboost Street bietet ein flexibles Primeknit-Obermaterial, "
+[raw_stderr]             "stabile Fersenfuehrung und energierueckfuehrende Daempfung."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/ultraboost-street.jpg",
+[raw_stderr]         "sizes": ["38", "39", "40", "41", "42", "43", "44", "46"],
+[raw_stderr]         "color": "Core Black",
+[raw_stderr]         "material": "Primeknit, Textil, Continental-Gummi",
+[raw_stderr]         "stock": 27,
+[raw_stderr]         "rating": 4.8,
+[raw_stderr]         "is_new": False,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Classic Leather 85",
+[raw_stderr]         "brand": "Reebok",
+[raw_stderr]         "price": Decimal("89.90"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Zeitloser Leder-Sneaker mit Retro-Silhouette.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Classic Leather 85 setzt auf weiches Leder, eine gepolsterte "
+[raw_stderr]             "Zwischensohle und ein reduziertes Design fuer jeden Tag."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/classic-leather-85.jpg",
+[raw_stderr]         "sizes": ["37", "38", "39", "40", "41", "42", "43", "44"],
+[raw_stderr]         "color": "Chalk White",
+[raw_stderr]         "material": "Leder, Textilfutter, Gummi",
+[raw_stderr]         "stock": 48,
+[raw_stderr]         "rating": 4.4,
+[raw_stderr]         "is_new": False,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Suede Vintage",
+[raw_stderr]         "brand": "Puma",
+[raw_stderr]         "price": Decimal("94.95"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Klassischer Sneaker aus hochwertigem Wildleder.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Suede Vintage liefert einen cleanen Court-Look mit weichem "
+[raw_stderr]             "Wildleder-Obermaterial und robuster Cupsole."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/suede-vintage.jpg",
+[raw_stderr]         "sizes": ["38", "39", "40", "41", "42", "43", "44", "45"],
+[raw_stderr]         "color": "Navy / White",
+[raw_stderr]         "material": "Wildleder, Textil, Gummi",
+[raw_stderr]         "stock": 22,
+[raw_stderr]         "rating": 4.3,
+[raw_stderr]         "is_new": True,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Chuck 70 High",
+[raw_stderr]         "brand": "Converse",
+[raw_stderr]         "price": Decimal("99.99"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "High-Top Klassiker mit Premium-Canvas.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Chuck 70 High bringt verstaerktes Canvas, Ortholite-Daempfung "
+[raw_stderr]             "und ikonische Details in eine langlebige Alltagssilhouette."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/chuck-70-high.jpg",
+[raw_stderr]         "sizes": ["36", "37", "38", "39", "40", "41", "42", "43", "44"],
+[raw_stderr]         "color": "Black / Egret",
+[raw_stderr]         "material": "Canvas, Ortholite, Gummi",
+[raw_stderr]         "stock": 51,
+[raw_stderr]         "rating": 4.7,
+[raw_stderr]         "is_new": False,
+[raw_stderr]     },
+[raw_stderr]     {
+[raw_stderr]         "name": "Gel-City Runner",
+[raw_stderr]         "brand": "ASICS",
+[raw_stderr]         "price": Decimal("139.95"),
+[raw_stderr]         "currency": "EUR",
+[raw_stderr]         "short_description": "Stabiler Running-Sneaker fuer lange Tage.",
+[raw_stderr]         "long_description": (
+[raw_stderr]             "Der Gel-City Runner verbindet GEL-Daempfung im Rueckfussbereich "
+[raw_stderr]             "mit einer stabilen Mittelsohle und belueftetem Obermaterial."
+[raw_stderr]         ),
+[raw_stderr]         "image_url": "/static/images/gel-city-runner.jpg",
+[raw_stderr]         "sizes": ["39", "40", "41", "42", "43", "44", "45", "46"],
+[raw_stderr]         "color": "Graphite Grey",
+[raw_stderr]         "material": "Mesh, TPU, Gummi",
+[raw_stderr]         "stock": 19,
+[raw_stderr]         "rating": 4.5,
+[raw_stderr]         "is_new": True,
+[raw_stderr]     },
+[raw_stderr] ]
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def seed_sneakers(db: Session) -> int:
+[raw_stderr]     """Insert seed sneakers if they do not already exist."""
+[raw_stderr]     inserted = 0
+[raw_stderr] 
+[raw_stderr]     for sneaker_data in SEED_SNEAKERS:
+[raw_stderr]         existing = db.execute(
+[raw_stderr]             select(Sneaker).where(
+[raw_stderr]                 Sneaker.name == sneaker_data["name"],
+[raw_stderr]                 Sneaker.brand == sneaker_data["brand"],
+[raw_stderr]             )
+[raw_stderr]         ).scalar_one_or_none()
+[raw_stderr] 
+[raw_stderr]         if existing is not None:
+[raw_stderr]             continue
+[raw_stderr] 
+[raw_stderr]         db.add(Sneaker(**sneaker_data))
+[raw_stderr]         inserted += 1
+[raw_stderr] 
+[raw_stderr]     db.commit()
+[raw_stderr]     return inserted
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def run_seed() -> int:
+[raw_stderr]     """Initialize the database and seed catalog data."""
+[raw_stderr]     init_db()
+[raw_stderr] 
+[raw_stderr]     with SessionLocal() as db:
+[raw_stderr]         return seed_sneakers(db)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] if __name__ == "__main__":
+[raw_stderr]     created_count = run_seed()
+[raw_stderr]     print(f"Seed complete. Inserted {created_count} sneakers.")
+[raw_stderr] 
+[raw_stderr]  succeeded in 923ms:
+[raw_stderr] """Review API endpoints."""
+[raw_stderr] 
+[raw_stderr] from fastapi import APIRouter, Depends, HTTPException, status
+[raw_stderr] from sqlalchemy import func, select
+[raw_stderr] from sqlalchemy.orm import Session
+[raw_stderr] 
+[raw_stderr] from backend.app.database import get_db
+[raw_stderr] from backend.app.models import Review, Sneaker
+[raw_stderr] from backend.app.schemas import ProductReviewsRead, ReviewCreate, ReviewRead
+[raw_stderr] 
+[raw_stderr] router = APIRouter(prefix="/api/products", tags=["reviews"])
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def _get_product(db: Session, product_id: int) -> Sneaker:
+[raw_stderr]     """Return a product or raise a 404 HTTP error."""
+[raw_stderr]     product = db.get(Sneaker, product_id)
+[raw_stderr]     if product is None:
+[raw_stderr]         raise HTTPException(status_code=404, detail="Product not found")
+[raw_stderr]     return product
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] def _refresh_product_rating(db: Session, product: Sneaker) -> None:
+[raw_stderr]     """Persist the rounded average rating on the product record."""
+[raw_stderr]     average = db.scalar(
+[raw_stderr]         select(func.avg(Review.rating)).where(Review.product_id == product.id)
+[raw_stderr]     )
+[raw_stderr]     product.rating = round(float(average or 0), 1)
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.get("/{product_id}/reviews", response_model=ProductReviewsRead)
+[raw_stderr] def list_reviews(
+[raw_stderr]     product_id: int,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> ProductReviewsRead:
+[raw_stderr]     """Return review aggregate and reviews for one product."""
+[raw_stderr]     _get_product(db, product_id)
+[raw_stderr]     reviews = list(
+[raw_stderr]         db.scalars(
+[raw_stderr]             select(Review)
+[raw_stderr]             .where(Review.product_id == product_id)
+[raw_stderr]             .order_by(Review.created_at.desc(), Review.id.desc())
+[raw_stderr]         ).all()
+[raw_stderr]     )
+[raw_stderr]     average = (
+[raw_stderr]         sum(review.rating for review in reviews) / len(reviews)
+[raw_stderr]         if reviews
+[raw_stderr]         else 0.0
+[raw_stderr]     )
+[raw_stderr]     return ProductReviewsRead(
+[raw_stderr]         average_rating=round(average, 1),
+[raw_stderr]         reviews=reviews,
+[raw_stderr]     )
+[raw_stderr] 
+[raw_stderr] 
+[raw_stderr] @router.post(
+[raw_stderr]     "/{product_id}/reviews",
+[raw_stderr]     response_model=ReviewRead,
+[raw_stderr]     status_code=status.HTTP_201_CREATED,
+[raw_stderr] )
+[raw_stderr] def create_review(
+[raw_stderr]     product_id: int,
+[raw_stderr]     payload: ReviewCreate,
+[raw_stderr]     db: Session = Depends(get_db),
+[raw_stderr] ) -> Review:
+[raw_stderr]     """Create a review for a product and update its aggregate rating."""
+[raw_stderr]     product = _get_product(db, product_id)
+[raw_stderr]     review = Review(
+[raw_stderr]         product_id=product.id,
+[raw_stderr]         author=payload.author,
+[raw_stderr]         rating=payload.rating,
+[raw_stderr]         comment=payload.comment,
+[raw_stderr]     )
+[raw_stderr]     db.add(review)
+[raw_stderr]     db.flush()
+[raw_stderr]     _refresh_product_rating(db, product)
+[raw_stderr]     db.commit()
+[raw_stderr]     db.refresh(review)
+[raw_stderr]     return review
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Die vorhandenen Tests passen zu den aktuellen Schemas: E-Mail-Validierung ist regex-basiert, Geldwerte werden als JSON-Zahlen serialisiert, und die In-Memory-DB wird pro Test-Factory sauber aufgebaut. Ich ergänze jetzt noch zwei kleine Lücken: Warenkorb-Update für unbekannte Items und Bestell-Stock-Reduktion in der DB.
+[raw_stderr] codex
+[raw_stderr] Ich ändere nur Testdateien: Die API-Suite bekommt einen Fehlerfall für `PATCH /api/cart/items/{id}` und der Checkout-Happy-Path prüft zusätzlich, dass der Produktbestand nach der Bestellung reduziert wurde.
+[raw_stderr] apply patch
+[raw_stderr] patch: completed
+[raw_stderr] C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code\tests\test_api.py
+[raw_stderr] diff --git a/tests/test_api.py b/tests/test_api.py
+[raw_stderr] index 540bcffea4cd429206408056a4c85e10c46d24bf..ee55bea255e71c641b3fcf0750956631a7d5cba4
+[raw_stderr] --- a/tests/test_api.py
+[raw_stderr] +++ b/tests/test_api.py
+[raw_stderr] @@ -103,6 +103,13 @@
+[raw_stderr]      assert response.json()["detail"] == "Cart item not found"
+[raw_stderr]  
+[raw_stderr]  
+[raw_stderr] +def test_cart_update_returns_404_for_unknown_item(client: TestClient) -> None:
+[raw_stderr] +    response = client.patch("/api/cart/items/9999", json={"quantity": 2})
+[raw_stderr] +
+[raw_stderr] +    assert response.status_code == 404
+[raw_stderr] +    assert response.json()["detail"] == "Cart item not found"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr]  def test_cart_and_order_happy_path_persists_order_and_clears_cart(
+[raw_stderr]      client: TestClient,
+[raw_stderr]  ) -> None:
+[raw_stderr] @@ -140,6 +147,10 @@
+[raw_stderr]      assert persisted_order["items"][0]["name_snapshot"] == "Air Zoom Pulse"
+[raw_stderr]      assert persisted_order["items"][0]["quantity"] == 2
+[raw_stderr]  
+[raw_stderr] +    product_response = client.get("/api/products/1")
+[raw_stderr] +    assert product_response.status_code == 200
+[raw_stderr] +    assert product_response.json()["stock"] == 32
+[raw_stderr] +
+[raw_stderr]      empty_cart_response = client.get("/api/cart")
+[raw_stderr]      assert empty_cart_response.status_code == 200
+[raw_stderr]      assert empty_cart_response.json() == {
+[raw_stderr] 
+[raw_stderr] diff --git a/tests/test_api.py b/tests/test_api.py
+[raw_stderr] index 540bcffea4cd429206408056a4c85e10c46d24bf..ee55bea255e71c641b3fcf0750956631a7d5cba4
+[raw_stderr] --- a/tests/test_api.py
+[raw_stderr] +++ b/tests/test_api.py
+[raw_stderr] @@ -103,6 +103,13 @@
+[raw_stderr]      assert response.json()["detail"] == "Cart item not found"
+[raw_stderr]  
+[raw_stderr]  
+[raw_stderr] +def test_cart_update_returns_404_for_unknown_item(client: TestClient) -> None:
+[raw_stderr] +    response = client.patch("/api/cart/items/9999", json={"quantity": 2})
+[raw_stderr] +
+[raw_stderr] +    assert response.status_code == 404
+[raw_stderr] +    assert response.json()["detail"] == "Cart item not found"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr]  def test_cart_and_order_happy_path_persists_order_and_clears_cart(
+[raw_stderr]      client: TestClient,
+[raw_stderr]  ) -> None:
+[raw_stderr] @@ -140,6 +147,10 @@
+[raw_stderr]      assert persisted_order["items"][0]["name_snapshot"] == "Air Zoom Pulse"
+[raw_stderr]      assert persisted_order["items"][0]["quantity"] == 2
+[raw_stderr]  
+[raw_stderr] +    product_response = client.get("/api/products/1")
+[raw_stderr] +    assert product_response.status_code == 200
+[raw_stderr] +    assert product_response.json()["stock"] == 32
+[raw_stderr] +
+[raw_stderr]      empty_cart_response = client.get("/api/cart")
+[raw_stderr]      assert empty_cart_response.status_code == 200
+[raw_stderr]      assert empty_cart_response.json() == {
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Die Ergänzungen sind drin. Da `pytest` fehlt, mache ich zumindest einen Syntax-Check der Tests und prüfe die finale Dateiliste.
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-ChildItem tests -File | Select-Object -ExpandProperty Name' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'Get-Content requirements-dev.txt' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr] exec
+[raw_stderr] "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command 'python -m compileall tests' in C:\Users\sebas\Nextcloud\PC\Studium\KIS4\Projekt\Project-Output-Codex-MultiAgent\run_20260615T182618_0de67c86\code
+[raw_stderr]  succeeded in 518ms:
+[raw_stderr] pytest>=8.0.0
+[raw_stderr] httpx>=0.27.0
+[raw_stderr] 
+[raw_stderr]  succeeded in 653ms:
+[raw_stderr] conftest.py
+[raw_stderr] test_api.py
+[raw_stderr] test_cart_logic.py
+[raw_stderr] test_database.py
+[raw_stderr] 
+[raw_stderr]  succeeded in 935ms:
+[raw_stderr] Listing 'tests'...
+[raw_stderr] Compiling 'tests\\test_api.py'...
+[raw_stderr] 
+[raw_stderr] diff --git a/tests/test_api.py b/tests/test_api.py
+[raw_stderr] index 540bcffea4cd429206408056a4c85e10c46d24bf..ee55bea255e71c641b3fcf0750956631a7d5cba4
+[raw_stderr] --- a/tests/test_api.py
+[raw_stderr] +++ b/tests/test_api.py
+[raw_stderr] @@ -103,6 +103,13 @@
+[raw_stderr]      assert response.json()["detail"] == "Cart item not found"
+[raw_stderr]  
+[raw_stderr]  
+[raw_stderr] +def test_cart_update_returns_404_for_unknown_item(client: TestClient) -> None:
+[raw_stderr] +    response = client.patch("/api/cart/items/9999", json={"quantity": 2})
+[raw_stderr] +
+[raw_stderr] +    assert response.status_code == 404
+[raw_stderr] +    assert response.json()["detail"] == "Cart item not found"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr]  def test_cart_and_order_happy_path_persists_order_and_clears_cart(
+[raw_stderr]      client: TestClient,
+[raw_stderr]  ) -> None:
+[raw_stderr] @@ -140,6 +147,10 @@
+[raw_stderr]      assert persisted_order["items"][0]["name_snapshot"] == "Air Zoom Pulse"
+[raw_stderr]      assert persisted_order["items"][0]["quantity"] == 2
+[raw_stderr]  
+[raw_stderr] +    product_response = client.get("/api/products/1")
+[raw_stderr] +    assert product_response.status_code == 200
+[raw_stderr] +    assert product_response.json()["stock"] == 32
+[raw_stderr] +
+[raw_stderr]      empty_cart_response = client.get("/api/cart")
+[raw_stderr]      assert empty_cart_response.status_code == 200
+[raw_stderr]      assert empty_cart_response.json() == {
+[raw_stderr] 
+[raw_stderr] codex
+[raw_stderr] Test-Suite ist in `tests/` angelegt bzw. erweitert.
+[raw_stderr] 
+[raw_stderr] Produktiver Code wurde nicht geändert. Ich habe nur [tests/test_api.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_api.py), [tests/test_database.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_database.py), [tests/test_cart_logic.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_cart_logic.py) und [tests/conftest.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/conftest.py) berücksichtigt. Zusätzlich ist [requirements-dev.txt](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/requirements-dev.txt) mit `pytest` und `httpx` vorhanden.
+[raw_stderr] 
+[raw_stderr] Abdeckung:
+[raw_stderr] - API-Tests mit `FastAPI TestClient`
+[raw_stderr] - In-Memory-SQLite-Testdatenbank ohne laufenden Server
+[raw_stderr] - CRUD-Tests für Produkte, Bestellungen, OrderItems und Reviews
+[raw_stderr] - Warenkorb-Logik für Line Totals, Subtotal, Zusammenführen gleicher Items und Stock-Grenzen
+[raw_stderr] - Happy-Paths plus mehrere Fehlerfälle, u. a. unbekannte Produkte/Items, ungültige Größen, zu hohe Mengen, leerer Warenkorb und ungültige Payloads
+[raw_stderr] 
+[raw_stderr] Verifikation:
+[raw_stderr] - `python -m compileall tests` erfolgreich
+[raw_stderr] - `python -m pytest -q` konnte hier nicht laufen, weil `pytest` in der Umgebung nicht installiert ist: `No module named pytest`
+[raw_stderr] 
+[raw_stderr] Angelegte/enthaltene Testdateien:
+[raw_stderr] - `tests/conftest.py`
+[raw_stderr] - `tests/test_api.py`
+[raw_stderr] - `tests/test_cart_logic.py`
+[raw_stderr] - `tests/test_database.py`
+[raw_stderr] diff --git a/tests/test_api.py b/tests/test_api.py
+[raw_stderr] index 540bcffea4cd429206408056a4c85e10c46d24bf..ee55bea255e71c641b3fcf0750956631a7d5cba4
+[raw_stderr] --- a/tests/test_api.py
+[raw_stderr] +++ b/tests/test_api.py
+[raw_stderr] @@ -103,6 +103,13 @@
+[raw_stderr]      assert response.json()["detail"] == "Cart item not found"
+[raw_stderr]  
+[raw_stderr]  
+[raw_stderr] +def test_cart_update_returns_404_for_unknown_item(client: TestClient) -> None:
+[raw_stderr] +    response = client.patch("/api/cart/items/9999", json={"quantity": 2})
+[raw_stderr] +
+[raw_stderr] +    assert response.status_code == 404
+[raw_stderr] +    assert response.json()["detail"] == "Cart item not found"
+[raw_stderr] +
+[raw_stderr] +
+[raw_stderr]  def test_cart_and_order_happy_path_persists_order_and_clears_cart(
+[raw_stderr]      client: TestClient,
+[raw_stderr]  ) -> None:
+[raw_stderr] @@ -140,6 +147,10 @@
+[raw_stderr]      assert persisted_order["items"][0]["name_snapshot"] == "Air Zoom Pulse"
+[raw_stderr]      assert persisted_order["items"][0]["quantity"] == 2
+[raw_stderr]  
+[raw_stderr] +    product_response = client.get("/api/products/1")
+[raw_stderr] +    assert product_response.status_code == 200
+[raw_stderr] +    assert product_response.json()["stock"] == 32
+[raw_stderr] +
+[raw_stderr]      empty_cart_response = client.get("/api/cart")
+[raw_stderr]      assert empty_cart_response.status_code == 200
+[raw_stderr]      assert empty_cart_response.json() == {
+[raw_stderr] 
+[raw_stdout] Test-Suite ist in `tests/` angelegt bzw. erweitert.
+[raw_stderr] tokens used
+[raw_stdout] 
+[raw_stderr] 41.068
+[raw_stdout] Produktiver Code wurde nicht geändert. Ich habe nur [tests/test_api.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_api.py), [tests/test_database.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_database.py), [tests/test_cart_logic.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/test_cart_logic.py) und [tests/conftest.py](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/tests/conftest.py) berücksichtigt. Zusätzlich ist [requirements-dev.txt](C:/Users/sebas/Nextcloud/PC/Studium/KIS4/Projekt/Project-Output-Codex-MultiAgent/run_20260615T182618_0de67c86/code/requirements-dev.txt) mit `pytest` und `httpx` vorhanden.
+[raw_stdout] 
+[raw_stdout] Abdeckung:
+[raw_stdout] - API-Tests mit `FastAPI TestClient`
+[raw_stdout] - In-Memory-SQLite-Testdatenbank ohne laufenden Server
+[raw_stdout] - CRUD-Tests für Produkte, Bestellungen, OrderItems und Reviews
+[raw_stdout] - Warenkorb-Logik für Line Totals, Subtotal, Zusammenführen gleicher Items und Stock-Grenzen
+[raw_stdout] - Happy-Paths plus mehrere Fehlerfälle, u. a. unbekannte Produkte/Items, ungültige Größen, zu hohe Mengen, leerer Warenkorb und ungültige Payloads
+[raw_stdout] 
+[raw_stdout] Verifikation:
+[raw_stdout] - `python -m compileall tests` erfolgreich
+[raw_stdout] - `python -m pytest -q` konnte hier nicht laufen, weil `pytest` in der Umgebung nicht installiert ist: `No module named pytest`
+[raw_stdout] 
+[raw_stdout] Angelegte/enthaltene Testdateien:
+[raw_stdout] - `tests/conftest.py`
+[raw_stdout] - `tests/test_api.py`
+[raw_stdout] - `tests/test_cart_logic.py`
+[raw_stdout] - `tests/test_database.py`
