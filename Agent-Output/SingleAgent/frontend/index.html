@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SneakerHaus - Sneaker, die bewegen.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Space Grotesk"', "sans-serif"],
+              body: ['"Manrope"', "sans-serif"],
+            },
+            colors: {
+              ink: "#14120f",
+              clay: "#b85c38",
+              sand: "#f6efe3",
+              sage: "#7c8c66",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/site.css" />
+  </head>
+  <body class="bg-sand font-body text-ink antialiased">
+    <div class="min-h-screen bg-[radial-gradient(circle_at_top_left,#fff7e8_0,#f6efe3_34%,#ead9c2_100%)]">
+      <site-header></site-header>
+      <main id="app" class="mx-auto min-h-[70vh] max-w-7xl px-4 py-8 sm:px-6 lg:px-8"></main>
+      <site-footer></site-footer>
+    </div>
+    <script type="module" src="/components/app.js"></script>
+  </body>
+</html>
