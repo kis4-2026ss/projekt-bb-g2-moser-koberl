@@ -1528,8 +1528,7 @@ def parse_args() -> argparse.Namespace:
 
 DEFAULT_USER_REQUEST = """\
 Baue einen vollstaendigen, verkaufsfertigen Sneaker-Webshop unter dem Markennamen
-"SneakerHaus". Das Projekt ist NICHT als Studienprojekt-Demo gekennzeichnet, sondern
-soll wie ein echtes, kleines E-Commerce-Produkt wirken.
+"SneakerHaus". Das Projekt soll wie ein echtes, kleines E-Commerce-Produkt wirken.
 
 # Tech-Stack (verbindlich)
 - Backend: Python 3.11+ mit FastAPI, Pydantic v2, SQLAlchemy 2.x ORM, SQLite
