@@ -170,9 +170,9 @@ TOTAL                           340      2     36      3    99%
 
 ### Effizienz
 #### Verbrauch Token: 
-- Input-Token: 
-- Output-Token: 
-- Requests: ca. 
+- Input-Token: ca. 2,9 Millionen
+- Output-Token: ca. 40.000
+- Requests: ca. 50
 - Arbeitszeit: ca. 10 Minuten
 
 ### Kosten
